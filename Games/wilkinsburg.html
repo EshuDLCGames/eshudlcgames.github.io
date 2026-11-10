@@ -1770,4 +1770,28 @@ const CXART={"Sentinels":"data:image/webp;base64,UklGRq5MAQBXRUJQVlA4IKJMAQDQfAS
 {const _plCA=plate;plate=function(n){const u=CXART[n];if(!u)return _plCA(n);return `<img class='plate' src='${u}' alt='Illustration for ${n}' style='object-fit:cover;object-position:50% 30%'>`}}
 {const _noCA=note;note=function(k){_noCA(k);try{const x=CX[k],u=x&&CXART[x[0]];if(!u)return;const im=document.querySelector('#app img.plate');if(im){im.style.cssText='display:block;width:100%;max-width:420px;max-height:70vh;margin:6px auto;object-fit:contain;border-radius:10px'}}catch(e){}}}
 </script></body></html>
+<script>
+/* Eshu stats bridge: sends this game's play stats to GoatCounter as events */
+(function(){
+  if(typeof ESTAT==='undefined')return;
+  var g=ESTAT.g, tot=0, mins=0, starts={};
+  function gc(p){var n=0;(function go(){if(window.goatcounter&&window.goatcounter.count){try{window.goatcounter.count({path:p,title:p,event:true})}catch(e){}}else if(n++<40)setTimeout(go,500)})()}
+  function slug(s){return String(s||'default').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'default'}
+  ESTAT.off=function(){try{return ESTAT.ls('eshu_nostat')=='1'}catch(e){return false}};
+  function takeTime(){if(ESTAT.sec>0){tot+=ESTAT.sec;ESTAT.sec=0}while(tot>=(mins+1)*60){mins++;gc(g+'/minutes-played')}}
+  setInterval(takeTime,15000);
+  window.estatFlush=function(){try{
+    if(ESTAT.off())return;
+    takeTime();
+    ESTAT.q.splice(0).forEach(function(e){
+      if(e.t=='s'){gc(g+'/session/'+(ESTAT.ret?'returning':'new'));gc(g+'/device/'+((matchMedia('(pointer:coarse)').matches||innerWidth<700)?'phone-tablet':'desktop'))}
+      else if(e.t=='gs'){gc(g+'/game-start/'+slug(e.m));gc(g+'/players/'+(e.np||1));
+        if(g!='idiotwarz')(e.c||'').split(',').filter(Boolean).forEach(function(c){gc(g+'/class/'+slug(c))});
+        if(e.c&&g=='idiotwarz')gc(g+'/category/'+slug(e.c))}
+      else if(e.t=='ge'){gc(g+'/game-end/'+slug(e.m)+(e.w===undefined?'':(e.w?'/win':'/loss')))}
+    });
+  }catch(x){}};
+})();
+</script>
+<script data-goatcounter="https://eshudlcgames.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body></html>
