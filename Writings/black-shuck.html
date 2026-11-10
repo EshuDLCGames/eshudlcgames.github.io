@@ -1,0 +1,697 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Black Shuck</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=IM+Fell+English:ital@0;1&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+/* Layout: a night-road reader. One chapter at a time on a dark page, red eyes as the accent, a slim bar for travel. Night by default; a Paper mode for daylight reading. */
+:root{
+  --bg:#0a0b0d; --panel:#121418; --ink:#ddd6c8; --soft:#8f897d; --rule:#2a2c31;
+  --blood:#b3241c; --ghost:#86b6dc;
+  --f-display:"IM Fell English SC","IM Fell English",Georgia,serif;
+  --f-italic:"IM Fell English",Georgia,serif;
+  --f-body:"Crimson Pro",Georgia,"Times New Roman",serif;
+  --size:1.22rem;
+  color-scheme:dark;
+}
+body.paper{--bg:#f1ebdf; --panel:#e7dfcf; --ink:#221d17; --soft:#6d6253; --rule:#cfc4ae; --blood:#8e1912; --ghost:#2f5f86; color-scheme:light}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 var(--size)/1.65 var(--f-body);transition:background .3s,color .3s}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:2px solid var(--ghost);outline-offset:3px;border-radius:3px}
+a{color:var(--blood)}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--rule)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.bar-in{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:6px;padding-block:8px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.home{font:400 1.15rem/1 var(--f-display);letter-spacing:.06em;margin-right:auto;padding:6px 4px}
+.tb{min-width:40px;height:40px;border-radius:6px;display:grid;place-items:center;font:600 .95rem/1 var(--f-body);color:var(--soft)}
+.tb:hover{color:var(--ink);background:var(--panel)}
+.prog{height:3px;background:var(--rule)}
+.prog i{display:block;height:100%;width:0;background:var(--blood);transition:width .2s}
+
+/* views */
+main{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 80px}
+
+.start{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:36px;align-items:start}
+.start img{width:100%;height:auto;display:block;border-radius:4px;box-shadow:0 20px 50px #000a,0 0 0 1px var(--rule)}
+.start h1{font:400 clamp(2.6rem,7vw,3.6rem)/1 var(--f-display);margin:4px 0 6px;text-wrap:balance}
+.by{font:400 1rem/1 var(--f-display);letter-spacing:.2em;color:var(--soft);margin:0 0 18px}
+.blurb{font:italic 400 1.15rem/1.5 var(--f-italic);color:var(--soft);margin:0 0 22px}
+.go{display:inline-block;background:var(--blood);color:#fff4ee;padding:12px 22px;border-radius:4px;font:600 1rem/1 var(--f-body);letter-spacing:.04em}
+.go:hover{filter:brightness(1.12)}
+.toc{list-style:none;margin:28px 0 0;padding:0;border-top:1px solid var(--rule)}
+.toc li{border-bottom:1px solid var(--rule)}
+.toc button{width:100%;text-align:left;display:grid;grid-template-columns:2.4em 1fr auto;gap:8px;align-items:baseline;padding:11px 2px}
+.toc button:hover .tt{color:var(--blood)}
+.toc .nn{font:400 .95rem/1 var(--f-display);color:var(--blood)}
+.toc .tt{font:400 1.1rem/1.3 var(--f-body)}
+.toc .mm{font:400 .8rem/1 var(--f-body);color:var(--soft);font-variant-numeric:tabular-nums}
+.toc .here .tt::after{content:"  ·  reading";color:var(--ghost);font-size:.85rem}
+
+.chap .kicker{font:400 .9rem/1 var(--f-display);letter-spacing:.3em;color:var(--blood);text-align:center;margin:18px 0 10px}
+.chap h2{font:400 clamp(2rem,6vw,2.8rem)/1.1 var(--f-display);text-align:center;margin:0 0 6px;text-wrap:balance}
+.eyes{display:flex;justify-content:center;gap:14px;margin:14px 0 30px}
+.eyes span{width:16px;height:7px;border-radius:50%;background:var(--blood);box-shadow:0 0 12px 2px color-mix(in srgb,var(--blood) 60%,transparent)}
+.chap p{margin:0;text-indent:1.5em;max-width:66ch}
+.chap h2+p,.chap .eyes+p,.chap .lead{text-indent:0}
+.chap .lead::first-letter{float:left;font:400 3.6em/.82 var(--f-display);color:var(--blood);padding:.06em .08em 0 0}
+.chap em{font-style:italic}
+.epi{font:italic 400 1.3rem/1.5 var(--f-italic);text-align:center;color:var(--soft);max-width:30em;margin:12vh auto}
+.nav{display:flex;justify-content:space-between;gap:12px;margin-top:48px;padding-top:20px;border-top:1px solid var(--rule)}
+.nav button{padding:10px 4px;color:var(--soft);font-size:1rem;max-width:48%;text-align:left}
+.nav button:last-child{text-align:right;margin-left:auto}
+.nav button:hover{color:var(--blood)}
+.nav b{display:block;font:400 .78rem/1.2 var(--f-display);letter-spacing:.2em;color:var(--blood)}
+.end{text-align:center;font:italic 400 1.2rem/1.5 var(--f-italic);color:var(--soft);margin-top:40px}
+
+@media (max-width:620px){
+  .start{grid-template-columns:1fr;gap:24px}
+  .start img{max-width:240px;margin:0 auto}
+  .start .info{text-align:center}
+  .toc{text-align:left}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="bar"><div class="bar-in">
+  <button class="home" id="home" aria-label="Contents">Black Shuck</button>
+  <button class="tb" id="smaller" aria-label="Smaller text">A−</button>
+  <button class="tb" id="bigger" aria-label="Larger text">A+</button>
+  <button class="tb" id="mode" aria-label="Switch to paper mode">☾</button>
+</div><div class="prog"><i id="prog"></i></div></div>
+
+<main id="view"></main>
+
+<template id="src"><div class="epigraph">
+<p><em>There was an accident, and someone died,</em> a young boy thought
+as he looked out the back window.</p>
+</div>
+<section id="one-the-road" class="level2">
+<h2>One: The Road</h2>
+<p>On a nameless road swallowed by fog, under a starless sky the color
+of rotten plums, the high beams of the black Ford Explorer did little to
+light the way for the two travelers inside. They only pointed at the
+yellow and white lines on the blacktop.</p>
+<p>“Thank God up high for those lines,” Terrie said, in his <em>hey,
+let’s have a conversation</em> voice.</p>
+<p>Sissy ignored him.</p>
+<p>He glanced over at his wife. Cecelia, though nobody had called her
+that since grade school, was buried alive in her newest acquisition, a
+collection of short stories and poems. Sissy loved ghost stories. She
+owned dozens of what Terrie, when he was teasing, called her “ghost
+books”: monsters and zombies, angels and demons. Her fascination with
+the undead had claimed every inch of shelf space in their living room.
+Terrie was a nonfiction man. Politics, history, anything that started
+with <em>The Life of</em> or <em>The True Story Behind</em>. Give him
+Michael Moore any day.</p>
+<p>This latest book gave him the chills. It was maroon, almost the color
+of dried blood. There were no words on the front cover, only a shattered
+skull embroidered in gold thread, its pieces held together by thin gold
+strings like a marionette that had been broken into a dozen pieces and
+strung back together by someone in a hurry. The only text was on the
+spine, in large black letters: <em>Pages for the Dead and
+Dying.</em></p>
+<p>Terrie hated that book, and he couldn’t have told you why. It just
+wasn’t right. It had come in the mail the day before they left, and
+she’d been reading it ever since. He didn’t understand why it had to be
+the hardcover. He’d bought her a Kindle last Christmas, and she’d acted
+like it was the most thoughtful gift he’d ever given her. She still
+ordered paper books. She still yelled at him for not recycling his beer
+cans. <em>Want to save the world, Sis? Stop killing trees because you
+like how they feel.</em></p>
+<p>That one made him laugh out loud. Sissy didn’t notice. He pulled a
+big, clownish frown at her, and that made him laugh again. <em>I’m
+hilarious,</em> he thought, and puffed out his chest like a man
+accepting the Medal of Honor. He looked over at his wife.</p>
+<p>Nothing.</p>
+<p>She’d read that book for most of the drive. For the last two hours,
+on this nameless road, she’d fallen into something close to a
+trance.</p>
+<p>He wished she would put it away and talk to him. He wanted to stuff
+the thing under the seat like the monster in a children’s story. There
+were two things Terrie loved about road trips, long conversations and
+the endless roll of the landscape, and tonight he was getting neither.
+The sky hung over them like a starless indigo blanket, like a bad omen,
+and the only conversation was Eddie Vedder on the radio singing “Do the
+Evolution.”</p>
+<p>Terrie sang along with the chorus, right on the beat and nowhere near
+the key, loud enough to rattle the dashboard.</p>
+<p>Sissy, a thousand miles away in her book, winced. Terrie saw it and
+sang louder. Her fist shot out and caught him in the shoulder.</p>
+<p>“OW!” He howled, much louder than necessary. “What was that for?”</p>
+<p>He sounded like a hurt, confused little kid. Without taking her eyes
+off the page, Sissy blew him a kiss. From where he sat, though, it
+looked like the kiss was meant for the book. <em>Silly,</em> he told
+himself, and shook the thought out of his head.</p>
+<p>He’d rather have had the conversation, but he did love watching her
+read. They’d both been big readers when they met, and they used to spend
+whole afternoons reading out loud to each other. If you’d asked him
+about a single story she read him in those days, he couldn’t have told
+you, not to save his life. He was never really listening. He was
+watching her.</p>
+<p>She was beautiful. Her skin was caramel with a touch of cream, and
+her eyes were the gray of granite, glittering under the little reading
+light. She never wore lipstick, and her dark lips moved softly as she
+read. Her hair was liquid midnight, thick and wavy, falling well past
+her shoulders and over the curve of the breasts that rose and fell with
+every breath. <em>God, she’s lovely.</em></p>
+<p>Terrie was well on his way to some very unholy thoughts when
+something caught the corner of his eye.</p>
+<p>Something in the road.</p>
+<p>It was huge. It took up half the lane. Terrie swerved onto the
+shoulder to miss it head-on, lifting off the gas to keep control and
+banking gently to the right. The truck leaned hard. Sissy’s book flew
+out of her hands and her head bounced off the window. The right tires
+hit gravel and threw up a furious cloud of dust. Then they were past
+it.</p>
+<p><em>A bull,</em> Terrie told himself. <em>It had to be a bull.
+Wandered off one of the farms out here.</em></p>
+<p>Sissy was furious. Her head hurt, and worse, she’d lost her page.
+<em>This could be bad,</em> Terrie thought, as she started punching his
+arm.</p>
+<p>“What the FUCK was that, Terr?” Her gray eyes blazed. “You almost
+knocked me out, you crazy MOFO!”</p>
+<p>She took a breath. She pressed the back of her head against the
+headrest to ease the pain shooting through her temples. “Was there
+something in the road? Or did you doze off?” She twisted around to look
+out the back window for whatever it was.</p>
+<p>She saw nothing.</p>
+<p>“Well?”</p>
+<p>Terrie checked the rearview. Nothing back there but black. “I don’t
+know what it was. A bull or something. Good God, Sis, it took up half
+the road. I’m sorry I had to swerve.” He gave her a careful smile. “It
+was the shoulder of the bull or the shoulder of the road, sweet cakes.”
+He snickered and winked. Then the smile faded. “No, seriously, babe. You
+okay?”</p>
+<p>Sissy rubbed her head and looked at her fingers. No blood. “I’m
+okay,” she said, matter-of-fact. “Well. Now you’ve got my attention.”
+She picked the book up off the floor, found her page, and slipped a
+bookmark in.</p>
+<p>Terrie’s eyes were glued to the road, and his heart was still racing.
+She leaned over and kissed him on the cheek, with the softest lips he
+had ever known. He turned to her, his wife of five years, completely
+bewildered. “What was that for?”</p>
+<p>“The way I see it,” Sissy said, “you just saved both our lives. I
+wanted you to know I love you.”</p>
+<p>Terrie laughed. “Well, shit. I need to swerve more often.”</p>
+<p>They both laughed. For a little while it felt like the strangeness of
+the trip was behind them as they rolled on down the lonely road. They
+relaxed. They expected nothing more.</p>
+<p>They were wrong.</p>
+</section>
+<section id="two-the-accident" class="level2">
+<h2>Two: The Accident</h2>
+<p>About forty-five minutes after the near miss, the fog that had been
+swallowing the road began to lift. The scenery stayed the same seamless
+nothing. The fog was gone, but a thin, eerie haze still clung to the
+asphalt, and with no streetlights, the dark took everything past
+forty-five feet. Between the bull and driving blind into the unknown,
+Terrie eased down to a smooth sixty-five.</p>
+<p>A bad feeling washed over Sissy like a draft from an open door. Her
+arms broke out in goosebumps. <em>The cold creeps,</em> her Grams used
+to call it. Thinking of Grams warmed her, and the dread passed through
+and out of her like a breeze. <em>We’re fine,</em> she told herself.
+<em>This isn’t one of your ghost stories, girl. Relax.</em></p>
+<p>They drove on into the haze.</p>
+<p>Terrie saw them first: two red lights far ahead, lost in the haze,
+like a demon’s eyes peering out of a dark closet. He nudged her. “Hey,
+look, babe. Looks like we’re not alone anymore.”</p>
+<p>Sissy looked at him, then down the road, and saw the two red lights.
+She opened her mouth to answer, and the lights went out. Not faded.
+Gone. They vanished into the haze so suddenly that it frightened
+her.</p>
+<p>Terrie saw it too. They turned to each other and said it at the same
+moment: “Did you see that?”</p>
+<p>The chill came back to Sissy’s skin, and every hair on her arms stood
+at attention. Terrie was afraid, and in the same moment he remembered
+the bull in the road. He realized he couldn’t remember whether it had
+red eyes.</p>
+<p>A little farther on they saw another pair of red lights, low and
+steady at the side of the road, and these ones weren’t going anywhere.
+As they got closer, they could make out a car on the shoulder.</p>
+<p><em>There’s been an accident,</em> Sissy thought, and the Good
+Samaritan in her took over. “Terrie, pull over! Somebody might be
+hurt.”</p>
+<p>It was a decision that would cost her the love of her life.</p>
+<p>Terrie was terrified, and he couldn’t have said why. His stomach
+filled with nervous butterflies. He pulled over anyway. Those red eyes
+in the haze were still burned into his mind like the afterimage of a
+camera flash. He blinked hard to clear them, so he could think about
+what was in front of him.</p>
+<p>He stopped about fifteen feet behind the wreck.</p>
+<p>It had been a car once. A gold Ford Focus, maybe a 2010. His sister
+drove the same model, in blue. Right now it was nothing but a ball of
+metal. It looked like it had taken a far worse beating than a slide off
+the road. The body was twisted and peeled open in every direction. As
+Terrie walked up to it, he could see that the windows were blown out and
+the doors had been torn clean off. He looked up and down the road and
+found no sign of what had happened. No skid marks. Nothing. His eyes
+went back to the carcass.</p>
+<p>The dome light was still on, but he couldn’t see anyone inside. The
+only sound was the car’s chime, <em>ding, ding, ding</em>, which meant
+the keys were probably still in the ignition.</p>
+<p>“Hello?”</p>
+<p>Nothing.</p>
+<p>“Hey! Is anybody in there? I’m here to help. My wife’s calling
+911.”</p>
+<p>No answer. Terrie didn’t like this at all. Every part of him wanted
+to turn around and run back to the truck. He didn’t. He walked around
+the wreck. The taillight was smashed to pieces, as if a crazy ex had
+gone at it with a sledgehammer. Something sticky had pooled under the
+car, and he stepped in it, and he didn’t dare touch it with his hands.
+The back door was gone completely.</p>
+<p>“Dear God,” he said under his breath.</p>
+<p>What Terrie Smallgood saw in that back seat, he would take to his
+grave and beyond. Flesh and bone and cushion and metal, tossed together
+like a salad, with a generous dressing of blood.</p>
+<p>Terrie vomited.</p>
+</section>
+<section id="three-eyes" class="level2">
+<h2>Three: Eyes</h2>
+<p>There was a sound on the far side of the car. No living man had ever
+heard a sound like it, and it burned fear straight into Terrie’s
+bones.</p>
+<p>It was a low groan tangled up with a growl so deep he felt it through
+the soles of his shoes and in the cavity of his chest. Then came a howl,
+twisted and wrong, like a hundred dead wolves howling together through
+rotten throats. Every hair on his body stood up. His skin crawled. His
+heart dropped, and he felt himself shrink inside his clothes.</p>
+<p>There were no footsteps. No snapping twigs, no rustle in the brush.
+Nothing. And yet Terrie knew, the way you know a stove is hot, that when
+he looked over the car and past the ditch where it lay half-buried, he
+would see it: an enormous shadow with deep, murderous red eyes.</p>
+<p>All he wanted was to curl up in a ball and hide from the world. But
+it would find him anyway, there behind the wreck, curled up like a baby
+in the womb, or a meatball dropped on the carpet. Then there would be
+two works of abstract violence lying on the side of the road instead of
+one: the car, and Terrie, a tattered mess of cloth and meat.</p>
+<p>Fear had nailed him to the spot.</p>
+<p>It growled again. It sounded like the noise alligators make when they
+rumble under the water and the surface shivers. Terrie couldn’t think of
+the word for it. It sounded bad. This time he found the nerve to lift
+his head and look across the crumpled roof.</p>
+<p>There it stood. A shadow made flesh.</p>
+<p>It was eight, maybe ten feet tall, built like a bear but with the
+head of a bulldog. Its enormous mouth streamed blood. Its jaws worked in
+slow circles, like a cow chewing cud, and something hung slack from the
+right corner of its mouth: the top half of a young woman. Her age, her
+skin, everything about her was lost under the blood. She was red from
+head to waist. Except her eyes. Her eyes were bright white, and they
+stared at nothing.</p>
+<p>The beast lifted its head and looked at Terrie and kept chewing. It
+didn’t move. It seemed to be deciding what to do next, holding the girl
+the way a puppy holds a new chew toy. And they stood there, locked in
+the strangest staring contest of Terrie’s life.</p>
+</section>
+<section id="four-just-one-step" class="level2">
+<h2>Four: Just One Step</h2>
+<p>It looked at him with almost no interest at all. Its red eyes burned
+through him to his soul. But it didn’t come for him. It watched, and it
+chewed, like a puppy with a ham bone. Every so often the torso started
+to slip from its great bulldog jowls, and the creature jerked its head
+back to get a better grip on its prize before it hit the ground. The
+girl swung, limp. She didn’t react to anything.</p>
+<p>Terrie stood frozen. He had already accepted that he was going to end
+up the same way. The same as the nameless flesh in that monster’s
+teeth.</p>
+<p><em>Is this real?</em> he thought. <em>This isn’t real,</em> he lied.
+<em>This can’t be real.</em> The lie went around and around in his head,
+and he wanted it to stop. He wanted everything to stop. He wasn’t built
+for this. He wasn’t creative, he wasn’t imaginative; he was a
+by-the-numbers, by-the-facts kind of guy. This didn’t make sense, so it
+didn’t belong in his world.</p>
+<p>Something in his mind snapped.</p>
+<p>He wanted to close his eyes and count to ten, and when he opened them
+it would be gone, and he’d be back in the real world, a world without
+giant man-eating bear-dogs prowling the roads at night. But he knew that
+if he closed his eyes, he wouldn’t see it vault the car. He wouldn’t see
+it take his arm and tear it off like a chicken wing, then open his belly
+with one swipe of those claws and lap up his insides like a starving
+stray at a bowl of canned food.</p>
+<p>None of that happened. Not yet.</p>
+<p>And while Terrie stood there cataloguing the ways he was going to
+die, one word hit him like a slap.</p>
+<p><em>Sissy.</em></p>
+<p>She was still in the truck. If he took much longer, she would come
+looking. She would see. And then… no. He wouldn’t let that happen. If he
+yelled to her, he might set the thing off. Right now it had its head
+down, worrying at a flap of skin on the torso, trying to peel it. For
+the moment it seemed to have forgotten him completely.</p>
+<p>His thoughts began to slow down and line up. A plan was forming.</p>
+<p>Then the world shattered.</p>
+<p><em>BEEEEEEP!</em></p>
+<p>The truck’s horn blared across the empty road. Terrie’s heart fell
+through the floor. And then it got worse.</p>
+<p>“TERR! TERR! Honey, are you okay? You’re just standing there like
+you’ve seen a…”</p>
+<p>He turned and saw, to his horror, that she was opening her door to
+get out.</p>
+<p>Terrie screamed at his wife in a way he never had before and never
+would again. “GET THE FUCK BACK IN THE TRUCK!”</p>
+<p>The words were still leaving his mouth when he ran. He’d run track as
+a kid, so he knew how to dig deep, and it had been twenty years since
+his last meet, but the way he moved that night would have left his
+younger self in the dust.</p>
+<p>The creature did nothing. It just crushed, and tore, and chewed.</p>
+</section>
+<section id="five-back-on-the-road" class="level2">
+<h2>Five: Back on the Road</h2>
+<p>When Terrie reached the driver’s door, his hands were shaking too
+badly to open it.</p>
+<p>Sissy stared at him, scared and confused. She had never seen him like
+this. Terrie didn’t scare easily. He was the man with a plan, or at
+least an explanation. Even during the pandemic, when half the people she
+knew, herself included, had started coming apart into conspiracy
+theories, Terrie had kept his head. Now he couldn’t work a door
+handle.</p>
+<p>She leaned across and popped it open for him, and she saw the relief
+flood his face. He flung the door wide so hard she thought it might come
+off its hinges, threw himself into the seat, slammed it shut, and turned
+the key.</p>
+<p>The engine was already running. The starter shrieked, a jarring metal
+grind like gears locking teeth. Sissy squeezed her eyes shut.</p>
+<p>“CALM THE FUCK DOWN! Shit, what is wrong with you?”</p>
+<p>He didn’t answer, but he seemed to realize the truck was on. He
+dropped it into drive and stood on the gas. They were half on the road
+and half off. The right tires bit, spat gravel, and chirped. The back
+end fishtailed. Sissy looked at Terrie and saw that his eyes were
+somewhere far away, and then he had control, and they were gone, leaving
+only dust and two black streaks on the road behind them.</p>
+<p>As they tore away, Sissy saw something at the side of the road: a
+hulking shape, like a shadow standing up. It reminded her of the Balrog
+from <em>The Lord of the Rings</em>, only smaller, and made of smoke
+with no fire in it. <em>Maybe it’s the Balrog’s dog,</em> she thought.
+<em>He had that fire whip for something, right?</em></p>
+<p>The truck swerved, and she snapped back into the world.</p>
+<p>The thing’s head came up. Its brilliant red eyes flickered ice blue
+for an instant, then red again.</p>
+<p>Then came the howl.</p>
+<p>Imagine an air-raid siren braided together with the howls of endless
+wolves, as if every dog that had ever died were howling at once in
+greedy anticipation. The sound moved through the truck like a pressure
+wave, and when it was gone, all Sissy could hear was ringing. She tried
+to say something and couldn’t hear her own voice. She looked at Terrie
+and saw blood running from his ears. She touched her own and felt
+something wet and sticky.</p>
+<p>Terrie hadn’t flinched. He hadn’t closed his eyes or swerved. His
+eyes were locked on the road ahead like a machine’s.</p>
+<p>As the ringing faded, Sissy tried to put it together. What did she
+actually know? Terrie had seen something at the side of the road. It was
+almost certainly the same thing that had just blown out their eardrums,
+and it had almost certainly caused the wreck they’d stopped for. What
+<em>was</em> it? Some kind of bear, or bulldog, the size of a
+minivan.</p>
+<p><em>A Black Shuck?</em> The hellhound of the old English stories. The
+black dog that walks the lonely roads at night, with eyes like coals.
+<em>Is that even possible?</em></p>
+<p>She glanced at the side mirror and saw two glowing red lights.
+No. Not lights. Eyes.</p>
+<p>She twisted around and looked out the back window, and there they
+were, clear as day. Two huge eyes glowing blood red, maybe half a
+football field behind them.</p>
+<p>Sissy screamed. It wasn’t the eyes alone. It was what they were set
+in. The eyes were getting closer, and as they did, the face that held
+them came clear: part bulldog, part Cane Corso, its heavy jowls soaked
+in blood and flapping in the wind, its body only an outline in the mist
+it shoved aside as it ran. It was as big as the truck. It ran with an
+unnatural, impossible speed.</p>
+<p>It was catching up.</p>
+<p>The thought exploded in her head, and she screamed again. She turned
+to Terrie, and the words came out without her deciding to say them.
+“It’s following us. What the fuck is that thing, Terrie?”</p>
+<p>Terrie said nothing. His eyes stayed on the road.</p>
+<p>“TERRIE! SAY SOMETHING!”</p>
+<p>Nothing.</p>
+<p>“<em>Terrie!</em>” Frustration and dread, mixed together. He had to
+snap out of it, and he had to do it now. “You’d better fucking answer
+me! What is that thing behind us?” She looked back without meaning to.
+It was closer. Now she was begging. “Terrie, please. Please answer me.
+Please say something. Anything. I…”</p>
+<p>When Terrie spoke, his voice was distant and cold, like a man calling
+a golf game with nothing on the line.</p>
+<p>“It killed her. It was chewing her like a toy. It must have run them
+off the road and then killed them.” Terrified and perfectly calm, he
+went on. “And it’s going to do the same thing to us.”</p>
+<p>He turned to her. He was crying.</p>
+<p>“I’m sorry.”</p>
+<p>For a moment they just looked at each other, speeding down an
+unmarked highway under a starless, moonless sky, with a crimson-eyed
+predator running them down.</p>
+</section>
+<section id="six-lovers" class="level2">
+<h2>Six: Lovers</h2>
+<p><em>Their love was true, and they died knowing it.</em></p>
+<p>Sissy looked out the back window again. It was right on them, less
+than five feet away. Its fangs shone white as a full moon, the only
+solid thing on the shadow running behind them: a glowing white mouth on
+a shapeless monster, chasing them down an empty road. The alabaster
+fangs snapped and snarled at their bumper.</p>
+<p>It was going to hit them. She threw her arm across Terrie’s chest and
+braced.</p>
+<p><em>IMPACT.</em></p>
+<p>The Shuck had dropped its head like a bull and rammed the bumper, and
+the rear wheels left the road. Plastic and metal snapped and groaned.
+The back window burst. For a moment Sissy felt weightless, and then the
+rear tires slammed back down with a thud. The truck slewed, and Terrie
+lost it for a second. He threw the truck into four-wheel drive, stood on
+the gas and wrestled it back onto the road.</p>
+<p>While he fought for control, Sissy felt something take hold of the
+back of the truck. She looked. The beast had its teeth sunk in the
+bumper and was dragging them toward the side of the road, keeping pace
+the whole time. <em>Why doesn’t it just stop?</em> she thought. It could
+plant its feet with its jaws locked on that bumper and tear the back
+half of the truck off. That would wreck them. But it seemed set on
+getting them to the side of the road. Terrie swerved back and forth to
+shake it, and she watched them creep closer and closer to the edge
+anyway. It was like a fisherman reeling in a catch without snapping the
+line.</p>
+<p>That gave her an idea. “Swerve hard to the middle! Make it let
+go!”</p>
+<p>Terrie gave a little slack toward the shoulder, then cut the wheel
+hard the other way. The truck lurched forward, and Sissy felt the bumper
+rip away. Terrie got control back, and they started to pull ahead.</p>
+<p>Through what was left of the back window, Sissy watched the beast
+shake its head in frustration. It bit down and snapped the bumper in
+half and let out another bone-shaking howl.</p>
+<p>The break didn’t last. Within seconds it was running again, and this
+time it ran with purpose. It galloped at a speed no animal of this world
+could reach. It moved like fear on the wind: a giant, starving beast
+with eyes like cursed suns at the bottom of bottomless pits. She watched
+it close the gap, a suggestion of a shape plowing through the mist,
+nothing solid about it but the crimson eyes and the ghostly blue teeth
+that glowed brighter and brighter, with excitement or with hunger.</p>
+<p>Dear God, it was beside Terrie’s window. Its eyes were fixed on
+him.</p>
+<p>She watched the fear take him over. Every muscle in his body locked
+tight. His brown knuckles went pale on the wheel. His foot tried to push
+the gas pedal through the floor, as if he could will the truck faster.
+It didn’t help. The red of its eyes shone through his window, and there
+was nothing between her and the beast but her husband’s beautiful brown
+skin.</p>
+<p><em>Look at him,</em> she thought, lost in an endless instant of
+panic and adrenaline and something sweet underneath. It all hit her at
+once, and she remembered the man she had married. He was the best man
+she could have hoped for. Not the most exciting, not the strongest or
+the fittest, but when the pressure came down, he was unbreakable. He was
+shy and terrible in crowds, but he would stand up for what he believed
+in to the very end. Some people thought he was cold. He wasn’t cold. He
+was calculating. If he ran the numbers and you weren’t worth his time,
+he was done wasting it on you. She wished she could let go of people the
+way he could, but she was loyal to a fault. It worked for them, because
+he paid her loyalty back in kind. She knew he valued her, and she valued
+him more than words could hold. Right now he was fighting for her as
+much as for himself. She could see it in his eyes. He would do whatever
+it took to get them out of this, and if anyone could, it was him.</p>
+<p>Terrie pushed the gas with everything he had and gripped the wheel as
+if his wife’s life depended on it, because it did. He would drive like
+he had never driven before. He would get them out of this nightmare. The
+fog pressed against the windshield, but somehow he could feel the road,
+and he drove like a bat out of hell.</p>
+<p>He’d shaken it loose once. <em>But now…</em></p>
+<p>A faint blue light was filling the rearview mirror. Before he could
+react, the thing was beside them again, matching their speed exactly.
+There was no sound. No claws tearing up the pavement, no rush of wind as
+it pressed forward. Nothing. As if it wasn’t really there.</p>
+<p>It dropped its head and drove its shoulder into the side of the
+truck.</p>
+<p>Terrie’s window exploded, spraying glass across the cab. He barely
+got his head turned and his hand up to cover his eyes. His palm, his
+forearm and the side of his face were shredded. He could feel the glass
+in his hand. He didn’t have time to care. He gripped the wheel tighter,
+blood pouring from his palm and running from cuts all down his left
+side, and pulled the truck straight without ever taking his eyes off the
+road. He ignored the pain screaming at him.</p>
+<p><em>Sissy was right,</em> he thought. <em>It wants us off the
+road.</em></p>
+<p>Another hit pushed them farther over. Hit after hit, they drifted.
+The beast wasn’t using its full strength. It was more like a violent
+nudge, over and over, steering them toward the black shoulder and
+whatever was past it.</p>
+<p>Terrie looked past the shoulder and saw nothing. But it was a
+<em>something</em> kind of nothing. The empty dark beyond the road was
+brimming with malice. With hunger. If they crossed into it, they would
+be meat for the feast.</p>
+<p>“No,” Terrie said, in the same instant that he thought it.</p>
+<p>He looked over at the beast running beside him, its flickering red
+eyes locked on his. “Brace yourself,” he told Sissy. And he smiled.</p>
+<p>As the beast leaned in for another shove, Terrie jerked the truck
+away from it. The beast hadn’t expected that. The tires grabbed the very
+edge of the shoulder, inches from oblivion. The glass in his palm drove
+deeper, and blood ran down the wheel. The creature saw its prey
+teetering at the point of no return and lunged after it, sloppy with
+excitement. Before it could recover, Terrie whipped the wheel back
+toward it, to ram it.</p>
+<p>They both braced for the impact.</p>
+<p>And to their utter amazement, they slid straight through it, as if it
+were smoke.</p>
+<p>For a moment the beast’s ghastly head was inside the truck with them,
+passing through the two of them, and its eyes seemed to turn inward to
+watch them as they went by. Two red orbs drifted through the front seat
+and out through Sissy’s window. Outside, the beast let out a grisly,
+furious howl and kept running.</p>
+<p>Before Terrie could make any sense of it, it was on Sissy’s side, its
+face right outside her window. It rammed its face into her door. The
+glass blew inward in a hail of tiny shards that covered both their laps.
+Terrie saw glass caught in her thick, wavy hair and cuts across her
+face. Sissy, who was never anything but calm, screamed in terror. The
+thing slammed her door again and again, deliberate. It seemed to have
+given up on running them off the road. Now it just wanted to pull one of
+them out. Terrie could see its bright blue mouth snapping at her
+door.</p>
+<p>Time stopped.</p>
+<p>Terrie saw Sissy, torn in half, lying on top of a mound of corpses,
+and every one of them had his face, and every one was shredded beyond
+belief. Four dog-like beasts, smaller than the big one, had their faces
+buried in the mounds of his bodies, tearing and ripping and feeding. And
+the big one, the one that had killed him a thousand times, stood under
+an unearthly sky with four moons: two silver, one red, one orange. The
+red one and one of the silver ones were enormous, dwarfing the others,
+almost planets themselves. He knew, with complete certainty, that he was
+looking at their future.</p>
+<p>He would not let her die. Not without a fight.</p>
+<p>Her door was about to give. He didn’t dare hit the brakes. So he made
+a decision.</p>
+<p>“Under the seat! Black bag! I’m sorry I didn’t tell you. I knew you’d
+kill me.”</p>
+<p>He swung the wheel hard right. The beast was forced into its mist
+form just as its jaws slammed shut. They felt the air those jaws pushed,
+and they smelled its breath, and it was rank: rotten meat, soup left out
+to fester, and a breath of sulfur. It hung in the cab as the thing
+passed through. Its mouth was as big as a great white shark’s, with
+three rings of bright blue teeth that seemed to hum with
+anticipation.</p>
+<p>It came back together on Terrie’s side. It roared in fury. It had
+almost had its meal.</p>
+<p>It rammed its head into Terrie’s wheel so hard the truck jumped four
+feet into the air. When they came down, something cracked underneath
+them. It was a miracle they were still moving, and Terrie knew it
+wouldn’t last.</p>
+<p>Blue-white fangs punched through his door and into his arm and his
+side. All feeling left the left side of his body. He didn’t scream. He
+didn’t even flinch. He turned to Sissy, looked her dead in the eye, and
+smiled, and said the last thing he would ever say.</p>
+<p>“I fucking love you, baby.”</p>
+</section>
+<section id="seven-crossing-the-stream" class="level2">
+<h2>Seven: Crossing the Stream</h2>
+<p>It all happened in an instant. One moment he was there. The next he
+was gone, pulled out into the dark.</p>
+<p>Then Sissy’s world was spinning. Her head struck something, and
+everything went black.</p>
+<p>When she woke, there was only darkness. Somewhere ahead of her, she
+heard Terrie’s voice.</p>
+<p>“Sissy… Sissy… please help me.”</p>
+<p>He sounded weak and hoarse. Every part of her hurt, but she crawled,
+and then she dragged herself to her feet, and she walked into the
+endless night toward the sound of his voice.</p>
+<p>The darkness was so thick she could almost swim in it. It was like
+walking through a fog so dense you could feel it slide down your throat
+like sludge when you breathed. <em>This is what the smoke of Mount Doom
+must feel like,</em> she thought. It smelled of sulfur.</p>
+<p>She kept going, calling his name. His voice was growing weaker, but
+she was getting closer. She pushed her fingers through the dark ahead of
+her as she walked, and then she touched something. It was smooth and
+cool. Then she heard him, right in front of her.</p>
+<p>The darkness thinned, a little, and she could see him.</p>
+<p>He was naked and covered in blood. It seemed to be coming from his
+left hand, or from what she could see of it. He was raised up off the
+ground, hanging by that arm, which disappeared into the haze around
+them, as if he’d been half crucified. Sissy threw her arms around him
+and pulled him close. She tried to lift him to his feet, and he
+groaned.</p>
+<p>“Can you walk?”</p>
+<p>Terrie shook his head.</p>
+<p>“It’s okay, baby. I’m going to get you out of here.”</p>
+<p>She tried to move him, and he wouldn’t come. He was caught on
+something. She pulled harder, and Terrie let out a scream that curdled
+her blood, and blood poured down over both of them.</p>
+<p>She looked back, and there was nothing to see. How could she ever
+explain it? It was as if his arm was stuck in the darkness itself. Where
+the bloody stump ended, there was only dark.</p>
+<p>Then she heard the growl. The low warning of a dog standing over its
+food.</p>
+<p>She froze. Then she pulled, frantic, and kept pulling. Terrie’s
+screams turned to grunts, and the grunts turned to silence.</p>
+<p>That was when the mist cleared.</p>
+</section>
+<section id="eight-a-world-away" class="level2">
+<h2>Eight: A World Away</h2>
+<p><em>To be continued.</em></p>
+</section>
+</template>
+
+<script>
+(function(){
+  var COVER="data:image/webp;base64,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";
+  var src=document.getElementById('src').content;
+  var epi=src.querySelector('.epigraph');
+  var chapters=[].map.call(src.querySelectorAll('section.level2'),function(s,i){
+    var h=s.querySelector('h2'); var t=h.textContent; var m=t.split(':');
+    var body=s.cloneNode(true); body.querySelector('h2').remove();
+    var words=body.textContent.trim().split(/\s+/).length;
+    return {n:m[0].trim(),title:(m[1]||t).trim(),html:body.innerHTML,mins:Math.max(1,Math.round(words/230))};
+  });
+  var view=document.getElementById('view'), prog=document.getElementById('prog');
+  function get(k,d){try{var v=localStorage.getItem('shuck-'+k);return v===null?d:v}catch(e){return d}}
+  function put(k,v){try{localStorage.setItem('shuck-'+k,v)}catch(e){}}
+  var size=parseFloat(get('size','1.22')), paper=get('paper','0')==='1', last=parseInt(get('last','0'),10)||0;
+  function applyPrefs(){document.documentElement.style.setProperty('--size',size+'rem');document.body.classList.toggle('paper',paper);
+    var b=document.getElementById('mode');b.textContent=paper?'☀':'☾';b.setAttribute('aria-label',paper?'Switch to night mode':'Switch to paper mode')}
+  function start(){
+    var items=chapters.map(function(c,i){return '<li class="'+(i===last&&get('begun','0')==='1'?'here':'')+'"><button data-ch="'+(i+1)+'"><span class="nn">'+(i+1)+'</span><span class="tt">'+c.title+'</span><span class="mm">'+c.mins+' min</span></button></li>'}).join('');
+    var begun=get('begun','0')==='1';
+    view.innerHTML='<div class="start"><img src="'+COVER+'" alt="Black Shuck cover: two red eyes in the fog above an empty road" width="640" height="1024"><div class="info"><h1>Black Shuck</h1><p class="by">AHMED K. BEY</p><p class="blurb">A couple on a nameless road. A wreck in the fog. And something with red eyes that will not stop running.</p><button class="go" data-ch="'+(begun?last+1:0)+'">'+(begun?'Continue: '+chapters[last].title:'Begin reading')+'</button><ol class="toc">'+items+'</ol></div></div>';
+    prog.style.width='0';
+  }
+  function chap(i){
+    var c=chapters[i]; last=i; put('last',i); put('begun','1');
+    var prev=i>0?'<button data-ch="'+i+'"><b>Previous</b>'+chapters[i-1].title+'</button>':'<button data-ch="0"><b>Opening</b>The epigraph</button>';
+    var next=i<chapters.length-1?'<button data-ch="'+(i+2)+'"><b>Next</b>'+chapters[i+1].title+'</button>':'';
+    view.innerHTML='<article class="chap"><p class="kicker">Chapter '+c.n+'</p><h2>'+c.title+'</h2><div class="eyes" aria-hidden="true"><span></span><span></span></div>'+c.html+(i===chapters.length-1?'<p class="end">The story continues.</p>':'')+'<nav class="nav">'+prev+next+'</nav></article>';
+    var p=view.querySelector('.chap > p:not(.kicker)'); if(p) p.classList.add('lead');
+    window.scrollTo(0,0); onScroll();
+  }
+  function opening(){view.innerHTML='<article class="chap"><div class="epi">'+epi.innerHTML+'</div><nav class="nav"><button data-ch="1" style="margin-left:auto;text-align:right"><b>Begin</b>'+chapters[0].title+'</button></nav></article>';window.scrollTo(0,0);prog.style.width='0'}
+  function route(){var m=location.hash.match(/^#ch-(\d+)$/);
+    if(m){var n=parseInt(m[1],10);if(n>=1&&n<=chapters.length){chap(n-1);return}}
+    if(location.hash==='#opening'){opening();return}
+    start();}
+  function go(n){var h=n===0?'#opening':'#ch-'+n; if(location.hash===h) route(); else location.hash=h}
+  view.addEventListener('click',function(e){var b=e.target.closest('[data-ch]');if(b)go(parseInt(b.dataset.ch,10))});
+  document.getElementById('home').onclick=function(){if(location.hash)location.hash='';else start(); window.scrollTo(0,0)};
+  document.getElementById('bigger').onclick=function(){size=Math.min(1.8,+(size+0.08).toFixed(2));put('size',size);applyPrefs()};
+  document.getElementById('smaller').onclick=function(){size=Math.max(0.95,+(size-0.08).toFixed(2));put('size',size);applyPrefs()};
+  document.getElementById('mode').onclick=function(){paper=!paper;put('paper',paper?'1':'0');applyPrefs()};
+  function onScroll(){if(!view.querySelector('.chap h2'))return;var h=document.documentElement.scrollHeight-innerHeight;prog.style.width=(h>0?Math.min(100,scrollY/h*100):100)+'%'}
+  addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('hashchange',route);
+  addEventListener('keydown',function(e){var m=location.hash.match(/^#ch-(\d+)$/);if(!m)return;var n=+m[1];
+    if(e.key==='ArrowRight'&&n<chapters.length)go(n+1);if(e.key==='ArrowLeft'&&n>1)go(n-1)});
+  applyPrefs(); route();
+})();
+</script>
+
+</body></html>

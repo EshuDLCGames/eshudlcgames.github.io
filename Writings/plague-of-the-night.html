@@ -1,0 +1,561 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Plague of the Night · Eshu Games</title>
+<!-- ANALYTICS: same GoatCounter line as the homepage goes here -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap">
+<style>
+:root{--bg:#0b1120;--ink:#e9e6df;--muted:#a3adc4;--line:#26324c;--accent:#e5b94b;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:19px/1.75 'Literata',Georgia,serif;-webkit-text-size-adjust:100%}
+.top{position:sticky;top:0;background:#060a15ee;backdrop-filter:blur(6px);border-bottom:1px solid var(--line);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;font:600 14px system-ui,sans-serif;z-index:3}
+.top a{color:var(--muted);text-decoration:none}.top a:hover{color:var(--ink)}
+.cover{max-width:420px;margin:40px auto 0;padding:0 16px}.cover img{width:100%;border-radius:10px;box-shadow:0 20px 50px #000a;display:block}
+main{max-width:680px;margin:0 auto;padding:32px 20px 80px}
+h1,h2,h3{font-family:'Gloock',Georgia,serif;font-weight:400;line-height:1.15}
+h1{font-size:clamp(2.2rem,7vw,3.2rem);text-align:center;margin:.4em 0 .2em;color:var(--accent)}
+.by{text-align:center;color:var(--muted);font-style:italic;margin-bottom:2.5em}
+h2{font-size:1.7rem;margin:2.6em 0 .8em;padding-top:1em;border-top:1px solid var(--line)}
+h3{font-size:1.3rem;margin:2em 0 .6em}
+p{margin:0 0 1.1em}hr{border:0;text-align:center;margin:2.4em 0}hr::after{content:'✦  ✦  ✦';color:var(--accent);letter-spacing:.4em}
+.toc{border:1px solid var(--line);border-radius:12px;padding:16px 22px;margin:0 0 2em;font-size:.95rem}
+.toc b{font-family:system-ui,sans-serif;font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.toc ol{margin:.6em 0 0;padding-left:1.2em}.toc a{color:var(--ink);text-decoration:none}.toc a:hover{color:var(--accent)}
+.poem{text-align:center;font-size:1.1em;line-height:1.9}
+.end{text-align:center;margin-top:4em;font:600 15px system-ui,sans-serif}.end a{color:var(--accent)}
+</style></head><body>
+<div class="top"><a href="../">← Eshu Games</a><span style="color:var(--muted)">Book One</span></div>
+<div class="cover"><img src="data:image/webp;base64,UklGRm4zAABXRUJQVlA4IGIzAACwWwGdASqGATACPpVKnkulpCaqJTL6EUASiWVuNGUcTjU1mR7jUtNWO7S2x0cXqnNRx02dP01nb2LvUDuO+dlfHu1l/i9Rd/D2vq6C7zzof9Pjf9qI/PjVCt4VjVEd//8PBqIGoa99o0R/EARyaQRhkwN+ahznsl2NBmSRhMpBNShl0a9XnU1JH+ibAkjGZcOTRLw+6CZUFL4jJH1XYDNCFJjaMJirIvUc2AQQQjTDJL8sMWIHU+WETbE1uJqTkx0zaGWhF1+K/q8fmUzwRy7tqz3/zt6YynUW/neyt39a1xav1qPutMpeNJn0N5yhpuAL/sxRtRnK03bvGxqexw8FBMGuEOHFYVTNPh2tXB+A0y85SvJhFPPTRRMpVSH/FZKnGfwMiJIrSuPFjXMjN8AHo2Sd3em7bIVFcdunydeviK3HjTYaBY4RR5dOiQxsU5ErjUm/aNoWBPe48w4t6ArHfka0IQzMzrTgiXWHXGbwJgQYseDDVTM4dvnQgmPA3KsW0aPfPS/RlC8rrwMJoe3PEJjOBr+ZUDaEaWrHobdUxNl6UQBSoXq/lPrXQx7SvbHZS++e4b+EFTics7f0Miy5BR298Ns0mh10EoQ2SOv+SPCxs4kW1o35AXSIHusx1O616Qo9uHV/hWjEIO1fVHmNWrzTkBNZSp7sVRNNFHv5vRhVcMGSxmgQHAcMp3L+sf10gy6v82o6FAjbURO7DHupCDY8vIoPPFOFbjnNJwRnvqTaFe6rymQb1HBaEsNLBfvPTYPldw9CEWr4Bi+QfwaKLsDFBHFDwmWsAKObFEN6F1JMbhDUT+bLiuEdBmtJbaFQlMJ6rK+9TTx2MVsG/buRNbis7hLwlEj2B+KWWyVFNwqfHpN5Gs2vtK1/voX2Q1bYkMjZ0sOSw7akuFU0YYc3mYObYcARHnBh8JvcsXwewc5FL7M3xdGDVZv2eanGWhNWEdUC9TtRk6azeyRXTCDlQgJHHQopBsLVLJUMmGUqinKiacVe9UPwzzNutUSiBfKayp1KK0FdVLpu5DOOoNJp96fuJ/qOZzVy+GDjSer+uW7M1MGkhV9R370cJZsX4WAEYB1qYXtWUB4VQgzTjOCeOoYs5vn10QhRuins7EmBkdohFwe7gflfBELS4z2J1WNNagFBwXiz71bbtyMRQfjPG5r2xVFCRmLnJaBDD0Z4RL9Hot6K+JeWL4nXuQ42SWIwK80Z/wp38gdHv1i61qPJJ7lzV7xRFxc9Z5szypMOiIkGYRnlYs7Pm2mncsPHRfhwgVDy/4ktfOp/ZQnujZ7mEKyaLu+cG/fChbGor9GMZIQhrVhPlLbVJ4qyfpyT+8YzOipkhtM1kOatPqzVKc5cW6ZwyeODBy6GkFd/rSU2+NGQ2+XnIaBpbUHzeYD2EgdIWr8Eg9brKwaGzB5SWT5qgYxzp/MkYu0b7oBVBDAVh6dXBxxwTRW6O+OtTyduROObxjciDyOJn1fIpTsYsoxCRKJJH4L4BAjX+P3XCt/mHvBFN4Wr4SZK9HTWBUD//wHWxKXEM0yl8F+diikxqHDVYyc319GmnXAW5XwUHPh0iz4th+C6Sm1Ydhj1nmI92SZizuDXk8SDAsk0h1MvVMYH/g6jtVPO9cU+oAue+rOFH5tGN2nCUt68MogKZoKzbAqXdEasH3iUqm6O1cBtQftQgSuEcHs4zUMex9XVVCwO8SMdpoSexofHFR/sgu7qBoFRvWzr6bFuUbiZIINPhc2xoINzwPy1f+BS7/XUtIez0JC4mflfUzBzDTiqq6VYQEcxNeh9mfnqE85mQ3kEGhLC3rX6gaxFNLNI45JJ/8LYUGfimoic8Ng6BNRv2+lojAitQGdP+jMTSl9NallFV4DqRGxUewyuu+earX+fkwrxBMTDisaEo0NTR08Bb/vcI1ZYYGlV9FBAXPQc7WeeSHX+fw+1hX1dyTiGqTqZgLtWfE743X23gI+mK4IiVM/8MMwk7hjx48UE3PCGwjYhXN9a7H385EpLy1Lrjyn5wR8DSmyxpHP3hHjfk0bTYe+e+MJZFWEUYVHn+pdWz9LgicQ9EK/XtvkdPWbBmZyRZj8pE5Mlke0Q9WiClCQq9yA5Y73zHqYTCmPmo0wZm/WiYah98Wjbow1N+agdvSJG/1ZTBL46NoaBtisu0PFptINKRMoqlEF4WBt3GxMLYsRjkBIl8tekmKJMnc28YjpNooU6g7vMH5c4EMDwmzOe2SeqP9kMLwtEKhM7iDOuvX2I3oL8H9BXOzCy5H2t60iIvdafNQ062vU0Csya5O50tzd5oexhpjVO/buMO7OSHLg0rDymd7tN/UYyJbYAFVGvy2+UrycffPiTuq82R8f+WbgD4srmB/CH/Xvf380mD9vzeBtbFTjqJW2EhT7BnEJTvr+1ozwCHdopZIZqYNpoIHSEC54ZjM2KvNVs/rsYdHCovP9VJB1Y69c+3/90DtAyN5VR1qDMik+ffFf4pYCcHTegXgOqrBQnnvlsN1VeqUI626uQf2fTK/92C9jtKW1Bw6LWXLAOz2KHMG+HwNXQ0TifL+whwLlfF4GAaIBTGsu0ph0zC+1KITsR1TMp/l9plg+5BeEr1IwbR6Ra7isv6g/13OLCbIIhFCCspAl7dHk6z/yuKKu/m4p4RzU/5DDDGhPaLOLjOK3pqUrhpnbEl1aLU8GZgpoDUnxo7XbSEJYBbZ4OpvwaoEDS4IRRRLo7WRF+rZTd3WwZchcm5i+46+TO+czxgZxXJ0aJ61VWa6BCEx4/tKee+Mefp4fejpeLZIYTC7zaahHA8RnnPECpIWtHYy/eHkSOHsGxlHKT4txUitfzKDyPiSy1oegiABEAYi8Vb68NAwT+8L1eZE74KV8SJKPoCdmnm19z2KJLQJaycS8Ls20ogf6p1GTGaMYPtzxPdBJ0plLdasuZnWMZafbZWnxv6mP6DQcLVwOFaerAK+JCZU9oNgHNj9ZzKPhtwtjTcwmbjgsyHxRFyPnPSORbGLpclErMuoVz+hnW4ZTDyviUvuRN6TE/0yhSibZtmE0xZ7dPsqjaCX1+rxjCPERVYA1tquHToeC0aKDLZ97C13F+BapIs28A9bc6DQB5dn34Net8NBC6LYn172lzXedHfJ8UDZTSmfCNNFBMroXgECnTpGmIDEeywCnJ/x6DRO5DaQtg/haEwz0i7XbQRpQh6uA1kkVKIjkHEkko/VzmK/hKNKMKktzMbghJ3zzONNoZomzuzHPHycuRdtq+4rOk328y3CefTmIW3lnTs3mlqeFBk+u93iqFrUNFfnIXtQ7GKY+iP7nrYLnZ8TgC68J8ExEMYl3By1YP+dLzUNeQCOSlBDd3wB/F9qQZe+79bAJJBDX4RqD6WkIBPdC6JcVSRsakdiXb/SDCcjjiqJiy0roc1n8MezYN2FIKnvQuHQlojB48BAZjLccqcP3SDzxE4NRbQY9OJstmZYaxPd43BuWXSsc1sijfz8FEk7JQyhexjETy2WDviL1WY5OjXDW6xk1mYSahCkIpFjI3D+G12Qx81+/N5tB7+FMstqItm8j+o91j8G1hzFoAl60/GNSbfW9MVy5GuNcgxA5QpCvVG0Z1LttKawdNaNtV1LJWgcVUCSdSq2ZRxVRIqsebKIvGV69N24kfmRBpMo/dfSXb0tesaHwNQsQmyKDi8KapvIorJuWYnSU6taLhr1r5FZi1BrJIAKvW0AAA/vlsnZOy5ngPknH7x3N6Q9o88ESeiNy2nBt1TNbEsbeuu9EeCjXCJFylVy9yiswivDKg0T51U0GOruW1JMV+2QRb9WhfDKQSn2l48J4RE4qzMSyhsua8Tj8B2GzhzZGwiK+KXkNUCjzgRkemGpw8gFcDQqtbc7K2uIiAfESyEtL87X93ti+HxlPM9yxE1RHNWq3bYJAdhziBijIYaxWmfmCVJb+qG3L8NtNY8CnGywNXZl6Z+Yd7Wbc1WD3wNlGuk3qMaTauyoKzbmHaZTgsVYvQ0Fvh7d2Ugwbt+AhU54rjsIp4qlt6cY5QI4vy2x+3UtH4fJpzuHRQ+aRuK0ihza1q7sgq9+3TRmnmy6H5yO/qFKabGpUEDG2xzy3E1tci9gZesll9ClEG5JmvLyABV9XicJw7s0wuI4BFX4yTOSv1a8broq8A+Rz8mv+ngpbHH218nO9KJnuafqSPTZiZa3jwUyJ1Rmm/ThHj9jUajiFAZa6uLuK8fWWaGOWCnhiihuXw6w2+33/gq5eSCPCfxpJW9ipul13KxnZzOX53orEtgFCkx4ZMmigPlQgvfWwxjYhe4mP5cLErXyg43CAmT9RpR1rl64/2rfZ+J0ATk2MnwACqboQp4Xe9UCSbsWJm9MRTfGZHOGyg9y9y59xu/BYifyZ4iRKKbi7r82JAnpsstQa05X+gGZ7McL5om23+JbL89JIJOOf26wLdO9j/gEwf65tUpZOwke91lJBA4+4SgBKrKj8iDVWI0Wi4b9FTKbehGCVSyiI9yyBYLLv2A8Qb8zjRO/2siNOrPi+oMRdxRHeqiWSHrCHxFj352s5OGZtuIBXtDe2wY3WM2A3TSZGckQc9b1ZuyTt6DDZGTcwk6/M4lP3rd6dX1O6osDOV0W+z67kvzCjSJ79STrD5dpTjBG79CwpTSt7yO97bXcfp1QxVc9PYQU2UkhgnUrWIek96cnxCAcNAqQ8faMUMWde7P9rMoT6tMORvG7xgTFAiGKljh1M/h3eR8Pkd0x4t41xLJjNZ5em2i2wwHp5Gdc5XUeBdzN20avgZ2gtZzimlb9zOzdXWVzNI8ifR8jKIyHVXhnUpAE3+uIQfk5cNU0KKxCiKeNGC/UEjcrhmUaxYiajYmszfcaZClgOJkFwHQTNM1y1JiprlNYrkH/92UYhLxhaOy/yDwfKDEOKwbysp6aLfF2oUuJ5uEKbaerf1j9uC48hxOi7gLcGLt/L2EjBvj2jxYBFXCKcICgdrqCs3bBztkvC1czRnpBcdwJcYMn5qCuudum153dejQMQpZRflxyBHJQ3c2Wq5zsQIAgE7aS2G/JbguLB+7DHX5zUrZImetsJwghRBw3cWhilH9bFaTUE9+n2RyzMeIHqkfhVg1+HQEF6nNCF16Gw2qTeN5hvh60mqOmoD9zhvrGsdPD2viN1YcTS/dAcZthcg4Ebzof2wK0w1xXtw2po+vAoYrqrPTfwt8bBhoMeAOs0x2lUa9zld4aUgkmVqu7bSET2WzcwCtoPRlcf+ZfTKq0EWq55GaVwSDxvttMz4QedyzQXiuKJCq5OU3FPcy9XMO5zI+zgBn0LQOn7ptkVKwUkzugDZO2oH0z9phlrmkk0831rNcUnxUv7pFYN1mZ7jI68b3Ss9ZfVAPq5lwuYFu1HJ7vFrMTiiHa1u1xfU/fBk59RNsqWaIEn2P6a73IiSaKx9t7mxLdCiXTIJlVmoEZukq8dHZOIlKc4P0zR6cgHZHaXR4toED5Qq7G6VDuRPRoEu4ZKW8ROJ2jHXwu7ju8ikvyi0btqJTuOfk5Z47aNWvHOzmne0vkiseNG6Y9pfCB8QkM8aeRFT78IanUMkTQfyAhNcLTh/SUvWb2QK/unAk/Bt4sxM4NBPJbnBQDD+Ra+jZaHTWezmeDh2oSU7e+dI2szaKI4eXXsToxs8RsfArYW6QcBvmW0k59LkeE2OIePt9n4gLRIZfbxfBgAy75BpSoCbNLHCrKStoXM1LG/XmsBshzSBg8ijogNAaVRRCs8beYRgtk+GettoJE+VZN7GU9YO+gjfAJIOH0AT0kdtOmeZXyo6zRDmnn37GP1/whRCS1gpT3rctfcyJtoQV4Y4T/N6wdSZ4gGsqKXDMKXvDTkPh+V+z1zraM5qcJPjAZ71YJengiPe0EEfsqXl3gSlfKbq0KahSf7Bgpn482y0zJ7nUgSgBfScm/MzdM2PQbsMbvsvVzHENPd1sgDBNSel95fDpUeh5e9XTFZfiaPrfAWEvcaci1BPnaBdYo+V83g5Afqgbg3IdtmfIj8aXye49BLkcJLyVoOtcBEtEp+rOKlBRmvZ9SQtHZf0XrJ1zjOMs8t/Y7x8g2wlkS+fEh5ZeP5B9s9g4JKv7brNlO3CIQ4P+xXcuSDInRfzQtfedlN5TFksV00RhORyIFkydSsttjNIFTtLA+aHvH/RNfECFIJG0W97ZniEVl07HSdCWuIP5E3F49WtbLXLhHWTNmQqxk2vFFv4QOftgcyl/ewchUe7xOz3Dav0vs8XOszQXUpiX6iPxZ3tLBmxav4ROo2OE9r4cnJvKTYwXRlYx+LfChjUF2n1qjFbvjanyBX6prAmqoyEGQJYCqPKe0LBQxvrVbmcdmvsMAZBINXYFRM2N3EUw9B3QUMYnsmsZBMA8PowcRf62QrgpoqGDx2ro1gaKwLq9A2w93DhGSEHJi7ePZYachxZAOmKrH5yZ8CQILWV/UWM0BmnRBy6NN8mbyXx/PtwrKeT1GUaBKtgHzIrBdeO/FAf1LrDJIAOfyIjPBZD5nsJKACyxE10/ULwpRkczmVZL0oC7LTsH4ijeh7S4QIZlhoQOuzGSACMi7CdLLVWJZHKeo3MGD4eCp+II3BXzmrbjeVuogbfMl7wIMLZJOwy02PkgzhdI79DgetwgQXzFgqu9CoWn/kDhgYlIhRNXFTDi7xphpEbjHExivqrF/IGgIzl1wjzCohSHhynrSN0oTMIZbLFqWn7SMMR2pg4n0/8v5drQgjD8BAWV2atm7fUIZsiO7pLbZ22pHAPO448iib8cnjQxu73bXEgESp+W0jOuFtd+suMXikvv78x16kcQL+hNuWeVHKVWqquelehkyjobUqhAUu9NYrDFn1c0auhe7WBW/Et4G0OUeHZShfP1tbu0Vk2LqRvQmHo3KrRjlT8zZTVURvwvFoyAUlnhaSTQYVomCW/YMwSl0Y5uSZ4wY84sK0AVEMPtSxQripHRezlloa9w0KdnDCTiyDHcV4oRY6qOApTuiM1iJ364NT8M3EYDy8nQBwlN+et3owJdQYoco3cpgv2SIv8uMKz+Shj/tiQW2SOHKvYABmJDp9okvrYV6jDmMyou5ZHlep5qgv18R4OwSeakka68H4FCkQZFm/4tBjTZ1H553O2NH0KU3m8lzvwfqbq6XMntf7SWxUJhFng1AabGjA9DBqlmf/JBWQ7Z28QSM/y0HEWGcT7sSdK3L/So3/FhkAav4wGK9Rn5YqoT9NjDjEb5mIwKkK4kof7u5FMsPgd0NTddsT5S2+5c8HR5rAT6qrqJQm0oNMKIJ8XmvBX3EdXPw5G/oLCUWJo4rAABJLLn7BuPHBodK1P9UO8NU3GGAtkr0sSC4U3z1R8rbgz7+5Yaud2gH6FcvtLMJ6kvyPboRyC/z/BJKXiERgclfWR8YMC2LaAeyx8WRXDr6wiJZ2iltgd6sYO/mT8bS2lBMM1wnBlyBNESpDlRs3wrVDIXDaHrNb6Gh3tgg9Z6ok9Ista1oVp5dcyLuaYfiNI7M5vO7RKpD+PiHkrqVCpbBvE77Q22n64zYCfhCLiKFPz1U2ERKShZyx7E1QrY+rBASQTdBfABJdIXmrSoM+kBeVR49qsmdVxmtbsyIYZUEjNISSy6AeNwfibTLXQIFUVuaPSH12Dm3XrkZKgWEAxEesioQwI4bl3s4m4pHDT83e3HGh/bNcj+s7KJvu1AxbqrpvfcgUNoRRVJWjP1bfXNA815H541aF4IjxLh0dHloxKUQKYYPA81j2NLruHmVG56+PtCDe3xuc/PFgoGXAOGV+3FpDboc9M2d2RMdGrBt3EPHuB8cGjI07Jtx30f11/O/4fH3iZdCLp3AYr6oHhMFGXZfLgvVFlPE2iKDOJRFSO5JYYvxL278ELNF6W93WUURWAIZjVCIey7t9OC8oZgIhnORPI9Ye9rf0kkOsgZH0VSzDkb0zr/clwctVrdHmuKuMI1JRTLHleTw7rEFeO7yP0cG1hVowW5v1afnOWYNjwEwoi+TnDsYL6GPw1xfTTM1KhPBedmVkHUPIdBykSDzfDlhzoMuWz2zsRPGhFrCxzKlPJCHRltTZlFNlb/8GW9uaB8PiXzk1MIXOK7Obrg3UTn1MMuSq4bL/RbwGUT3LgJwTHvfDW+2k67oBfjhRS5QczQErPrDbkxdni9SAzO53InKwHAuxH5P57bd7Gt5pmjlMywqNoPskz0YphsJ8abpHazEzO8U1rMrwozHPy+natRI0pq6b8pKi3GrRM88lehFz/Z8qwmbrzuQLvJA6r5fzbe3SjVliweFXgK2QRm3fOrruBvZ9LmRwVuEWJTY2wiAavgPBRAoGmiWYWWxwZf7O9/XjYXQfu5iRBYmsc/utLb/Pvcn8Nozj116CdQccnAeV5ReZvTxF+B/wWObKADYY7SOKTXpZGDWNq2XyBm43nsBFK3FiTt9CmmEURCaj3kTL3/GTv5P9kUjhsZfuDllZ5GaumxXKveomoCp2WsfoJ5fAW6oIa7okABGybdDn9e3pPBkjza97Ob5ADQQoTVkthWkNbOMyfLTisfGxi0a46dq0c0rFGbidNrgKdlvLQOXw3S6WMbwrafxJdA/junk2CX45CAOhb08fJUVGBz3KEUtzceTGJ2qUA/g1smBPnXruOXBrpo5qmX1rkf07E6k0Jnt3avCjAuyHeA5iJ8zFAUwSVWF0vL2VK3rjKUeC0S5ymdWE3ePNe9YD8pigp1RBVW0npjZzzx41AbWFTbx3LZ2bIy9/8iotf91YOaDAyOxZEsEb6ypfi4h1wqZ4lhfdgOrl6ml/epIg/O/5OcLH1Oi3yRNf5P7qiRPoAoqaJyZgmm2Tx8mO0AKMOtOSexZHMl0bHfi7qDvmrKwiSUktMu2zXYjV1Qy9947dfmlvgX6X8WE7/7epqHuo7WB1sPVHDquvonbnpj6tdPIO3Q07il8SnT5hAeK0oCZi7pHE8kYb9gP1VQaBp52YJ+MLiPKE9t3J8BNMFvEhWAu7p6iqcBDEizTvMYAqCDns4xUMa6zubfqc0Pwq3gCj6ZbgG9640LAsje8E+DZPuaqiJpiIlZuXKfVWB0hlp9x4i14GKwgxzDgrU0WIZnw3MmYdG+PaGMZ3wcupIDopsqCT2cVdump7JCqY7KJ57G9edXiWajKZxuZ831OiUpuAs748fLSOaZpiqsrlwG7JvPpV7RT2yAzWulYNU9wMWrJCdYD3yApErcufHeMl3hMYFgYY4mtCUs2RNQQrXi+JgFWH/0FxAaQgBstKyfIN8fsivwHaPTTae2RRk4R1ztP7yj9Lo6U+FKgyKB1BuV9kaExMtd60AG76yWxHKl5to58HmS8GLu+FIqtH1HEAajVIOTEFqP2RlVW4xmp8yvyntAW47jyfH5rvJY2IwKmAxN96VeGA5Mmdq8uXPqyKj93Er8u/AZPlXuqsrv369SbqtCI2NOI2mGdKw1w0CYpQGXt8QTbqzXoSn/7zP/Gm3SYNBuGfAiKcCWURhBOiKkcPE7bE30dlvehwWCBmydLvNsKzy51xLz8ysU+1aBtiFItgPwjPgd4vVeMlNknoXWljNYkeKLMKcQb8CTzeybtFqvSgk5mEjuI4BOuimKF3dSdmFR0yJG5qtn/FCNkDPKIBXBV2n5+6yxoShaq+KyGmuhLAmqNz8TpRom+LcLlYyINywQk1/JRsEGiw9chSp21Q0P14M/dAPybwrKEYER1JG1/3f5XTU2zpapkArdEQHmcqg8nnz8eTR5tg1B7tkMXIEXKyEaEJzs8O7NCho7V3s7ffwr9FuKSvaChdA68ozkbDlIWrn9mDlmeF64c/aXsKVgsaLmsaNpb6pzQU32nUgrxpuADTZVxz8dRO2J6EdGsH8Zo6FxV8qT6O309aItD4JaKevUW/r2ctIPm3JiNN24K0Do7NitskVRlXMlgRlwcuXXVXKrbUDsxmlBJNbbh8AYdlnMvYLwzI5+vg8frimeBSYoWQVYaPg/EPqHthrYwby6pMJeqyWFggoWTzSsZK97RsPKMzB7lO4842qbF54NruGHbGJU8hiXkpXJjJKWCrNR560/FzcafsuFh07CLCrGCrgi125AfQlobReKdtL7qNffE+vtIQxc8mdaDlOiHxlVz9iTOABh+wqXpgrVYdMBPuKeGRp0Xtyl2GTfUy29JE6nyg69RyK4lJyEgUzG5CqfLS5KV1JvukgCNYLhujuLZ4RHyOnxjFaai9dlvYih7tH0c8Yt4G3/84E+g6Iuysu5UiKEA+fhHmMuOMhwP+D8N3fhMTI0P/ef8rJ8oznjD2I3M8PxE7dTp6BBVUAu1Kd+lB5PshNiKXmME+2YvPa1+NJx6k1u3iPxffSdnNhegYUKqYe3uqFp5xbnS33ke+svfDZ9qjZJ6iARjHInHtlS8RyApmRHuuqQ2P6c4ep1KdvZw3Tvv30D+BEete0juVnvLj1Ke6g4ijbso9ZDvkCmehtHbapyoWSAHvVvOd8SggdZUJu22QfuFLb5VCaRZS7q5f8jgPr7U1A3r0RDp01IC2YKe6QCqMhCU2P+DbNc9HNVZ44kntTDyI/MXGtiYph48ZEAu8g1Y0dDd+klbastfJ8pk1RsDh5/YfeazL9LICsT864tZIq+oSPmhcfu5/cEyS46y6HJrgZ23xCO1shhDCijSxWSu6FaVhvWKVvhuXvigU4+hPDtgqUlUsW+9RbshC8ONHo7Gy/gXJYgFuQC68bbq22O3fttndD/maPKmmNXig3d+wQOsVBrpt2rSrTsxnw3q418UkMPo7QtOBPX5KVNszUhe0I5OLAhzHz6EySaprgBLSPVBMAx4nScLrPTSu8ofGpAm3PjKS36aiEH4wUF645W3WQqLXfb41PoNWl7Sd8xjBxzj3jsu7e50uxSgC8ehoE3v6f9i7W+ozQ139cDuyR/XpyKKLapu7jAnWQG5L+tJn7JjJCFHCMRrHg1v1idEL0rgcwdwUCXCO1qjRg9+KmVbqpdqNtbLE9EchS07iIheEzswmuIzKRGvMhBJHgP3Ix+RQ/JvOcHLq2qKeNSuNg/IkiBA6qAlfVlGjR6mBQ1JRIkKOtvpo+CMudoVJp6i+vCD8EWg6rcbiP3PeB+j6kPDc3T66tmtu3GhC36JSfGCae0YfflWJl/3RUlzXK/TWjgqXbYk9XmXoQ+nYoYhgFDijBwZ/oxQjRksEy/ViJEuBVQdUu7HmoiFivIq2mIwm3GQJyE6vHqxj39hJE/Ybq8fGhwyEeaDVy6LRldkEWlTNrNTU+UCF6KZ/AtMzJOIVcG+fn5WLC2G3ND8vfDQdJHSAx55z3WWlc2zb+hA1J/YzgxB2RrF+2oVIOAWDiQwJC6OqSP87m429j5rcSTX6R0bSsS3OqUFX2fU105ZC6DOL7rHSikygKQKCu4IqZtpNaU0tE4O4Zb/H/sM3WJklD7pwplCKd/4XeG5kJMupoYuN72yr+vUb+wvsOINnXUVL8+c1JAd0d+Lj/yhfdROE0mJLE1jzWHMBUrgSeCfA6RypNYWnVFPjwjKdYkk6cB7ooIkcZOV3qfdE7nq3eUTDTQVPm9qkf+8hvRSjYs38O4f9Q+cRrj+wHDJQEhzkfrIoXQoVNQ+lDcTc0zwFu9oa/nWjIJMpZGoFnG2JKGKyk+M0ODyW4fLC4tPjDyRnUTRL9y95WB/aMLRpySnHDcah1Dp+E8SX1kCKNVa3YC0zxwYa9lExXxn1hCXNPtSqvNWyemCA/a/bJ+seUb/cxITTWlDY8Q9SYubIGWGj0SANoESGr4SHIn+ORuorQHmzjm7hSVtKLWOnGxOtYt0/6+hJ2q4Wl2xdj0Orr0GM7e6JSxa9ZiMSH3VLplAigXLxHGvq5p7RUaM5T4xXImYoTE8HzFcMwbtOAqh/8T0F6YiDW3i3vwWymRv3r+HckZ6+eWikKJMU/fbEuguynoUqg7dC0zzTQKwTvVmrV5AN/4qEw120SsSrBjfS/67g9ZsfYKc5XzXHmZNH08lyksm1ub84slJB8aPWRh7oMdQLOfCbmHAriI286VTHTnl7KsMUU2kWoXp67cC4zmMQO/tfsowO0TOA7v9efloovj0aoOpko1Ap3Y6Mcj4wE77d+lZW7GN5poqI4tLWTNhTmnMg7QQfyu/Xh4avjN5iu6wm2EXHl4lx9cAyyLA/xtJhouYamUxMvnew0KNNqIeLtScwevDFHX5Q+NlLyrXIU42WTIq7jPFvqJ5JwgnpJAp6egdJsRQZBKlpJYai8DuJu42Cd7CqhDcTiID4/tTgjCWMAKMZ5IwDyqHsGx/xDZ1sf4Dw2X4MGLhAIcOC9mtDaQ/upVFhfc8UcoSlJf2P1TS4Wp7Uh8e1Dh+m7hiWqk6fWZp+Xt9rqoKSiaiGUEgN4sVYA6jX6E8AqISor8SFYXlRKjTMRcVb80QV0ZCOvu4Dq0QlDeoREbAwy9fHUnq514WDliafKaGEK2HjQtqM1jJUGeL6bf/5MGPn63Db+pb2VQpq0IavT2PzieP/b+sViGMicT6SEN/krrbicJCb+9rlvtUKwz9xFiuBt26Oagwwi8TaVzWaQwv4r8n09mJ4+ItuTy0pfmPVXWMWlWYersqHYyfOigpfJEfEtoG3Sqqk9tI385RgmPkSpH7djRBG5hrA0uCndk3It64ustMnLFNuAoeFxLjDojkxHgyDckKVWYM8ia/m8j4gdukK2xFE0RWyawrF3J4s057CaN66oHSfPHv8dP53VO5rCxdA9cS9mS2g07LqHDS7t/KOcj7/4x+rXZfv1YO4LjDW5LZqVdzPK2pNfKBkgkNMLzfoOmhlXEIzfmpUaSa+6IPsNmnXpX+kuwXlZeVKMy0etwZ1Bkzc9NznPkOXK+dQLZ1aL/9nvc2VVEncB0U2/ZfU0IjU1XMpRX3aVqEvMudguRQwkzOaJlBAIKorNX6Z4zp9AT0yVhoqfUqoZSpLVZLU7w/0X8HtCwAXaMhQhogbTFiiIqHnTvILbDQvOUrz9ErUcRYbBtZ1B/7qL0UwlSztNrwbXcd29L7Z89nC4BF5YZxIw9HwL4xoOpEFe4rxEsWipveTbFxNuU8COQTifVGiek/8scLrWXNotiRf+jRF/Tfu6nnDZbqk3M0qCgL4h1xthQX/mqbJ0Jk1tZ0rZnA/v6dnvzHfWLCFItk9rWvQUsyPxSBkxh7dApKhoOjLS2fOOro1YasHF27PykOQFoMEM7fi3iL41zQg0TxJ76bSX5rkGxhZ5Tzwwad969rxGpzYI/G99uUTHdUiFIAe9yw/rWAWVZZRGxkxXYXHKgJ9ke2qfZ5qznCmmc/QF/uLICGDbyVxRyxq2Tu01fg+j1XQkQRWvi1uSKqlUrhMgoA27sJHNT88/wvQ9bg4LIpl/P4/zKUxNyAY11ieTB305cPsT2mHU4nEXjc+UUa++PF7i2cZHotyiwiKLYgywJnIZyr35Wd5E0akgkc/i8Q2ockrzQ5QCEsqppPIxYsNTn7CrsfQlJlzwxrQNzuCcTQwbdSV2q0HtBAZ5+vJ+rChyT+D9jXCFbRM4gcJ3tsMBy9fV6Q61VSJeJb2aEi3FQvT57Sg4DHXsGhpKGb3h435oHL2yWvOn8aY5VZPCmAbtLTQ8Q+4EBm7co1X1sU80uuHM7IcqK/iG2OOUwbtfzdwDnbFeMBka5r+EFnuPeRcbQqF6lOqplFmvvZUchBr6fVFuNQr0wEZr9aEGbmQBaegqlP5pUiJ8ltMbZmgPyamfRV4Fo5UwsNnQiRPCC92gvCln2dJSS3XRc6LsTfMF6M1v8Le4DBnCdpoLFxszkEzBpvkUbEP31b7whOZZYg/abJw6twT3erIaoqSCqf24tkh7IP3DA0vzKmPqA5zUg3YA3ZXBH4I2iFL/x0uVojeqPxxkNUeivPGsAHl0RBMy8ZE7oHaUX8HRq9vV0X9WVmYzVbNTNtqd4cGio8r34wLkSCyYhrdl8OjuTlkLjaMOHfDIaWrmOERvC0zl/RkzOEJrWjDAJjuaOfF0dLLPmLmumWSFWOxlGtf+SGi7G2cs/b0Binarp8wl7zW6N8177HPszw5N7b8104lHauht05yvAWeVARbv0cDYm7Gh80VynaB0w6VmK804DWNnEemWad+B6rUofk8xYDPlbriDYeCHY2ea3F2G60R4xHd6H42Edqt9S3IYJlZ6tF6t8OwfRDHGYQ/LbnVRhag5MeBKg7WtIqHW/a9Xr6U1oIRvCnbxnJms+j1BYULcAUcb9ngEibu3NtZN+sNDApuW3kkAZm1aUkgqrybxjJQSYbj9UDrLM465p/GPCiiP+WKwVUc3Zs5cdeVbtEb/5982GYfObIb+pGZbxeC+OeAaYsdr5o6FDZR4AFbT0rceFUMy8tBrKrryDEIUficLFKI5A9LNf+SikCmXLdgdhKiEMBnieokL2N3XHN7+r/qhJGlD9niNcbQOFOj5N0m2I+JpN7A6uXoCoHaW06ny8mC9hb8dZL2fByvZR6d8+ZDYm782sX3mJhM5HdnJ4sKRfeWzr73TRqvG0uWAOf63xYUnybnGODNsjr3hTJNOjNuUmpSXgGE4HFuCWW0W7hNOnHqzE4XUJzNiIkRf09Rj0J0y8c5SJ7l5lDYx77BYZxUImKTjNuR83XBGD8j14inr3KqvzU9AHy41oBnXnJspmsMWZ8dViOXQZqFSEzZtHJ09f+qyXM33rb3/xd7TIl62+CKFJKiUCBM7aGdoW1+P8h/KLPm6PDdv7Q2tyC9b0uOt1IMxth0qDxXNETkLYpcqQZ4DfvixdNol2rXBj4eHPLHzS0ZdKzhOCJUpf6BFAhvWzyul2rHq7YAPzDGc7+3ArnDmLRByPtgj457459I5Vj08hcHgEAHT4J8Y6I1nxjx4uQ5EHVoYPMy81ilJlDNkODNmTKEUToNHmjaFSRAOnuCtIzbNvmu+rcefo+oXrFCBZygOo0Ymtj8n6EUup3DBXqCIEOqC2y90tQ6k6r9Eu35NAleuGlBTVGFJE60SjK8OTGs6dE+TlRkFrIlyozZs1gMedhFreWrpINhvlTj8sFzqwGlJLLMwDy0AKxpcxJxk9pITcI56w1wrlpE3sta8pQMI3uJ+hrAsng/nqZy1gu3Kpp5IAyvIHj1v574sdGuXAltANh13qmDAn9AXET2YU2L1mQYKC2zOiTfgkDPA2MWOEFJjwOjx42pjPEfsSnupaXAFKu7c5aKfq8wcUR//UhcIENp8uAROH1IhXOVU4rMZASqoi4GZklvkLMTPh5Rmjc29OVkzP2k153tqc0oqCs8XEuncbbcxCVmeoLom9BVWvtilb8vUi3ZzVuu7u31RbUeJFSopmFRpH0wNN0iUWdYYYPCZmrdt3CBI/3ci/oxUeLaotr9PCBVllej1SgCXahwt1EgluXOYnRMPMhBRHqAWKpPoS6CdODPORC9d3XJS6rN2WEeqIkk+GW1Hp4titv/srPVD1oJtiHnoKhCt151QchEnCRs6VO8X88IGOAuKzjiyyZCcA84JxBPAMX8Yq0WUIHYAjChG6HhBmRPPHQw44Nj2ehDnn4edovoxJlDVtCkPck7/CfM2NJ2/Kpn4Hl6Mn6eu2wIwWTJPKcgtwGUbWzNMbEYgr7L329KG0j9cTMe3AP3BU6E9zOQ+xz5s3z0jmp0oUxfGIcQaQSo17b28LTIuAJzpD8iaPDoXToJJ/s0T6+0X62XflAAqRyXHtCU+yagCsJz78uHMD17FFH1j974lIgD9dGBRXdHbU1WfWgS6klzNfYcrv/k0ytLR58510QMWgdK1eH9TMv6ayk0iwVCbyhbQWRzy89VPu8QB0T0QX2IZaBLK3dcPo2Ab7iMu5NhpI+d08wP0Up7Jmi4AJyfcl4jefvHnd3D98kdwwbnV5BLQDFdxb3bvhbd9dxMj/gAXToFtItRrYy7ZY2XbnQvAhNybwJJWrgIggkeotjYqLfZOUpxwcsgjLIzdKvKPWvp4Ykhc7AQDz9SwihMF/7rsORq1ZWvGGwGgqBK7On6NXppPV7adNQjrcamBCQjpkbWW3ARpzCTforOah6K3OshaYlq8nWtZvwtWURDcRbcTtHyp6MimfQD2nLW196vxPgLOdZHERv9dQNSHC5D4nbUtlP6IbDNC0BfhQyTkY368SFiF04tU1B2ynzio0ogB/jANRgUagylZrZOX5wl6fG0n1dKFtdtCh/NJjpgELUnhSVc85I/T2XLR0FOjcLJLZacrqD+pdnG1saA1mhFHqqiFwb+TDnCX2M2Zkj61GYKE1FWA0kqGZk0rnaeIEsmNfdX/E6CVvngDpTHWYGDjhlcEzbCb0RSzp5dR3PKzrourH4SIJ9kQTFvCvliJ3H8As1uKRdyCMdg+vGRkNyKWJItBPTMsfCHab7aXKJpv6BFKJUsWG2ehXm21IQfDN2dUhROGb+AdNL8rRRwlzt7/xKQgQV+FzG453/sGSc/egX4Yw7noZ0M8hpxF6ajO2Cf7JIA1WvxVtsvJfWbXCbphAfS5Pr4lC/A4ROcto7e0vO2+9O/UV1nU0YKMYBeFP1lFml77VxRFGEWmuKYi7b/cLS4FGTww+ND5KaeAO2yOQJ518AiUFPrcLIWufPXEjTm9EfhpXtCPeyDIqD0kq/sJv/8yT+JzlrQ3Q9nWru9T+vCu4uX+Y8wUoLuB1+CKSGnndfMBEkrIDQjX/bqzyBdL3Vw6kZBewteZaErATS0eMCa01rgO6WBNLmcd1DJRBZ/XmJWiorafsvmIXBTJjYSYYhiHvPUK3byXeGwHLlfjTphef8UcCybYBlcy1/HR/PmNGVXfZ0P/ZRC1BqT76IA1uKkFErc7vZ77MbxZcMxZHsXSgOSCO4vOotfZ7RQQioZ+se7ZItXZ13+9QuorzSvZWB6TUVqXSxgq82YKGdnL9R9cbmTqxrX16ObOr6GYriZgQd9bng4etxtcHeNwngwMJPHCq6JgqFkWDMaIT+dKVya7kzpoxD5nk6Iy00Y8exnRihrylTCIB860zBZVKdfFy8paPYkTBdtO2e+vebJw/fkQWJjUiHWbv21urvPlTfwq02Cm8uilFH808TCFCWLOvUs3EQpdZEsYrfKZcHcbprtXTwm8XjzgN3XDorF18UCqZPeCnKtbhYWmPlkdRxhCAITTD4Si+loWj1JXlnVi2g31FraIdqBDpx4Y1OUEtNhk+FN1AsN4bXRSbZQAu5uVnLqpWwHSEfHLnwEb0fLBchGiK85xva+goi8DdRpHFS7OZeVMV/OIUZIkmruKhhN+9BpPfrNakCdjt7heHQHrv3Gpf8khS1WIN9+V9E0IOxCpyHaIfnDtC4iO5KvYKEoqWRjS4jDYsoWllYIGOzyovDmLXwCZF9JFK/RRgJEvxD7vOV+uKOOzW9WsKzEor3/ZqrUBXwVrzVBpHZlxS2GImcjOYQvJ9aj3O4OKwm3lW9OPouEfWaReII4xhBuRrRYibkKkL5wDymJcjlspW9bgyp0eZzX3AC97Sek42J5lAlcM2jy79j8EuMdyedARcC+4gHAAAA==" alt=""></div><main>
+<h1>Plague of the Night</h1><p class="by">by Ahmed K. Bey</p><nav class="toc"><b>Contents</b><ol><li><a href="#prologue-the-night-the-dome-fell">Prologue: The Night the Dome Fell</a></li><li><a href="#chapter-1-crazy-eights">Chapter 1: Crazy Eights</a></li><li><a href="#chapter-2-silver-bells">Chapter 2: Silver Bells</a></li><li><a href="#chapter-3-a-good-cop">Chapter 3: A Good Cop</a></li><li><a href="#chapter-4-the-alley">Chapter 4: The Alley</a></li><li><a href="#chapter-5-fast-thinking">Chapter 5: Fast Thinking</a></li><li><a href="#chapter-6-the-gate">Chapter 6: The Gate</a></li><li><a href="#chapter-7-the-bridge">Chapter 7: The Bridge</a></li><li><a href="#chapter-8-the-bodega">Chapter 8: The Bodega</a></li><li><a href="#chapter-9-sanctuary">Chapter 9: Sanctuary</a></li><li><a href="#chapter-10-the-midnight-blade">Chapter 10: The Midnight Blade</a></li><li><a href="#chapter-11-the-church-burns">Chapter 11: The Church Burns</a></li></ol></nav>
+<p><time data-atom="date" datetime="2026-11-08">2026-11-08</time> · <span data-atom="mention" data-principal="u_HGCDBT97I49LAeUz4efr6g">@u_HGCDBT97I49LAeUz4efr6g</span></p>
+<blockquote><p><em>In the darkest of nights, hungry eyes have waited to strike. A shroud of shadows shall be laid over the city that never sleeps, and the feeding shall begin.</em> Lord Veric</p></blockquote>
+<h2 id="prologue-the-night-the-dome-fell">Prologue: The Night the Dome Fell</h2>
+<p>It began a little after sunset.</p>
+<p>People on the bridges saw it first: a darkness folding down out of the sky, smooth as glass, swallowing the stars. Planes banked and turned. Car horns rose all across the city. Then the dome closed, and New York was alone.</p>
+<p>And the army came up from below.</p>
+<p>Veric led the first wave out of the subway tunnels. His orders were simple: hold the trains, hold the bridges, let no one reach the edges of the city. Within an hour, every station belonged to him.</p>
+<p>The Shadow Fangs went for the protectors. Police precincts, fire stations, the National Guard armory: they hit them all at once, in the dark, before anyone understood what was happening. The radios went quiet one by one. Down at the docks, the piers began to burn. There would be no leaving by sea.</p>
+<p>Everything else fell to the rest of them. Hundreds of vampires dropped from rooftops into crowded streets. Some leapt onto aircraft still climbing toward a sky that was no longer there. By midnight, the city was screaming.</p>
+<p>It was a slaughter.</p>
+<p>· · ·</p>
+<p>On a quiet side street, far from the fighting, an old man in a patched grey coat walked slowly through the chaos. He was dragging something behind him on a rope: a long, heavy box, wrapped in old cloth. Where the cloth had slipped, the box shone silver.</p>
+<p>A vampire caught his scent and turned. Then it saw what he was pulling, and it fled.</p>
+<p>The old man smiled to himself. He had seen this night before. He had seen it more times than he could count.</p>
+<p><em>Different this time,</em> he thought. <em>She is here this time.</em></p>
+<p>And he walked on into the dark.</p>
+<h2 id="chapter-1-crazy-eights">Chapter 1: Crazy Eights</h2>
+<p><em>The A train, somewhere under Manhattan.</em></p>
+<p>Gordon looked down at the clip and, at first, couldn&#39;t count the bullets. It jittered and shook in his trembling hands.</p>
+<p>He took a moment and drew in a deep breath of the sour subway air. As it filled his lungs, his hands steadied.</p>
+<p>&quot;Seven,&quot; Gordon said to himself. &quot;Plus one in the chamber. That&#39;s crazy eights if I&#39;ve ever seen it.&quot;</p>
+<p>His voice was low, but the kid at his side heard him.</p>
+<p>&quot;You only have eight bullets left, mister?&quot; The voice was shaky, the voice of a child still years from growing up.</p>
+<p>Gordon only answered, &quot;Yes.&quot;</p>
+<p>He looked at the kid who had clung to his side through all the madness, and had somehow survived. Gordon knew that as long as he lived, so would this kid.</p>
+<p>He just hoped that, by some miracle, the kid would find someone else to protect him before Gordon died.</p>
+<p>Gordon tried to smile, but he couldn&#39;t. He knew they would never make it to the surface. Even if they could, there were too many of those things after them, and nothing seemed to stop them.</p>
+<p>He looked down at the kid and asked his name.</p>
+<p>&quot;Thomas,&quot; the kid said. &quot;Thomas P. Sullivan.&quot;</p>
+<p>&quot;Thomas, to be honest, I&#39;m not sure how we&#39;re getting out of here.&quot; Gordon kept his voice firm and honest. &quot;But we can&#39;t give up—&quot;</p>
+<p>&quot;Those people were vampires, weren&#39;t they?&quot; Thomas cut in.</p>
+<p>The question twisted Gordon&#39;s stomach. Of course they were vampires. He just hadn&#39;t admitted it to himself. Leave it to a kid to point out the obvious.</p>
+<p>&quot;Yes,&quot; Gordon said. &quot;I&#39;m not sure, but I believe so.&quot;</p>
+<p>Thomas looked up at him. &quot;Are we safe here?&quot;</p>
+<p>Gordon looked into those big brown eyes, wet with tears and wide with fear, and said, &quot;Not for long.&quot;</p>
+<p>The subway tunnels went on forever. If they could stay ahead of the vampires long enough, they might find an abandoned exit.</p>
+<p><em>Mental note: save two bullets for the lock,</em> Gordon thought.</p>
+<p>He listened for a moment and could hear them. The vampires weren&#39;t too close yet, but they would be soon. He and Thomas had better keep moving.</p>
+<p>They ran through the ruins of the forgotten New York subway, looking for a way out and trying to stay clear of the vampires. And Gordon wondered why in the world he had taken the subway today.</p>
+<p>He knew why, really. Two weeks of missing persons reports, all of them riding the A train out of West 4th Street. Riders who got on a late car and never got off. Detective Gordon Lesher had ridden that line every night since, waiting to see something. Tonight the train had stopped dead in the middle of the tunnel, the lights had gone out, and he had finally seen it.</p>
+<p>He had pulled a handful of passengers off that train. The gates at every exit were chained and locked, and the things in the dark had been patient. One by one, the others were taken. Now it was just him and Thomas.</p>
+<h2 id="chapter-2-silver-bells">Chapter 2: Silver Bells</h2>
+<p><em>The East Village.</em></p>
+<p>Hugo had been following the four of them since sundown.</p>
+<p>They moved through the East Village the way wolves move through a herd, unhurried, picking. Young ones, she guessed. Turned in the last year. Young ones had masters, and masters had masters, and somewhere at the top of that ladder was the one who had killed her father. If she was patient, these four would take her there.</p>
+<p>So she was patient. She watched them slip into a narrow little shop with black-painted windows and a sign in gothic letters, and after a long minute, she followed.</p>
+<p>· · ·</p>
+<p>Silver bells jingled as the door opened.</p>
+<p>Behind the counter, a huge bald man looked up from the pair of silver gauntlets he was polishing. Hugo kept her head down. She was small, and she knew how to be unnoticed: a long brown coat down to her ankles, short dark hair the color of rusted earth falling across her face. She drifted to a spinning rack of comic books by the door and pretended to read.</p>
+<p>The big man noticed her anyway. She could feel it. There was something about the way she moved that people never quite put their finger on. He watched her the way you watch a stray dog that wandered into your kitchen: curious, and a little careful.</p>
+<p>&quot;Baby,&quot; a girl&#39;s voice called from the back, &quot;can you get me some more from the stockroom?&quot;</p>
+<p>The big man turned toward the voice. Hugo let out a breath.</p>
+<p>The four vampires were spread out among the shelves, fingering skull candles and silver rings. Hunting, Hugo thought. Choosing. They would wait for closing, for the street to empty, for the dark.</p>
+<p>They did not wait.</p>
+<p>All four of them moved at once. One went over the counter. One went for the girl stacking shelves by the register, a thin redhead with a nametag. They did it in the open, under the lights, in front of everyone. Vampires did not do that. Vampires had not done that in five hundred years.</p>
+<p>It took Hugo completely by surprise. It was the only reason any of them got to bite.</p>
+<p>She crossed the shop in three steps. The dagger was in her hand before she knew she had drawn it: short, plain, and marked along the blade with twelve old symbols. It went through the first one&#39;s ribs, and the thing shrieked and came apart like wet paper. The second never turned around. The third got its hands on her and found out, too late, how strong she was. The fourth was crouched over the redhead behind the register.</p>
+<p>Hugo killed it. But the girl was already gone.</p>
+<p>· · ·</p>
+<p>It was very quiet in the shop.</p>
+<p>The big man stood at the end of the counter with a pair of silver gauntlets on his fists. Beside him was a pale young woman in black lace, with dark makeup running down her cheeks. She was staring at the girl behind the register.</p>
+<p>&quot;Her name was Lexi,&quot; she said, to nobody.</p>
+<p>&quot;Scarlett.&quot; The big man put an arm around her without looking away from Hugo. &quot;I&#39;m Beast. Everybody calls me Beast.&quot; He nodded at what was left of the four on the floor. &quot;What are you?&quot;</p>
+<p>Hugo met his eyes. Hers were bronze, and for a moment they caught the light like a cat&#39;s. Then she looked away.</p>
+<p>&quot;Human,&quot; she said. &quot;Same as you.&quot;</p>
+<p>Beast did not believe her. She could tell. He let it go anyway, and she liked him a little for that.</p>
+<p>Outside, someone screamed.</p>
+<p>Then someone else. Then a dozen voices at once, up and down the street. Hugo went to the black-painted window and scraped a peephole in the paint with her thumbnail.</p>
+<p>The street was full of them. Not four. Hundreds. They were coming out of the subway stairs, dropping from the fire escapes, pulling people out of cars. And above it all, the sky was simply gone.</p>
+<p>This was not a nest. This was not a hunt. This was a war.</p>
+<p><em>This is going to be bad,</em> Hugo thought.</p>
+<p>Behind her, Beast cleared his throat. &quot;There&#39;s a gun shop four blocks from here. Guy owes me a favor.&quot; He flexed the silver gauntlets. &quot;If we&#39;re going out there, I&#39;d rather not go with these and a comic book.&quot;</p>
+<p>Hugo looked at him. Then at Scarlett, who had wiped her face and picked up a heavy candlestick from the shelf, and was holding it like she meant it.</p>
+<p>Humans, she thought. They always slowed her down.</p>
+<p>&quot;Stay behind me,&quot; Hugo said, and opened the door.</p>
+<h2 id="chapter-3-a-good-cop">Chapter 3: A Good Cop</h2>
+<p><em>Times Square.</em></p>
+<p><em>Karl was a good cop before the attack, and a hero after. That is how Nia will remember him.</em></p>
+<p>Karl Moria worked nights as a street cop, patrolling the Port Authority area near Times Square. His partner was an older guy, a little overweight, but a good cop. Karl liked working with Brian Larkin. Everyone called him Lark.</p>
+<p>The two of them were standing on the corner of 42nd and Broadway when Karl looked up into the sky and, to his surprise, saw nothing. No clouds. No stars. Not even the moon.</p>
+<p>It was the darkest night sky he had ever seen, and he had lived and worked in the city for eight years. He knew the bright lights of Times Square kept you from seeing the kind of sky he grew up with in the Poconos. The lights, and the pollution too, he thought. But you could usually see the moon, and at least the North Star.</p>
+<p>Karl&#39;s stomach turned. Something was wrong.</p>
+<p>&quot;Hey, Lark,&quot; he said, pointing up into the endless black. &quot;Yous ever seen somethin&#39; like dis before?&quot;</p>
+<p>Lark looked up, shrugged and said, &quot;Nope.&quot; Then, still staring upward, he poked Karl in the ribs with his nightstick. &quot;I try to keep my eyes on the streets when I&#39;m working.&quot;</p>
+<p>Karl rubbed his definitely bruised side. &quot;Yeah, yeah, yeah. I hear ya.&quot;</p>
+<p>He took his eyes off the abyss above and returned them to the busy New York streets, sneaking a peek every now and then at the unsettling darkness overhead.</p>
+<p>· · ·</p>
+<p>What happened next is hard to explain.</p>
+<p>All that can be said is that they came. No warning, no sign. Only screams. They dropped from the rooftops onto the street like rain.</p>
+<p>Lark heard the screams first. They were like nothing he had heard before. Not a mugging, not a fight. It sounded like a death wail.</p>
+<p>Lark drew his gun and turned to Karl. &quot;Call it in. I think we&#39;re gonna...&quot;</p>
+<p>His voice was drowned out by a wall of screaming so loud that both of them covered their ears. It was as if someone had turned the world&#39;s volume all the way up. Lark shook off the shock first. It paid to be hard of hearing after all.</p>
+<p>The sound was coming from up the street: dozens, maybe hundreds of people screaming at once. Lark pushed through a panicking crowd running the other way and charged toward the threat.</p>
+<p>Karl followed.</p>
+<p><em>Are we being invaded?</em> Karl wondered.</p>
+<p>As the thought formed, he saw two women fighting. One wore dirt-covered rags. Karl watched her throw the other woman to the ground, bury her face in her neck and tear out the well-dressed woman&#39;s throat.</p>
+<p>Karl drew his gun and fired. His aim was as true as on training day. His first bullet punched through the ragged woman&#39;s head. Her body went limp and collapsed.</p>
+<p>More gunshots rang out, several in rapid succession. Karl turned toward the sound. A little way up the street, Lark was firing wildly at a charging madman.</p>
+<p>· · ·</p>
+<p>Lark had just watched a savage man rip another man&#39;s arm clean off, bathe in the spray of blood from the stump, then kill two more people, using the dead man&#39;s arm like a club, like some twisted pair of nunchucks. The Bruce Lee of the dead.</p>
+<p>Paralyzed with fear, Lark stood there with his gun aimed at the savage man as it tore through person after person. He didn&#39;t remember pulling the trigger. But he heard the <em>click, click</em> of an empty magazine.</p>
+<p>He looked down at his empty gun for only a moment. When he looked up, the savage man was on him.</p>
+<p>It hit Lark in the chest with its shoulder like a linebacker. The blow knocked the wind out of him and threw him back a good half a dozen feet, into a crowd of people. They went down in a heap.</p>
+<p>The savage man pounced on top of him with the force of a moving car. The impact crushed everyone beneath him. Lark felt the ball of its right foot crack his ribs. Its clawed hands dug deep into his shoulders. As it shifted its weight, his right shoulder cracked, along with the skull of one of the poor bastards underneath him.</p>
+<p>He screamed.</p>
+<p>Lark had to be twice the savage man&#39;s size, yet this thin, grey-skinned thing overpowered him with almost no effort. He tried desperately to bring his gun up to its head, but its hand swallowed his, the way a parent holds an infant&#39;s hand. No, the way a giant holds a quail egg.</p>
+<p><em>CRACK.</em></p>
+<p>Lark let out a wet, bloody scream as his hand was crushed to pulp.</p>
+<p>The scream was cut short. White light burned through Lark&#39;s body as the savage man began to feed.</p>
+<p>All of it took mere seconds.</p>
+<p>· · ·</p>
+<p>Karl watched in horror as his best friend and mentor was eaten alive by what he now knew, without a doubt, was a vampire.</p>
+<p>Vampires. In Times Square.</p>
+<p><em>This would make an awesome movie,</em> Karl thought, as the cold chill of survival washed over him.</p>
+<p>Karl wasn&#39;t dying today. Not tonight, and not the next night either.</p>
+<p>It was time to think.</p>
+<h2 id="chapter-4-the-alley">Chapter 4: The Alley</h2>
+<p>Nia was smoking a cigarette in an alley when it happened.</p>
+<p>She leaned against a dirty brick wall, smoking a hand-rolled cigarette, her heavy black combat boots planted on the wet ground. She took a deep drag and watched the cherry flare up and then dim. Its glow lit her pale face, mostly hidden behind her jet-black hair.</p>
+<p>Nia enjoyed New York alleys. People tended to leave you alone. It was a nice escape from this buzzing city. So many people.</p>
+<p>As she stood there, she felt something. She was being approached by vampires.</p>
+<p><em>Two of them,</em> Nia thought to herself.</p>
+<p>She placed the cigarette in her mouth, then pulled her hair back and tied it up. A large tube portfolio case hung across her back. She never opened it. She did not need to.</p>
+<p>Before Nia knew it, she was surrounded by at least ten fledglings. They circled her like sharks circling their prey before the feeding frenzy begins.</p>
+<p>Nia drew the sword at her hip: the midnight blade, so black it seemed to swallow the light.</p>
+<p>This was strange. Not since the old days would so many fledglings organize an ambush. Obviously she had pissed someone off. Nia smiled at the thought. She hoped it was her brother, Veric.</p>
+<p>One of the vampires to her left leapt forward. Nia lunged, spun once and stopped with her sword out straight behind her. In one motion she had cut the attacking vampire in half and taken the head of the vampire beside him.</p>
+<p>Nia&#39;s sword swung five more times.</p>
+<p>It wasn&#39;t a fight. It was a slaughter.</p>
+<h2 id="chapter-5-fast-thinking">Chapter 5: Fast Thinking</h2>
+<p>Karl had nine bullets left, and he had counted them twice.</p>
+<p>He was crouched behind a burned-out cab on Ninth Avenue, three blocks from where Lark had died, with his back against the wheel well and his gun resting on his knee. The city around him did not sound like New York anymore. No sirens. No horns. Just screaming, far off and close, and under the screaming a wet sound he did not want to think about.</p>
+<p>The radio on his shoulder crackled.</p>
+<p>&quot;...all units... all units, be advised...&quot; The dispatcher&#39;s voice was thin and fast, a woman trying very hard to sound calm. &quot;Subway gates are locked. Repeat, the gates are locked from the inside. We have people trapped below at West 4th, Canal, Fulton... do not, repeat, do not go underground...&quot;</p>
+<p>Static. Then another voice cut in, a man&#39;s, older and out of breath, not a cop. Someone had found a police band and was using it.</p>
+<p>&quot;...if anyone can hear this, we&#39;re at the old stone church downtown. We have food, we have water, we have the doors shut. There&#39;s room. Come quietly. God help you, come quietly...&quot;</p>
+<p>Then nothing. Karl turned the dial through every channel he had. Nothing at all.</p>
+<p><em>Okay,</em> Karl thought. <em>Okay. Think.</em></p>
+<p>The things in the street had come from somewhere. Not from the sky, whatever was going on with the sky. They had come up the subway stairs. He had seen it with his own eyes on 42nd Street, a whole crowd of them pouring up out of the station like water out of a broken main. And now the gates down there were locked.</p>
+<p>Locked from the inside.</p>
+<p>Which meant whoever was still down there wasn&#39;t hiding. They were being kept.</p>
+<p>Karl&#39;s uncle Sal had worked thirty years for the MTA, and he had loved nothing more than telling his nephew about the tunnels nobody used anymore. Maintenance stairs. Emergency exits from back when the city still built things to last. Half of them weren&#39;t on any map. One of them came up in a fenced-off lot behind a laundromat a block and a half from West 4th Street.</p>
+<p>Nine bullets. One old staircase. It wasn&#39;t a plan. But it was more than he&#39;d had a minute ago.</p>
+<p>· · ·</p>
+<p>He heard the sword before he saw it.</p>
+<p>It was a sound like silk tearing, again and again, coming from an alley off 41st Street. Karl crept to the corner and looked.</p>
+<p>There were bodies everywhere. Or pieces of bodies, grey and thin and already smoking, like something left too long on a grill. And in the middle of it all stood a woman with a long black sword, pale as ash, smoking a cigarette as calmly as if she were waiting for a bus.</p>
+<p>She wasn&#39;t looking at him. She was looking at the pieces, like she was counting them.</p>
+<p>She didn&#39;t see the one on the fire escape.</p>
+<p>It was right above her, crouched on the iron rail, its long white fingers curled like hooks. It dropped without a sound.</p>
+<p>Karl didn&#39;t think. He fired.</p>
+<p>The bullet caught the thing in midair, just above the left eye, and it hit the ground beside her in a heap.</p>
+<p>The woman turned her head slowly and looked at the dead thing at her feet. Then she looked at Karl. Her eyes were red. Not bloodshot. <em>Red.</em></p>
+<p>&quot;I knew it was there,&quot; she said.</p>
+<p>&quot;Sure you did,&quot; said Karl.</p>
+<p>She took the cigarette out of her mouth and studied him: the uniform, the gun, the blood on his sleeve that wasn&#39;t his. Something in her face changed, just a little. Like she had just been told a joke and hadn&#39;t decided yet whether it was funny.</p>
+<p>&quot;You should be running,&quot; she said.</p>
+<p>&quot;I was. Then I stopped.&quot; Karl kept the gun low and pointed at the ground, which seemed polite. &quot;Can I ask what you are?&quot;</p>
+<p>&quot;Late,&quot; she said. She wiped the black blade on the coat of the nearest body and slid it home in the sheath at her hip. &quot;And you&#39;re bleeding on my alley.&quot;</p>
+<p>&quot;It&#39;s not my blood.&quot;</p>
+<p>&quot;I know. I can smell the difference.&quot;</p>
+<p>Karl decided not to ask about that.</p>
+<p>· · ·</p>
+<p>She was going to leave. He could see it. She had already turned toward the far end of the alley, and in another second she would be gone, and he would be alone again with nine bullets. Eight now.</p>
+<p>&quot;They&#39;re coming up out of the subway,&quot; Karl said quickly. &quot;All of &#39;em. The gates down there are locked from the inside. There&#39;s people trapped under West 4th, and nobody&#39;s coming for them. Every exit&#39;s chained.&quot;</p>
+<p>She stopped.</p>
+<p>&quot;Not every exit,&quot; Karl went on. &quot;There&#39;s an old maintenance stair. Comes up behind a laundromat on Sixth. Isn&#39;t on any map. My uncle used to take me down there when I was a kid, which I&#39;m now realizing was probably illegal.&quot;</p>
+<p>She turned around. &quot;Why are you telling me this?&quot;</p>
+<p>&quot;&#39;Cause you just cut ten of those things into pieces and didn&#39;t break a sweat.&quot; Karl shrugged. &quot;And I figure anybody who&#39;d do that for fun might want to do it some more.&quot;</p>
+<p>For a long moment she just looked at him. Then, for the first time, she smiled. It was not a comforting smile. But it was a smile.</p>
+<p>&quot;What&#39;s your name, cop?&quot;</p>
+<p>&quot;Karl. Karl Moria.&quot;</p>
+<p>&quot;Nia.&quot; She reached under her coat, pulled out a heavy black handgun and held it out to him, grip first. &quot;You&#39;ll run out of bullets before morning. Take this. Aim for the head. These will finish the job.&quot;</p>
+<p>Karl took it. It was heavier than it looked, and the bullets in the clip had a strange dark tint to them, like they had been dipped in something.</p>
+<p>&quot;What&#39;s in &#39;em?&quot;</p>
+<p>&quot;Something that cost more than you&#39;ll ever know,&quot; said Nia. &quot;Don&#39;t waste them.&quot;</p>
+<p>She started walking, fast, toward Sixth Avenue. Karl hurried to keep up.</p>
+<p>&quot;So, uh,&quot; he said, &quot;this a regular thing for you? Fridays you save the city, Saturdays you...&quot;</p>
+<p>&quot;Do you ever stop talking?&quot;</p>
+<p>&quot;Not when I&#39;m scared, no.&quot;</p>
+<p>Nia did not answer. But Karl could have sworn, just for a second, that she was smiling again.</p>
+<p>· · ·</p>
+<p>Block by block they worked their way downtown, through the dark and the smoke. Twice Nia stopped and pulled him into a doorway without a word, and twice something went past them in the street that Karl never got a good look at, and never wanted to.</p>
+<p>By the time they reached the fenced-off lot behind the laundromat, Karl was soaked in sweat. Nia looked like she had been out for an evening walk.</p>
+<p>She stood very still by the fence. Then she tilted her head, listening to something he couldn&#39;t hear.</p>
+<p>&quot;There are people down there,&quot; she said. &quot;Three. A man, a child, and...&quot; She frowned. &quot;Something else.&quot;</p>
+<p>&quot;Something else like them?&quot;</p>
+<p>&quot;No.&quot; Nia&#39;s hand went to her sword. &quot;Something else.&quot;</p>
+<p>Far below their feet, muffled by stone and iron, came the sound of a gun being cocked.</p>
+<h2 id="chapter-6-the-gate">Chapter 6: The Gate</h2>
+<p>They rounded a bend and stopped. Three shapes stood in the tunnel ahead, pale and still, their eyes shining.</p>
+<p>Gordon pushed Thomas behind him and raised the gun. Eight bullets. Three of them. He had seen them take five bullets and keep coming.</p>
+<p>Then someone stepped out of the dark between them.</p>
+<p>He was a thin, bald man in a long, ragged brown robe tied with a rope, barefoot on the cold rails. Every inch of skin Gordon could see was covered in marks, like letters carved and healed over. As the three shapes came closer, the marks began to glow a soft, pale light.</p>
+<p>The vampires stopped. They hissed and shrank back from him, the way a hand pulls back from a stove.</p>
+<p>&quot;This way,&quot; the man said. His voice was gentle. His hands were shaking. &quot;Quickly, please. The light does not last.&quot;</p>
+<p>He led them through a rusted door into a maintenance passage, and the hissing faded behind them.</p>
+<p>&quot;Who are you?&quot; Gordon asked.</p>
+<p>&quot;Anselm.&quot; The man smiled a little. &quot;Brother Anselm, once. People who need something to call me tend to say Father.&quot;</p>
+<p>&quot;Are you a priest?&quot; Thomas asked.</p>
+<p>&quot;No. A monk. There is a difference.&quot; Anselm glanced back down the passage. &quot;Though tonight, I admit, it hardly matters.&quot;</p>
+<p>He seemed to know everything about them. The young ones hunted by sound and by smell. They hated the old marks on his skin. They had been gathering under the city for a year, and tonight they had come out all at once. Gordon asked him how he knew all that. Anselm did not answer.</p>
+<p>· · ·</p>
+<p>The passage ended at an old stairway, and at the top of the stairway was a gate. Iron bars, a heavy chain, a padlock as big as Gordon&#39;s fist. Beyond it, the night air and the dark back wall of a laundromat. Freedom, eight feet away.</p>
+<p><em>Two bullets for the lock,</em> Gordon thought. He cocked the gun and raised it.</p>
+<p>Anselm put a shaking hand on his arm. &quot;The sound will bring every one of them.&quot;</p>
+<p>Behind them, far down the passage, something laughed.</p>
+<p>Then a shadow moved on the other side of the gate. A woman, pale as ash, in a long black coat. She drew a sword from her hip, and the blade was so black it seemed to swallow the light around it. One stroke. The chain fell away in two pieces and rang on the stairs.</p>
+<p>She pulled the gate open. Behind her stood a young cop with a flashlight in one hand, a gun in the other, and a look on his face that said he had stopped asking questions an hour ago.</p>
+<p>&quot;Told ya,&quot; the cop said to her. &quot;Uncle Sal&#39;s stairs.&quot;</p>
+<p>The woman ignored him. She looked at Gordon. She looked at Thomas. Then she looked at Anselm, at the marks on his skin, and her hand tightened on the hilt of her sword.</p>
+<p>&quot;Those marks,&quot; she said.</p>
+<p>&quot;Are not what you think,&quot; said Anselm quietly.</p>
+<p>For a long moment, no one moved.</p>
+<p>&quot;Ma&#39;am,&quot; the cop said, &quot;can we do this somewhere that ain&#39;t here?&quot;</p>
+<p>The woman slid the black sword back into its sheath. &quot;My name is Nia. This is Karl. There is a church downtown. Someone has been calling for survivors on his radio. Stay close, and stay quiet.&quot;</p>
+<p>So the five of them set off into the dark city together: a detective, a boy, a monk, a cop and a woman with red eyes and a black sword, whom only one of them had begun to guess the truth about.</p>
+<p>Gordon checked the clip again as they walked. Seven, plus one in the chamber. Still crazy eights.</p>
+<p>He decided to take that as a good sign.</p>
+<h2 id="chapter-7-the-bridge">Chapter 7: The Bridge</h2>
+<p>The gun shop was called Ray&#39;s, and Ray owed Beast more than a favor.</p>
+<p>He let them in through the back after Beast pounded on the steel door and shouted his name three times. Ray was a skinny old man with a grey ponytail and a shotgun, and when he saw Beast he started crying, and when he saw Scarlett&#39;s face he stopped.</p>
+<p>They loaded up in silence. Beast took a pump shotgun and as many shells as his pockets would hold. Scarlett took a pistol she didn&#39;t know how to use and let Ray show her twice. Hugo took nothing. Under her long brown coat, she already carried two pistols of her own, and the dagger, and she did not need anything else Ray sold.</p>
+<p>When it was done, Beast and Ray pushed the gun racks in front of the windows, and Scarlett started a list of everyone in the building above them who was still alive.</p>
+<p>Hugo stood by the back door and watched them.</p>
+<p>&quot;You&#39;re not staying,&quot; said Beast. It wasn&#39;t a question.</p>
+<p>&quot;No.&quot;</p>
+<p>&quot;You&#39;re looking for somebody.&quot;</p>
+<p>Hugo thought about lying. Then she thought about Lexi behind the register, and how small she had looked.</p>
+<p>&quot;The one who sent them,&quot; she said. &quot;And whoever sent him.&quot;</p>
+<p>Beast nodded slowly, like that made sense to him. &quot;We&#39;ll hold this place. Anybody comes knocking who needs a gun, they&#39;ll get one.&quot; He held out a huge hand. &quot;You come back if you need us.&quot;</p>
+<p>Hugo looked at the hand for a moment. Then she shook it.</p>
+<p>Scarlett didn&#39;t look up from her list. &quot;Thank you,&quot; she said quietly. &quot;For Lexi. For trying.&quot;</p>
+<p>Hugo didn&#39;t trust herself to answer. She slipped out the back door and into the dark.</p>
+<p>· · ·</p>
+<p>The city stank of them.</p>
+<p>To anyone else it would have been smoke and blood and burning rubber. But under all of it, Hugo could smell the vampires: cold and sweet and rotten, like flowers left too long on a grave. Thousands of them. And the strongest trails, the old ones, the ones that smelled of power, were all moving the same way.</p>
+<p>East. Toward the river.</p>
+<p>She followed them through streets full of abandoned cars and broken glass, staying in the shadows, until the great stone towers of the Brooklyn Bridge rose up out of the dark ahead of her.</p>
+<p>The bridge was full of cars. Thousands of people had tried to run when the sky went black, and they had all had the same idea. Now the cars sat empty, doors hanging open, headlights still burning on a few of them. Nobody had made it across. Nobody had made it anywhere.</p>
+<p>They were holding the bridges. Of course they were.</p>
+<p>Then Hugo heard steel.</p>
+<p>· · ·</p>
+<p>He was halfway across the walkway, under the first tower: a young man in a torn black business suit, with a long Japanese sword held in both hands. Around him lay six or seven pale bodies in pieces. Around those stood a dozen more, circling.</p>
+<p>He was good. Hugo could see that right away. Every cut was clean, every step placed. He fought the way old soldiers fought, the ones who had stopped being afraid a long time ago. But there were too many of them, and he was getting tired, and his left sleeve was dark and wet to the elbow.</p>
+<p>Hugo was already running when she saw it.</p>
+<p>Something spun out of the dark above the tower, a flash of curved steel, too fast for a man to throw. It struck the swordsman in the side, just under the ribs, and he folded around it with a sound Hugo would remember for a long time.</p>
+<p>The pale things fell on him.</p>
+<p>Hugo stopped holding herself back.</p>
+<p>· · ·</p>
+<p>It never hurt the way people thought it should.</p>
+<p>Her bones moved like doors opening. Her coat split down the back. Her jaw pushed forward and her teeth came in long and white, and the world went sharp and loud and simple, the way it always did. Every heartbeat on that bridge was a drum. Every one of them she could hear, she could find.</p>
+<p>She hit the first one so hard it went over the railing and into the black water a hundred and thirty feet below. The second she caught by the throat. After that it was not really a fight anymore. It was what wolves had always done to things that hunted in their territory.</p>
+<p>When it was over, the walkway was quiet.</p>
+<p>Hugo stood over the swordsman on four legs, panting, her muzzle wet. He was lying on his back on the wooden planks, holding his side. The curved blade was gone, pulled out by whoever had thrown it, or by the man himself. His left arm had been torn open from wrist to shoulder. There was so much blood.</p>
+<p>He looked up at her. A giant rust-colored wolf with bronze eyes, standing over him on the Brooklyn Bridge. He should have been terrified.</p>
+<p>Instead, he laughed. Weakly, and with blood on his teeth.</p>
+<p>&quot;My mother,&quot; he said, &quot;always told me New York would kill me.&quot;</p>
+<p>Then his eyes rolled back, and his breathing went shallow and fast.</p>
+<p>Hugo knew that breathing. She had heard it many times. He had a few minutes left. Maybe less.</p>
+<p>There was one way to stop it. Only one.</p>
+<p>She did not want to. She had never done it before, not once in a hundred years of hunting, because she knew exactly what it meant. It meant a life of hunger and hiding. It meant the moon. It meant killing.</p>
+<p>But it also meant living.</p>
+<p><em>I&#39;m sorry,</em> she thought.</p>
+<p>She lowered her head and bit down on his torn arm, gently, the way a mother wolf carries a pup. She held on just long enough. Then she let go.</p>
+<p>· · ·</p>
+<p>At the top of the stone tower, something huge shifted its weight. Hugo looked up.</p>
+<p>She couldn&#39;t see it. Only a dark shape against the darker sky, far bigger than any man. But she could smell it, and it smelled like grave dirt and iron chains, and it was watching her.</p>
+<p>It did not come down. It only watched.</p>
+<p>Hugo did not wait to find out why. She changed back with a gasp, naked and shaking in the cold, and pulled what was left of her coat around her. Then she got the swordsman&#39;s good arm over her shoulders, picked up his sword, and dragged him back the way she had come, off the bridge and into the dark streets of Manhattan.</p>
+<p>Halfway down the ramp, he came to for a moment.</p>
+<p>&quot;Nagoomo,&quot; he mumbled. &quot;My name. In case.&quot;</p>
+<p>&quot;Hugo,&quot; said Hugo. &quot;Don&#39;t die, Nagoomo. I just went to a lot of trouble.&quot;</p>
+<p>He passed out again. She kept walking.</p>
+<h2 id="chapter-8-the-bodega">Chapter 8: The Bodega</h2>
+<p>Nagoomo was injured. His arm still hurt intensely. The wound left by Hugo&#39;s bite when she changed burned like fire, and it throbbed as if it were going to burst. The pain was so intense that more than once he had asked Hugo to leave him behind. Nagoomo knew he was slowing her down.</p>
+<p>He was losing a lot of blood, and they needed to stop and rest soon. Hugo knew this, as well as the fact that she had no idea where they were going.</p>
+<p>They came across a bodega with its gates closed, held by a double padlock. Hugo decided it was as good a place as any. She was carrying Nagoomo now, and she had to put him down to rip the padlocks off and pull the gate back. Then she opened the door and walked into the pitch-black bodega.</p>
+<p>No more than two steps in, she smelled it: burnt gunpowder. There was a hot gun in here. Either a survivor had barricaded themselves inside, or someone who had been bitten had come in here without realizing they were already dead. Hugo drew one of her guns.</p>
+<p>&quot;Is there anyone here?&quot; she called out.</p>
+<p>She was answered with a gunshot that whizzed past her, not too close, but not too far from her face. Whoever it was, was obviously a good shot.</p>
+<p>A voice came out of the darkened store. &quot;Please, you must go!&quot;</p>
+<p>The voice was shaky, and it was hard to make out exactly what the man was saying through his fear and his thick accent. Arabic or Hindi, Hugo wasn&#39;t sure, nor did she care. Her reply was swift and fierce.</p>
+<p>&quot;Listen. You&#39;re a good shot, I can see that. But I&#39;m a much better shot, and I know there are three of you here and only one gun.&quot; Hugo sniffed the air and went on. &quot;And one of you is barely old enough to say the word, let alone use it. Like I said, me and my friend need a place to crash. I&#39;ll fix the gate, but I&#39;m not leaving until he gets some rest. We will rest, alone or with you. But it will be here, and now.&quot;</p>
+<p>There was silence.</p>
+<p>For a moment it was as if they had left. But Hugo could still smell them: their fear, and that one of them was wounded. Hugo&#39;s mouth started to water.</p>
+<p>Out of the darkness behind the counter came a man who was obviously the owner, and with him he brought his wife and a little girl. Hugo&#39;s eyes quickly fixed on the little girl. She had a huge gash on the side of her face, and her left arm was wrapped in a homemade sling.</p>
+<p>Hugo brought Nagoomo inside, locked the doors and pulled the gate closed. She used her bare hands to twist the metal gate around itself. As she did, she thought out loud, &quot;That should hold them for a while.&quot;</p>
+<p>As Hugo turned away, she almost tripped over the little girl standing behind her. There she stood, one of the cutest little girls Hugo had ever seen, even with a huge cut on her face, poorly covered by gauze and medical tape, and one of the worst slings Hugo had ever seen.</p>
+<p>&quot;Is it going to keep the monsters out?&quot; the little girl asked. Her eyes looked past Hugo and fixed on the gated door behind her.</p>
+<p>Hugo knelt down and began unwrapping the bandage on the little girl&#39;s arm. She looked the girl directly in the eyes. &quot;For a little while. But if they do get in, I promise I&#39;ll protect you.&quot;</p>
+<p>As she said this, she unwrapped the last piece of the bandage. The exposed wound let off a perfume of flesh and blood that went straight to Hugo&#39;s stomach. It growled. Hugo smiled, and the little girl laughed.</p>
+<p>&quot;If you&#39;re hungry, my mommy and daddy have food.&quot;</p>
+<p>The little girl looked at Hugo with trusting eyes. Children have the most trusting eyes, so trusting that they make anyone who feels they aren&#39;t worthy of that trust uncomfortable. Hugo was very uncomfortable. Truth be told, she had never given up feeding on humans, and this little family looked mighty delicious. But how could she eat someone who looked at her with such trusting eyes?</p>
+<p>The little girl took Hugo&#39;s hand and started walking her to the back of the store, toward the food. Hugo stopped her, put a hand on her head and said, &quot;I have to go check on my friend.&quot;</p>
+<p>The little girl, obviously disappointed, asked, &quot;Is he going to be okay?&quot;</p>
+<p>&quot;Yeah, he&#39;s going to be fine. I promise.&quot;</p>
+<p>The little girl looked at Hugo with frightened eyes. &quot;Is he going to turn into one of the monsters outside?&quot;</p>
+<p>Hugo thought for a moment about Nagoomo&#39;s fate. Yes, he would turn into a monster, but not one of the ones outside. She gave the little girl the shortest answer she could.</p>
+<p>&quot;No. He&#39;ll be okay.&quot;</p>
+<p>· · ·</p>
+<p>They had laid Nagoomo in the back of the store, in the office. As Hugo walked back, she was met by the owner&#39;s wife, who looked at her with the face of someone who had just heard the worst news of her life.</p>
+<p>&quot;Your friend, he looks really bad. I&#39;m not sure what we can do. He needs to get to a doctor.&quot;</p>
+<p>Hugo smiled. &quot;I know he looks bad, but rest assured, he&#39;ll recover soon.&quot;</p>
+<p>As Hugo walked past, the woman called to her daughter in another language. <em>Hindi?</em> Hugo thought.</p>
+<p>Nagoomo lay trembling under some blankets on the floor. They had made him a makeshift bed from cardboard boxes and old blankets. He had passed out. His eyes moved violently under the lids. He was having the nightmare. The change was taking place.</p>
+<p>Hugo sat next to him, lifted his head into her lap and began to run her fingers through his hair. It was smooth as silk and thick, and she found running her fingers through it quite soothing. As she did, she noticed his breathing slow and his eyes go still. He was calm, and finally resting.</p>
+<p>They slept.</p>
+<p>· · ·</p>
+<p>The next morning, if you could even call it that, the street remained black, and so did the sky. The power was out. Dusk and dawn had blended together into one seamless night.</p>
+<p>Hugo woke to the smell of coffee. When she opened her eyes, she was pleased by what she saw. Nagoomo was up and about, holding out a cup of coffee to her while he drank one of his own.</p>
+<p>Hugo smiled. Her smile was not returned. Nagoomo looked at her with the strangest eyes, obviously disturbed by his nightmare, or by what had happened on the bridge. He was about to speak, but Hugo spoke first.</p>
+<p>&quot;How do you feel?&quot;</p>
+<p>Nagoomo stood up. He looked very distressed, and you could hear it in his voice. &quot;I feel great. Not like a man who was stabbed, almost lost his arm and fought his way across a vampire-infested city. Physically, I feel excellent... but why? What did you do to me?&quot;</p>
+<p>Hugo stood up and walked over to him. Halfway there she stopped and pointed at the office door. Nagoomo shook his head, letting her know the family was fast asleep.</p>
+<p>&quot;I&#39;m sorry,&quot; Hugo said. &quot;I never meant to infect you, but I had to.&quot;</p>
+<p>Nagoomo looked at her with anger in his eyes. &quot;What have you changed me into? Will I become a monster like you?&quot;</p>
+<p>&quot;I&#39;m not a monster, Nagoomo. I am a werewolf.&quot;</p>
+<p>There was silence.</p>
+<p>Nagoomo spoke first. &quot;What does this mean?&quot;</p>
+<p>&quot;It means you&#39;ll live ten times as long as any human. You&#39;re stronger, faster. You&#39;ll notice heightened senses and reflexes.&quot;</p>
+<p>Nagoomo cut in, his voice solemn. &quot;Will I have to kill people?&quot;</p>
+<p>Hugo&#39;s answer was short and to the point. &quot;Yes.&quot;</p>
+<p>Silence once more.</p>
+<p>&quot;How long have you been a werewolf, Hugo?&quot;</p>
+<p>&quot;I was born this way. My parents had me before the curse. I was one of the last pure werewolves ever born.&quot;</p>
+<p>&quot;Then why help us humans now, if you&#39;re one of them?&quot;</p>
+<p>&quot;As I said, I am no monster. But I used to be. We all did, all of our kind. Long, long ago, the vampires ruled over us as slave masters, forcing us to do as they wished. We fought for them. We killed and infected for them. They made us the monsters of legend.</p>
+<p>&quot;But one day, a human and a half-blood stood up to the vampire king. With the help of my parents, they overthrew vampire rule. They set us free and let us live our own way. Now I feel our freedom is at risk.</p>
+<p>&quot;When I came of age, a hundred years ago, I became a hunter, and I have hunted ever since. But I have never seen anything like this. Only in legend. And if the legends are true, one of the Pure Bloods is trying to release the Maker. That would mean the rebirth of their empire, and the enslavement of my people. And I mean <em>our</em> people.&quot;</p>
+<p>Nagoomo looked into his cup, staring at his reflection, and thought. Hugo walked over and put her hand on his shoulder. Then she gently pushed his neck and said, &quot;I know this is a lot to swallow. But it&#39;s the truth, and we are in it. We don&#39;t have time to doubt.&quot;</p>
+<p>Just then the bodega&#39;s owner, a man named Wazier, ran into the office in a state of total excitement. He startled the two of them so much that Hugo reached for her gun before she saw who it was and eased back.</p>
+<p>&quot;Hugo, I&#39;ve picked up a radio signal from inside the city! It says people are gathering at the church downtown.&quot; The church was only a few blocks from where they were now. &quot;They say they have plenty of food and water, and they&#39;re heavily armed and very secure. I think we should go!&quot;</p>
+<p>· · ·</p>
+<p>After listening to Wazier and thinking it through, Hugo was still very reluctant to go anywhere with a large group of people. The vampires would know where they were gathering. And if they knew, why were they letting people gather in large groups at all? None of it made sense.</p>
+<p>But as bad as her feelings were about the church, she knew for a fact that they were not safe here. Not at all. If she could break in this easily, the vamps could too.</p>
+<p>Which raised another question: why hadn&#39;t they broken in and killed this family already? The family had been in here since the sun set. Wazier had been sick and had decided not to open the store that day. A hungry fledgling or two could easily have gotten inside. But they hadn&#39;t. Why?</p>
+<p>All that aside, she was the only one against the trip to the church. Everyone else, including Nagoomo, believed in safety in numbers.</p>
+<p>And so, against Hugo&#39;s wishes, they left the bodega. Before they did, Hugo marked Wazier&#39;s bullets, making them far more effective against the vampires.</p>
+<p>The five of them made it safely to the church.</p>
+<h2 id="chapter-9-sanctuary">Chapter 9: Sanctuary</h2>
+<p>The church stood alone on its corner like it had been waiting for them: old grey stone, a bell tower with no bell in it, and tall stained-glass windows boarded over from the inside. Every other building on the block was dark. This one had candlelight leaking through the cracks around the doors.</p>
+<p>Nia knocked once. A slot in the heavy oak door slid open, and a pair of tired eyes looked out at them.</p>
+<p>&quot;How many?&quot;</p>
+<p>&quot;Five,&quot; said Karl. &quot;One kid. Nobody bit.&quot;</p>
+<p>The eyes moved over each of them in turn. They lingered on Anselm&#39;s glowing marks, and on Nia&#39;s red eyes, and Gordon braced himself. Then the slot closed, and they heard bolts sliding back, one after another.</p>
+<p>The man who let them in was older than his voice on the radio had sounded. Grey at the temples, a clerical collar gone soft from wear, and a heavy canvas bag over his shoulder that clinked when he moved. Glass vials, Gordon saw. Dozens of them, full of water.</p>
+<p>&quot;Father Elias,&quot; the man said, and shook Gordon&#39;s hand. &quot;Come in, quickly. Keep your voices down. And may God forgive me for asking, but if any of you is hiding a bite, tell me now, and we&#39;ll do what has to be done outside.&quot;</p>
+<p>&quot;Nobody&#39;s bit,&quot; Karl said again.</p>
+<p>Elias looked at Nia for a long moment. Nia looked back. Something passed between them that Gordon didn&#39;t understand. Then Elias stepped aside and let them in.</p>
+<p>· · ·</p>
+<p>There were maybe eighty people inside.</p>
+<p>They sat in the pews and lay in the aisles, wrapped in altar cloths and coats. Old women. Kids. A man in a bloody chef&#39;s jacket. Two nurses still in scrubs, moving from family to family with a first aid kit that was almost empty. The pews at the back had been dragged across the doors, and the candles on the altar were the only light. It smelled like wax and sweat and fear.</p>
+<p>Somebody had stacked water bottles by the font. Somebody else had a hunting rifle and was asleep with it across his knees. Not heavily armed, Gordon thought. Not very secure. But it was four walls and a roof and other people, and right now that felt like a miracle.</p>
+<p>Thomas fell asleep in the first pew he sat down in, with his head on Gordon&#39;s arm. Gordon didn&#39;t move. He didn&#39;t want to.</p>
+<p>Across the aisle, Elias and Anselm stood together in the candlelight, talking quietly. The priest kept looking at the marks on the monk&#39;s skin.</p>
+<p>&quot;A man of God?&quot; Gordon heard Elias ask.</p>
+<p>Anselm smiled his tired little smile. &quot;A man of something, Father. I have never been sure what.&quot;</p>
+<p>· · ·</p>
+<p>Nia did not sleep. Gordon wasn&#39;t sure she ever did.</p>
+<p>She sat on the steps of the altar with her long case across her knees, watching the boarded windows as if she could see straight through them. Karl sat two steps below her, eating crackers out of a box he had found in the vestry and talking. He talked quietly and he talked a lot. About the Poconos. About his uncle Sal and the tunnels. About Lark.</p>
+<p>Nia didn&#39;t answer much. But she didn&#39;t tell him to stop, either.</p>
+<p>At one point Karl offered her a cracker. She looked at it like he had offered her a live rat. Karl shrugged and ate it himself.</p>
+<p>&quot;You know,&quot; he said, with his mouth full, &quot;for somebody who doesn&#39;t like people, you sure saved a lot of &#39;em tonight.&quot;</p>
+<p>&quot;I didn&#39;t save them,&quot; Nia said. &quot;I was killing the things that were eating them. It isn&#39;t the same.&quot;</p>
+<p>&quot;Looks the same from down here.&quot;</p>
+<p>She looked at him then, really looked at him, the way Gordon had seen her look at the dead things in the tunnel. Like she was trying to work out what he was.</p>
+<p>&quot;Man-child,&quot; she said finally. And she almost sounded fond.</p>
+<p>· · ·</p>
+<p>Morning came, or what passed for it. The candles burned low. The sky through the cracks in the boards stayed exactly as black as it had been at midnight.</p>
+<p>Gordon was dozing when the knocking started. Not the frantic pounding of people being chased. Five slow, steady knocks.</p>
+<p>Elias went to the slot. Gordon heard voices: a man with a thick accent, a woman&#39;s low voice, a child.</p>
+<p>&quot;Five,&quot; the man was saying. &quot;Me, my wife, my daughter. And these two. They saved us. Please.&quot;</p>
+<p>The bolts slid back. A shopkeeper in an apron came in first, holding a little girl with a bandaged face and her arm in a sling, his wife right behind him. Then a young Asian man in the ruins of a black suit, carrying a long sword in a scabbard, walking easily, though there was dried blood all down one sleeve. And last, a small woman in a torn brown coat, with short dark hair and bronze eyes.</p>
+<p>She was two steps inside the door when Nia moved.</p>
+<p>Gordon never saw her cross the church. One second she was on the altar steps. The next she was in the aisle with the black sword out, and its point was an inch from the small woman&#39;s throat.</p>
+<p>The small woman didn&#39;t flinch. She had two pistols out, one aimed at Nia&#39;s heart and one at her head. Gordon hadn&#39;t seen her draw them either.</p>
+<p>The young man in the suit had his sword half out of its scabbard.</p>
+<p>The whole church went silent.</p>
+<p>&quot;Dog,&quot; said Nia softly.</p>
+<p>&quot;Bloodsucker,&quot; said the small woman, just as softly.</p>
+<p>&quot;I can smell you from the altar. You stink of wolf.&quot;</p>
+<p>&quot;I&#39;m human,&quot; said the small woman. &quot;Same as everybody here.&quot;</p>
+<p>&quot;Liar.&quot;</p>
+<p>&quot;Whoa. Whoa, whoa, whoa.&quot; Karl was suddenly between them, which Gordon thought was either the bravest or the dumbest thing he had ever seen. Possibly both. Karl put one hand flat on the flat of Nia&#39;s black blade and pushed it, very gently, toward the floor. &quot;Everybody in this room hates the same guys, right? The ones outside? So how about we save it for them.&quot;</p>
+<p>Nia&#39;s eyes went to Karl&#39;s hand on her sword. Gordon held his breath. He had seen what that sword did to things that touched it.</p>
+<p>Then the little girl in the sling pushed past her father&#39;s legs, walked straight up to the small woman, and took her hand.</p>
+<p>&quot;She&#39;s nice,&quot; the little girl told Nia. &quot;She fixed my bandage. She promised she&#39;d protect me.&quot;</p>
+<p>For a long moment nobody moved.</p>
+<p>Then Nia lowered the sword.</p>
+<p>&quot;If you hurt one person in this church,&quot; she said to the small woman, &quot;I will take your head.&quot;</p>
+<p>&quot;Try it,&quot; said the small woman. But she holstered her guns.</p>
+<p>Nia turned and walked back up the aisle. As she passed Karl, she said, without looking at him, &quot;Never touch my sword again.&quot;</p>
+<p>&quot;Yes, ma&#39;am,&quot; said Karl. He was white as a sheet. But he was grinning.</p>
+<p>· · ·</p>
+<p>The small woman&#39;s name was Hugo. The young man was Nagoomo. The shopkeeper was Wazier, and he had already found the coffee in the vestry and was making it for everyone, which made him the most popular person in the building within ten minutes.</p>
+<p>Gordon watched Nia go back to her place on the altar steps. She didn&#39;t sit down. She stood very still, with her head tilted, the way she had stood by the fence behind the laundromat.</p>
+<p>Listening to something none of the rest of them could hear.</p>
+<p>Then her face changed. Gordon couldn&#39;t have said how. It just closed, like a door.</p>
+<p>He looked down at Thomas, still asleep against his arm. Then he took out his clip and counted.</p>
+<p>Seven, plus one in the chamber.</p>
+<p>When he looked up again, the altar steps were empty, and the side door of the church was swinging shut.</p>
+<h2 id="chapter-10-the-midnight-blade">Chapter 10: The Midnight Blade</h2>
+<p>&quot;These humans only slow me down,&quot; Nia muttered. &quot;And that mangy beast they travel with. Ugh!&quot;</p>
+<p>She shook her head, thinking of the she-wolf in human clothing who had turned up at the church. If Karl hadn&#39;t been there to stop her, she might have killed the dog on sight.</p>
+<p>Karl. For some reason, Nia found herself fond of the man-child. She pushed the thought away. She knew the cost of the blade. She had paid it once already, and before this night was over, she would most likely have to pay it again.</p>
+<p>She let her palm rest on the pommel of one of her two swords, the one slung low on her hip like a gunslinger&#39;s pistol. Its handle was smooth, polished silver. The sword itself was simple and slightly curved, like a samurai&#39;s, and its blade was pitch black. Not dark. Empty. Its scabbard was made from the skin of something so ancient that no one knew what it had been. It could have been human.</p>
+<p><em>It might be human,</em> Nia thought, and chuckled.</p>
+<p>Drawn, the blade reflected no light at all. It simply existed, a sliver of black void.</p>
+<p>The sword had come to her more than 500 years ago, a prize from a fight with the most powerful noble she had ever faced: Lord Magnis, if she remembered right. Dear Gozer, he had been strong. She still didn&#39;t know how she had beaten him. Somewhere in that battle she had blacked out, and when she came to, he was dead and his sword was buried in her thigh. It took a hundred years before she could walk normally again.</p>
+<p><em>He was a monster,</em> she thought. <em>Definitely human skin.</em> She grinned.</p>
+<p>Yet for all his power, Magnis paled beside her father, Mathias, and her half-brother, Veric.</p>
+<p>As she thought of Veric, she felt him. He was close. Why was he close?</p>
+<p>Without a word, Nia vanished from the church.</p>
+<p>· · ·</p>
+<p><strong>Two hours later.</strong> The starless sky hung over the city like a death veil. Nia leapt from rooftop to rooftop through the endless night that had swallowed New York, searching for her brother.</p>
+<p>She was being followed. <em>Fledglings.</em></p>
+<p>Then her attention was ripped away from her distant pursuers to something much closer. Her body moved before she knew it, twisting left, and a curved blade shot past her by inches. She never saw where it came from. In that same instant, the followers were no longer distant. They surrounded her.</p>
+<p>A hundred of them, maybe more. Fledglings, the weakest class of vampire. Most of the poor bastards had probably been turned in the last few nights. Alone, none of them stood a chance. A hundred of them might be a problem. And whoever had thrown that blade was not one of these unarmed wretches.</p>
+<p>The attack began.</p>
+<p>Two of them lunged from the front and two from the sides: pale skin stretched over bony fingers, claws like talons, mouths bursting with blood-soaked fangs. Nia lunged forward to meet them, drawing her sword in the same motion. The midnight blade left its scabbard and cleaved through the chests of the first two without slowing. They burst apart in a fiery spray of boiling blood. The sword flowed on, slicing the next two clean through just below the eyes.</p>
+<p>Time froze, and Nia went to work, pushing herself further than she ever had before.</p>
+<p>They all died. Everyone who challenged the daughter of the Vampire King died. It took her one hour.</p>
+<p>When it was over, she stood alone on the rooftop, drenched in boiling blood that sizzled and steamed as it dried.</p>
+<p>From the darkness came the sound of clapping.</p>
+<p>Nia looked up. Her younger brother, Veric, glided down toward the rooftop on massive leathery wings, as graceful as an angel. He landed across the roof from her, smiling.</p>
+<p>&quot;You&#39;ve come so far, big sister,&quot; he said, in his usual mocking tone. &quot;Father would be proud.&quot;</p>
+<p>Nia&#39;s words cut like a razor. &quot;I&#39;m coming for both of you!&quot;</p>
+<p>Veric&#39;s smile didn&#39;t move. &quot;Father asked me not to kill you. Instead I&#39;m to be his personal errand boy and tell you that he is waiting for you.&quot; He tipped his head back and called up into the darkness: &quot;There! Are you happy? I delivered your little message. Can I go now?&quot;</p>
+<p>Nia lowered her sword. &quot;Veric, what is Father doing? How did he darken the sky? And to what end?&quot;</p>
+<p>Veric frowned. &quot;I&#39;m ashamed of you, big sister. Have you forgotten your schooling? The legends Nan used to tell us? Have you never heard of the Ry-Rythullda?&quot;</p>
+<p>Nia&#39;s face fell. Her voice slid into disbelief. &quot;The Rebirth of the Maker.&quot;</p>
+<p>Veric&#39;s smile widened. &quot;Yes, my sister. We have found his tomb, and soon we shall wake him. When he wakes, a new age of darkness will reign and wash away your futile dreams of becoming human.&quot;</p>
+<p>&quot;But you&#39;ll need to sacrifice thousands of humans,&quot; Nia cut in. &quot;Where will you find that many people?&quot;</p>
+<p>&quot;Look around you, child.&quot; Veric spread his arms toward the streets below. &quot;This city brims with life, ripe for the taking. Those we don&#39;t turn will be sacrificed. We let the humans gather in their little strongholds, thinking some long-lost god will save them. I will enjoy watching them run to their deaths.&quot;</p>
+<p>An explosion shook the night. Nia spun around. The pitch-black city was lit by fire.</p>
+<p>&quot;It&#39;s begun,&quot; Veric called. &quot;That church, and every one like it in this city, will burn. We will take our sheep, and those who resist will be food.&quot;</p>
+<p>Nia thought for a moment, then turned toward the church, and found herself face to face with a hulking mass: at least seven feet tall and four hundred pounds. In its left hand was the curved blade that had nearly taken her head off.</p>
+<p>&quot;Gan, meet my sister, Nia,&quot; Veric said. &quot;Nia, this is my subordinate, Gan. Father said I couldn&#39;t kill you. He didn&#39;t say Gan couldn&#39;t play with you.&quot;</p>
+<p>Nia barely heard the last words before she was knocked to the ground.</p>
+<p>She got to her feet, spat out blood and wiped her mouth. Then she gripped the silver handle of the midnight blade and set her stance.</p>
+<p>Veric tilted his head, confused. &quot;Nia, is there something at that church you want to protect?&quot; Then he burst out laughing. &quot;Wait, wait, wait, wait. Just a fucking minute! Is there a human you&#39;re trying to save? You, the heartless killer of your own kind, rushing to the side of a human?&quot; His grin turned sharp. &quot;You do know your heart has to be empty if you plan to use that sword of yours, right?&quot;</p>
+<p>He clapped his hands with delight. &quot;Oh, Father will need to hear this! Very well. I&#39;ll let you go, unharmed. Gan, stand down!&quot;</p>
+<p>The behemoth stepped aside.</p>
+<p>&quot;This will be interesting,&quot; Veric said. &quot;But do hurry, big sis. I sent the Shadow Fangs to that church of yours to put an end to your little resistance.&quot;</p>
+<p>And with that, he was gone.</p>
+<p>Nia ran for the church. As she passed Gan, she turned and looked him in the eye.</p>
+<p>&quot;I&#39;ll deal with you later.&quot;</p>
+<h2 id="chapter-11-the-church-burns">Chapter 11: The Church Burns</h2>
+<p>Karl was pouring coffee for one of the nurses when the front doors blew in.</p>
+<p>There was no warning. One second the church was quiet, full of whispering and the clink of Wazier&#39;s mugs. The next, the doors and the pews stacked against them came apart in a wall of fire and splinters, and the blast threw Karl flat on his back in the aisle with his ears ringing.</p>
+<p>Through the smoke, they came in walking.</p>
+<p>Not like the things in Times Square. Not like the starving, screaming fledglings in the alley. These ones wore black, and they moved together, like soldiers. Their faces were pale and calm. The one in front was smiling, a small, patient smile, like a man who has done this many times before and has learned to enjoy it.</p>
+<p>Karl knew without being told. These were the ones who had gone for the precincts first. The ones who had made the radios go quiet.</p>
+<p>The Shadow Fangs had come to church.</p>
+<p>· · ·</p>
+<p>Everything happened at once.</p>
+<p>People screamed and ran for the back of the church. The man with the hunting rifle got off one shot before something in black took him by the throat. One of the nurses dragged a family down behind the altar.</p>
+<p>Father Elias stood up in the middle of the aisle with his canvas bag over his shoulder and began to throw.</p>
+<p>The glass vials burst against the first of the Shadow Fangs like little bombs. Where the water touched them, their skin smoked and blistered, and they shrieked and fell back. Elias threw another, and another, praying out loud in a steady voice, as calm as if he were saying Sunday mass.</p>
+<p>Beside him, Anselm raised his shaking hands, and every mark on his body lit up white. The light poured down the aisle like water. The Shadow Fangs at the front recoiled from it, hissing, shielding their eyes.</p>
+<p>&quot;It will not last!&quot; Anselm cried. &quot;Whatever you are going to do, do it now!&quot;</p>
+<p>Karl was already up. He had Nia&#39;s heavy black handgun in both hands, and he did what she had told him. He aimed for the head.</p>
+<p>The first shot hit the smiling one just above the eye, and his whole head came apart in a burst of black fire. Karl stared at the gun for half a second. <em>What is IN these?</em></p>
+<p>Then he kept shooting.</p>
+<p>· · ·</p>
+<p>On the other side of the church, Hugo had both pistols out and was walking forward between the pews, firing left and right, steady as a metronome. Every shot found a head. She did not change. She did not let herself. There were children watching.</p>
+<p>But she wanted to. Every part of her wanted to.</p>
+<p>Nagoomo was beside her with his sword, and he was moving faster than he ever had in his life. Faster than he should have. He cut one of the Shadow Fangs in half before it had finished turning toward him, and then stood there staring at his own hands, as if they belonged to someone else.</p>
+<p>&quot;Don&#39;t think!&quot; Hugo snapped. &quot;Just move!&quot;</p>
+<p>At the back of the church, Wazier crouched over his wife and daughter with his old pistol. A Shadow Fang leapt over the last pew toward them, and Wazier shot it in the chest, and it went down screaming with smoke pouring out of the hole. The bullets Hugo had marked. Wazier looked at his gun like it was a holy relic.</p>
+<p>And in the first pew, Gordon stood in front of Thomas with his service pistol, and he counted.</p>
+<p>One. Something in black went down.</p>
+<p>Two. Another.</p>
+<p>Three. A miss. <em>Damn it.</em></p>
+<p>&quot;Stay behind me,&quot; he told Thomas, for the hundredth time that night. &quot;Whatever happens, you stay behind me.&quot;</p>
+<p>· · ·</p>
+<p>Then the roof caught.</p>
+<p>Karl smelled it before he saw it: old wood, a hundred years dry, going up all at once. Fire was crawling along the rafters from the bell tower, dropping burning pieces into the pews. The stained-glass windows began to crack in the heat, one after another, like gunshots.</p>
+<p>The light around Anselm flickered, and dimmed.</p>
+<p>And outside, through the broken doors, Karl saw more of them coming. Dozens. Walking up the street through the smoke, patient, in no hurry at all.</p>
+<p>&quot;We can&#39;t hold this!&quot; he shouted.</p>
+<p>&quot;The crypt!&quot; Father Elias was waving at a narrow door beside the altar. &quot;There&#39;s a passage under the church! It comes up in the old rectory across the yard! Everyone, this way! Now!&quot;</p>
+<p>People surged toward the altar. Anselm went with them, his marks still burning faintly, holding the light at their backs. Gordon grabbed Thomas by the hand and ran.</p>
+<p>Karl ran too. He was halfway up the aisle when a burning beam came down across the pews in front of him, and the whole middle of the church disappeared in fire and smoke.</p>
+<p>When it cleared enough to see, the altar was on the other side of a wall of flame. He could just make out Gordon&#39;s back, and Thomas, and the white glow of Anselm&#39;s marks, disappearing down the crypt stairs with Elias and the others.</p>
+<p>They were gone. And Karl was on the wrong side.</p>
+<p>· · ·</p>
+<p>On the left side of the nave, Hugo saw it happen too.</p>
+<p>She saw the crypt door, and the fire between her and it, and the Shadow Fangs climbing in through the broken windows on her side. She saw Wazier with his wife and daughter pressed into the corner by the side door, and the little girl looking up at her with those trusting eyes.</p>
+<p><em>I promise I&#39;ll protect you.</em></p>
+<p>Hugo made her choice.</p>
+<p>&quot;Nagoomo! The side door!&quot;</p>
+<p>She kicked it open. Nagoomo went through first, sword up, and cut down the thing waiting in the alley before it could move. Wazier followed with his wife. Hugo scooped up the little girl in one arm, kept a pistol in her other hand, and ran.</p>
+<p>Behind them, the church groaned like a living thing.</p>
+<p>They ran down the alley, and across a dark street, and down another alley, and they did not stop running until the screaming behind them was far away. Only then did Hugo look back.</p>
+<p>The church was burning against the black sky, from the doors to the top of the tower. The fire lit the whole neighborhood orange.</p>
+<p>The little girl was crying into her shoulder. Hugo held her tighter.</p>
+<p>&quot;I told you,&quot; she said softly, to no one at all. &quot;I told you all.&quot;</p>
+<p>· · ·</p>
+<p>Karl was out of bullets.</p>
+<p>He was backed up against the burning wall of the nave with the empty black handgun in his hand and his police pistol empty on the floor, and four of them were walking toward him through the smoke. They took their time. They were smiling.</p>
+<p><em>Well,</em> Karl thought. <em>This would&#39;ve made an awesome movie.</em></p>
+<p>Then the four of them came apart.</p>
+<p>It happened so fast he couldn&#39;t follow it. A black shape cut through the smoke like it wasn&#39;t there, and there was a sound like silk tearing, four times. Then there was nothing in front of him except Nia, drenched in boiling blood, with the midnight blade in her hand and fire in her red eyes.</p>
+<p>She grabbed the front of his shirt.</p>
+<p>&quot;I told you to stay close,&quot; she said.</p>
+<p>&quot;I did,&quot; Karl said. &quot;You left.&quot;</p>
+<p>Nia didn&#39;t argue. She looked up at the burning rafters, and the broken window above the altar, twenty feet off the ground. Then she put her arm around Karl&#39;s waist, and before he could ask what she was doing, she jumped.</p>
+<p>· · ·</p>
+<p>They ended up on a rooftop two blocks away. Karl never did remember the part in between.</p>
+<p>He sat with his back against a water tower, coughing smoke out of his lungs, and watched the church burn. The bell tower fell in while he watched, slowly, almost gently, in a great rush of sparks.</p>
+<p>&quot;The others,&quot; he said, when he could talk. &quot;Gordon. The kid. The monk. Hugo and her guy and the family...&quot;</p>
+<p>Nia stood at the edge of the roof with her head tilted, listening the way she did.</p>
+<p>&quot;Alive,&quot; she said finally. &quot;Most of them.&quot; She pointed with her sword, three different ways. &quot;There. Under the ground, going east. There, running north. And there.&quot;</p>
+<p>&quot;So they&#39;re scattered.&quot;</p>
+<p>&quot;Yes.&quot;</p>
+<p>Far off, over the roar of the fire, a sound drifted across the city. Laughter. High and delighted, like a boy watching fireworks.</p>
+<p>Nia&#39;s hand tightened on the silver handle of her sword.</p>
+<p>Karl looked at the burning church. Then at the endless black sky. Then at her.</p>
+<p>&quot;So what now?&quot;</p>
+<p>Nia didn&#39;t answer right away. She was looking past the fire, toward the river, toward the dark shapes of the bridges.</p>
+<p>&quot;Now,&quot; she said, &quot;we hunt.&quot;</p>
+<p>· · ·</p>
+<p>Far below the burning church, in the dark of the crypt passage, a candle flickered against old stone.</p>
+<p>Gordon sat with his back against the wall. Thomas was asleep against his arm again, somehow. Anselm sat across from them, his marks glowing faintly, the only real light in the tunnel. Somewhere ahead, Father Elias was leading the others on, his voice soft and steady.</p>
+<p>Gordon took out his clip, and he counted.</p>
+<p>Four. Plus one in the chamber.</p>
+<p>Not crazy eights anymore.</p>
+<p>He put the clip back, and he got up, and he picked up the boy, and he kept walking.</p>
+<p><strong>End of Book One.</strong></p>
+
+<p class="end"><a href="../#read">More from Eshu Games →</a></p>
+</main></body></html>
