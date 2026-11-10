@@ -1,0 +1,2093 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IDIOTWARZ - Teens &amp; Adults</title>
+<style>
+:root{--bg:#160a2b;--bg2:#2a1252;--card:#2a1649;--card2:#38206a;--accent:#b794f6;--text:#fdf6e3;--muted:#b9a6dc;--border:#4c2f87;--ok:#34d399;--bad:#f87171;--gold:#fbbf24;--ink:#1a0b2e}
+*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:radial-gradient(ellipse at top,#4b2491 0%,var(--bg2) 38%,var(--bg) 100%) fixed;color:var(--text);display:flex;min-height:100vh;margin:0;padding:60px 20px calc(75px + env(safe-area-inset-bottom,0px))}
+.wrap{width:100%;max-width:600px;margin:auto;display:flex;flex-direction:column;gap:16px}
+.panel{background:linear-gradient(160deg,var(--card),#21103b);border:1px solid var(--border);border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.35)}
+.toggles{position:fixed;top:10px;right:10px;display:flex;gap:6px;z-index:5}
+.tg{background:var(--card);border:1px solid var(--border);color:var(--text);border-radius:20px;padding:7px 12px;cursor:pointer;font-size:.85rem}
+.tg.off{opacity:.5}
+#setup,#results{padding:28px 24px;display:flex;flex-direction:column;gap:20px;border-radius:18px}
+#setup h2,#results h2{margin:0;text-align:center;font-size:2rem;letter-spacing:1px;background:linear-gradient(90deg,#fde68a,#fbbf24,#f59e0b);-webkit-background-clip:text;background-clip:text;color:transparent}
+.presents{margin:0 0 -14px;text-align:center;color:var(--muted);font-size:.8rem;font-weight:700;letter-spacing:3px;text-transform:uppercase}
+.tagline{margin:-12px 0 0;text-align:center;color:var(--muted);font-size:.95rem}
+.group{display:flex;flex-direction:column;gap:8px}
+.group>label{font-weight:bold;color:var(--gold);font-size:.8rem;letter-spacing:2px}
+.note{margin:0;font-size:.8rem;color:var(--muted)}
+select,.nm{padding:12px;background:var(--ink);color:var(--text);border:1px solid var(--border);border-radius:10px;font-size:1rem}
+.nm{border-width:2px;padding:10px}
+.chk{display:flex;gap:10px;align-items:center;font-size:.95rem;accent-color:var(--gold)}
+#cats{display:flex;flex-direction:column;gap:14px}
+.cg h4{margin:0 0 8px;font-size:.72rem;letter-spacing:2px;color:var(--muted)}
+.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.tile{display:flex;align-items:center;gap:10px;text-align:left;padding:10px 12px;border-radius:12px;border:1px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:.9rem;font-weight:600;line-height:1.2;min-height:58px}
+.tile:hover{border-color:var(--gold)}
+.tile.sel{border-color:var(--gold);background:linear-gradient(135deg,#4c2a8f,#7a45d1);box-shadow:0 0 0 2px rgba(251,191,36,.35),0 6px 18px rgba(124,58,237,.45)}
+.tile .em{font-size:1.5rem}
+.tile small{display:block;color:var(--muted);font-size:.72rem;font-weight:400;margin-top:2px}
+.tile.sel small{color:#efe3ff}
+.tile.mix{width:100%;padding:14px;font-size:1.05rem;font-weight:800}
+#best{margin:0;text-align:center;color:var(--gold);font-weight:600}
+#game{display:flex;flex-direction:column;gap:14px}
+.header{display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;padding:12px 10px;text-align:center}
+.stat small{display:block;font-size:.75rem;color:var(--muted);letter-spacing:1px}
+.stat b{font-size:2.8rem;line-height:1.1;color:var(--gold);display:inline-block;text-shadow:0 0 18px rgba(251,191,36,.45)}
+#timerBox b{color:#d8b4fe;text-shadow:none}
+#timerBox.low b{color:var(--bad);animation:pulse .5s infinite alternate}
+#pname{font-weight:800;font-size:1.1rem}
+#correct{color:var(--ok);font-weight:bold}
+#streak{display:block;min-height:1.4em;color:#fb923c;font-weight:800}
+.pop{animation:pop .35s}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.5)}100%{transform:scale(1)}}
+@keyframes pulse{to{transform:scale(1.15)}}
+#strip{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.chip{padding:6px 12px;border-radius:20px;border:2px solid var(--c);opacity:.65;font-size:.9rem}
+.chip.on{opacity:1;background:var(--c);color:var(--ink)}
+#goal{font-size:.8rem;color:var(--muted);text-align:center}
+.bar{height:8px;background:var(--ink);border-radius:4px;overflow:hidden;margin-top:4px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#8b5cf6,var(--gold));transition:width .3s}
+.prompt{background:linear-gradient(135deg,#3b1d73,#1f0d3d);border:2px solid var(--gold);border-radius:18px;padding:22px 20px;text-align:center;min-height:110px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 10px 30px -5px rgba(251,191,36,.25),inset 0 0 30px rgba(124,58,237,.25)}
+.tag{font-size:.8rem;letter-spacing:2px;color:#d8b4fe;margin-bottom:8px}
+#prompt{font-size:1.8rem;font-weight:800;color:var(--gold)}
+.card,.card *,#game{touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}#skip{background:#2563eb;color:#fff}#skip:hover{background:#1d4ed8}#end{background:#dc2626;color:#fff}#end:hover{background:#b91c1c}.controls{margin-top:12px}.card.miss{opacity:.35;border-color:var(--bad);text-decoration:line-through}.card.ok{border-color:var(--ok);background:linear-gradient(135deg,#059669,#047857);color:#fff;box-shadow:0 0 0 2px rgba(52,211,153,.5)}#submit{display:none}#game{gap:10px}.header{padding:8px 10px}.stat b{font-size:2.2rem}.prompt{min-height:90px;padding:16px}#prompt{font-size:1.6rem}.hint-btn{padding:8px}#hand{gap:10px}.card{min-height:56px;padding:12px 8px}#feedback{min-height:20px}
+.hint-btn{background:none;border:1px dashed var(--accent);color:#d8b4fe;padding:10px;border-radius:10px;cursor:pointer;font-weight:600}
+.hint-btn:hover{background:rgba(183,148,246,.12)}
+#hint{background:var(--card);border-left:4px solid var(--gold);padding:12px 15px;border-radius:8px;line-height:1.4;color:#e5d9ff}
+#hand{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.card{background:var(--card2);border:1px solid var(--border);padding:16px 10px;border-radius:12px;text-align:center;font-weight:700;font-size:1rem;color:var(--text);cursor:pointer;transition:.2s}
+.card:hover{border-color:var(--gold);transform:translateY(-2px);background:#43267d}
+.card.selected{border-color:var(--gold);background:linear-gradient(135deg,#7a45d1,#4c2a8f);color:#fff;box-shadow:0 0 0 2px rgba(251,191,36,.5)}
+#feedback{text-align:center;min-height:24px;font-weight:bold}
+#feedback.correct{color:var(--ok)}#feedback.incorrect{color:var(--bad)}
+.controls{display:flex;gap:10px}
+.btn{flex:1;padding:15px;font-size:1rem;font-weight:800;border:none;border-radius:12px;cursor:pointer}
+.primary{background:linear-gradient(180deg,#fcd34d,#f59e0b);color:var(--ink);box-shadow:0 4px 14px rgba(245,158,11,.35)}
+.primary:hover{background:linear-gradient(180deg,#fde68a,#fbbf24)}
+.secondary{background:#4c2f87;color:var(--text)}.secondary:hover{background:#5f3ba8}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 16px;border-radius:12px;border-left:6px solid var(--c);background:var(--ink);font-weight:600}
+.row b{font-size:1.8rem;color:var(--gold)}
+.row small{color:var(--muted);font-weight:400;display:block}
+#resExtra{display:flex;flex-direction:column;gap:6px;text-align:center;font-weight:600}
+.overlay{position:fixed;inset:0;background:rgba(22,10,43,.97);z-index:8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:20px}
+.overlay h2{font-size:2.2rem;margin:0}.overlay p{margin:0;color:var(--muted)}.overlay .btn{flex:none;min-width:220px}
+#titles{justify-content:flex-start;overflow:auto}
+#titleList{display:flex;flex-direction:column;gap:8px;width:100%;max-width:520px;text-align:left}
+.ti{display:block;width:100%;text-align:left;padding:12px 14px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:.95rem}
+.ti.on{border-color:var(--gold)}.ti:disabled{opacity:.5}.ti:not(:disabled){cursor:pointer}
+.ti small{color:var(--muted)}
+#toast{position:fixed;top:60px;left:50%;transform:translateX(-50%);background:linear-gradient(180deg,#fcd34d,#f59e0b);color:var(--ink);font-weight:800;padding:10px 18px;border-radius:24px;z-index:7;box-shadow:0 6px 20px rgba(0,0,0,.4);text-align:center}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:9}
+.shake{animation:shake .45s}
+@keyframes shake{0%,100%{transform:translateX(0)}15%{transform:translateX(-14px) rotate(-1deg)}30%{transform:translateX(12px) rotate(1deg)}45%{transform:translateX(-10px)}60%{transform:translateX(8px)}80%{transform:translateX(-4px)}}
+.hidden{display:none!important}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.shake,.pop,#timerBox.low b{animation:none}}
+body{padding-left:14px;padding-right:14px}#setup h2{font-size:2.3rem;text-shadow:0 0 24px rgba(251,191,36,.35)}.group>label{display:flex;align-items:center;gap:10px}.group>label::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9'><path d='M1 1l6 6 6-6' fill='none' stroke='%23fbbf24' stroke-width='2' stroke-linecap='round'/></svg>");background-repeat:no-repeat;background-position:right 14px center;padding-right:38px}.tile{position:relative;transition:transform .15s,border-color .15s,box-shadow .15s}.tile:hover{transform:translateY(-2px)}.tile .em{font-size:1.7rem;width:34px;text-align:center}.tile.sel::after{content:"✓";position:absolute;bottom:7px;right:8px;width:20px;height:20px;border-radius:50%;background:var(--gold);color:var(--ink);font-size:.75rem;font-weight:900;display:flex;align-items:center;justify-content:center}.cg h4{display:flex;align-items:center;gap:8px}.cg h4::after{content:"";flex:1;height:1px;background:var(--border)}#start{padding:18px;font-size:1.15rem;letter-spacing:.5px}.prompt{position:relative}.prompt::before{content:"❝";position:absolute;top:6px;left:14px;font-size:2rem;color:rgba(251,191,36,.25)}.card{min-height:64px;display:flex;align-items:center;justify-content:center;position:relative;user-select:none}.card:active{transform:scale(.97)}.card.selected::after{content:"✓";position:absolute;top:5px;right:7px;font-size:.8rem;color:var(--gold)}.controls .primary{flex:1.6}.btn{transition:transform .12s,background .15s}.btn:active{transform:scale(.97)}.ti.on{box-shadow:0 0 0 2px rgba(251,191,36,.35)}
+</style>
+<!-- v: casino heat + mp modes -->
+</head>
+<body>
+<div class="toggles">
+  <button class="tg" id="musicBtn" aria-pressed="true">🎵 Music: On</button>
+  <button class="tg" id="sfxBtn" aria-pressed="true">🔊 Sound: On</button>
+</div>
+<canvas id="fx"></canvas>
+<div id="toast" class="hidden" role="status"></div>
+<div id="titles" class="overlay hidden"><h2>🏅 Titles</h2><p id="titleSub"></p><div id="titleList"></div><button class="btn primary" id="titlesClose">Close</button></div>
+<div id="ready" class="overlay hidden">
+  <h2 id="rdyTitle"></h2><p id="rdySub"></p>
+  <button class="btn primary" id="rdyBtn">I'm ready</button>
+</div>
+<div class="wrap">
+  <div id="setup" class="panel">
+    <p class="presents">Eshu Games presents</p>
+    <h2>IDIOTWARZ</h2>
+    <p class="tagline">Fill in the blank. Beat the clock.</p>
+    <div class="group"><label for="players">PLAYERS</label>
+      <select id="players">
+        <option value="1">1 Player (Solo)</option>
+        <option value="2">2 Players (Head to Head)</option>
+        <option value="3">3 Players (Head to Head)</option>
+        <option value="4">4 Players (Head to Head)</option>
+      </select>
+      <p class="note">Head to Head: each player takes a turn. Most points wins.</p></div>
+    <div class="group hidden" id="qmodeG"><label for="qmode">QUESTIONS</label>
+      <select id="qmode"><option value="diffq" selected>Different questions (same categories)</option><option value="same">Same questions for everyone</option><option value="diffc">Different categories (my fandom vs yours)</option></select>
+      <p class="note" id="qnote"></p></div>
+    <div class="group"><label>NAMES</label><div id="names" style="display:flex;flex-direction:column;gap:8px"></div></div>
+    <div class="group"><label for="mode">GAME MODE</label>
+      <select id="mode">
+        <option value="timed">⏱️ Timed (beat the clock)</option>
+        <option value="count">🔢 Question count (no timer)</option>
+      </select></div>
+    <div class="group"><label for="difficulty">DIFFICULTY</label>
+      <select id="difficulty"></select></div>
+    <label class="chk"><input type="checkbox" id="kid"> Kid-friendly questions only</label>
+    <label class="chk"><input type="checkbox" id="mb"> 🧠 Mind Bender mode</label>
+    <p class="note" style="margin-top:-12px">Six cards per question, and every wrong answer is a look-alike from the same category. Right answers score 15 instead of 10.</p>
+    <div class="group"><label>CATEGORY</label>
+      <p class="note" id="pickInfo"></p>
+      <div id="cats"></div></div>
+    <p id="best"></p>
+    <button class="btn primary" id="start">Start Game</button>
+    <button class="btn secondary" id="titlesBtn"></button>
+  </div>
+
+  <div id="game" class="hidden">
+    <div class="header panel">
+      <div class="stat"><small>SCORE</small><b id="score">0</b></div>
+      <div class="stat"><div id="pname"></div><span id="streak"></span><small>Correct: <span id="correct">0</span></small></div>
+      <div class="stat" id="timerBox"><small id="timeLbl">TIME</small><b id="timer">--</b></div>
+    </div>
+    <div id="strip" class="hidden"></div>
+    <div id="goal"><div id="goalTxt"></div><div class="bar"><i id="goalBar"></i></div></div>
+    <div class="prompt"><div class="tag" id="tag"></div><div id="prompt"></div></div>
+    <button class="hint-btn" id="hintBtn">💡 Show hint</button>
+    <div id="hint" class="hidden"></div>
+    <div id="feedback" aria-live="polite"></div>
+    <div id="hand"></div>
+    <div class="controls">
+      <button class="btn secondary" id="skip">Skip (-2)</button>
+      <button class="btn secondary" id="end">End turn</button>
+      <button class="btn primary" id="submit">Submit Answer</button>
+    </div>
+  </div>
+
+  <div id="results" class="panel hidden">
+    <h2 id="resTitle"></h2>
+    <div id="resList" style="display:flex;flex-direction:column;gap:10px"></div>
+    <div id="resExtra"></div>
+    <div class="controls">
+      <button class="btn secondary" id="again">Play Again</button>
+      <button class="btn primary" id="change">Change Settings</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Each question: [prompt, "ANSWER|ALTERNATE", hint]
+const DATA = {
+  marvel: {
+    title: "Marvel",
+    distractors: ["WEB","SUIT","CLAW","SHIELD","HAMMER","ARMOR","STORM","VISION","EAGLE","MASK","TITAN","ASGARD"],
+    q: [
+      ["I am Iron ___","MAN","Tony Stark's famous reveal."],
+      ["Avengers, ___!","ASSEMBLE","Captain America's rally cry."],
+      ["I can do this all ___","DAY","Steve Rogers refuses to quit."],
+      ["With great power comes great ___","RESPONSIBILITY","Uncle Ben's advice."],
+      ["Wakanda ___!","FOREVER","The salute of the Black Panther's nation."],
+      ["I am ___","GROOT","The only line this tree says."],
+      ["Hulk ___!","SMASH","What the green giant does best."],
+      ["Doctor ___","STRANGE","The Sorcerer Supreme."],
+      ["Black ___","PANTHER|WIDOW","A king of Wakanda, or a spy named Natasha."],
+      ["Captain ___","AMERICA|MARVEL","Two heroes share this first name."],
+      ["Spider-___","MAN","Your friendly neighborhood hero."],
+      ["Guardians of the ___","GALAXY","Star-Lord's misfit team."],
+      ["Infinity ___","STONES|WAR|GAUNTLET","What Thanos collects."],
+      ["Thor's hammer is called ___","MJOLNIR","Only the worthy can lift it."],
+      ["Peter Parker was bitten by a radioactive ___","SPIDER","How he got his powers."],
+      ["Tony Stark built his first suit in a ___","CAVE","He was a captive when he did it."],
+      ["Bruce Banner turns into the ___","HULK","Don't make him angry."],
+      ["Ant-___","MAN","Scott Lang shrinks down."],
+      ["X-___","MEN","Mutants led by Professor Xavier."],
+      ["Loki is the god of ___","MISCHIEF","Thor's trickster brother."]
+    ]
+  },
+  dc: {
+    title: "DC",
+    distractors: ["CAPE","MASK","CAVE","SIGNAL","BELT","SPEED","SHADOW","CROWN","TRIDENT","JOKER","SUIT","COWL"],
+    q: [
+      ["I am ___","BATMAN","Gotham's dark protector."],
+      ["Why so ___?","SERIOUS","The Joker's famous question."],
+      ["It's a bird, it's a plane, it's ___!","SUPERMAN","The Man of Steel flies by."],
+      ["Wonder ___","WOMAN","Diana of Themyscira."],
+      ["Man of ___","STEEL","Superman's nickname."],
+      ["The Dark ___","KNIGHT","Another name for Batman."],
+      ["Green ___","LANTERN|ARROW","Wears a power ring, or fires trick arrows."],
+      ["Gotham ___","CITY","Batman's hometown."],
+      ["Superman's weakness is ___","KRYPTONITE","A glowing green rock."],
+      ["Aquaman rules the sea kingdom of ___","ATLANTIS","An underwater city."],
+      ["The Flash is the fastest man ___","ALIVE","He runs faster than light."],
+      ["Bruce Wayne's butler is ___","ALFRED","Loyal and sharp-tongued."],
+      ["Harley ___","QUINN","The Joker's former sidekick."],
+      ["Justice ___","LEAGUE","DC's team of heroes."],
+      ["Suicide ___","SQUAD","A team of villains on missions."],
+      ["Clark Kent works at the Daily ___","PLANET","A newspaper in Metropolis."],
+      ["Batman's sidekick is ___","ROBIN","The Boy Wonder."],
+      ["Wonder Woman uses the Lasso of ___","TRUTH","It forces people to be honest."],
+      ["Teen ___","TITANS","Young heroes like Robin and Starfire."],
+      ["Arkham ___","ASYLUM","Where Gotham's villains are locked up."]
+    ]
+  },
+  oldanime: {
+    title: "Old School Anime",
+    distractors: ["BALL","SWORD","ROBOT","SPIRIT","NINJA","SAMURAI","FORCE","DREAM","BLADE","MECHA"],
+    q: [
+      ["Dragon Ball ___","Z|GT","Goku's long-running adventures."],
+      ["Sailor ___","MOON","A girl who fights evil in a sailor suit."],
+      ["Astro ___","BOY","A robot kid created by Osamu Tezuka."],
+      ["Mobile Suit ___","GUNDAM","A giant robot franchise."],
+      ["Neon Genesis ___","EVANGELION","Teens pilot giant bio-machines."],
+      ["Cowboy ___","BEBOP","Bounty hunters in space with jazz music."],
+      ["Speed ___","RACER","Go, Mach Five, go!"],
+      ["Pokémon: Gotta catch 'em ___","ALL","The series' goal."],
+      ["Yu Yu ___","HAKUSHO","A teen becomes a Spirit Detective."],
+      ["Rurouni ___","KENSHIN","A wandering swordsman with a cross scar."],
+      ["Fist of the North ___","STAR","Kenshiro's martial art."],
+      ["Princess ___","MONONOKE","A Studio Ghibli forest epic."],
+      ["My Neighbor ___","TOTORO","A giant fuzzy forest spirit."],
+      ["Kiki's Delivery ___","SERVICE","A young witch flies on a broom."],
+      ["Ghost in the ___","SHELL","A cyberpunk police story."],
+      ["Slam ___","DUNK","Basketball anime with Hanamichi Sakuragi."],
+      ["Cardcaptor ___","SAKURA","A girl collects magical cards."],
+      ["Saint ___","SEIYA","Knights of the Zodiac."],
+      ["Lupin the ___","THIRD","A famous gentleman thief."],
+      ["Voltron: Defender of the ___","UNIVERSE","Five lions form a giant robot."]
+    ]
+  },
+  newanime: {
+    title: "New School Anime",
+    distractors: ["KINGDOM","SHADOW","BLADE","WIZARD","NINJA","SOUL","STORM","HUNTER"],
+    q: [
+      ["Attack on ___","TITAN","Humanity hides behind giant walls."],
+      ["Demon ___","SLAYER","Tanjiro fights demons for his sister."],
+      ["My Hero ___","ACADEMIA","Deku trains to be a hero."],
+      ["One ___","PIECE","Luffy sails for the treasure."],
+      ["Death ___","NOTE","A notebook that kills whoever's name is written in it."],
+      ["Fullmetal ___","ALCHEMIST","Two brothers seek the Philosopher's Stone."],
+      ["Jujutsu ___","KAISEN","Sorcerers fight cursed spirits."],
+      ["Spy x ___","FAMILY","A spy, an assassin, and a telepath."],
+      ["Tokyo ___","GHOUL|REVENGERS","Flesh-eating monsters, or time-travelling gangs."],
+      ["Your ___","NAME","Two teens swap bodies."],
+      ["Spirited ___","AWAY","Chihiro in a spirit world bathhouse."],
+      ["Sword Art ___","ONLINE","Players are trapped in a VR game."],
+      ["Chainsaw ___","MAN","Denji fights devils with a chainsaw."],
+      ["Black ___","CLOVER","A boy born without magic."],
+      ["Fairy ___","TAIL","Natsu's magic guild."],
+      ["Dr. ___","STONE","Science rebuilds civilization."],
+      ["Blue ___","LOCK|EXORCIST","A soccer survival game, or a demon's son fights evil."],
+      ["Solo ___","LEVELING","The weakest hunter gets stronger."],
+      ["Mob ___","PSYCHO","A shy kid with huge psychic power."],
+      ["Naruto ___","SHIPPUDEN","The sequel to the ninja series."]
+    ]
+  },
+  games: {
+    title: "Video Games",
+    distractors: ["SWORD","COIN","LEVEL","BOSS","QUEST","SHELL","POWER","ARENA","PIXEL","JOYSTICK","SPEED","MAZE"],
+    q: [
+      ["It's-a me, ___!","MARIO","A plumber's greeting."],
+      ["The Legend of ___","ZELDA","Link saves the princess of Hyrule."],
+      ["Game ___","OVER","What you see when you run out of lives."],
+      ["Pac-___","MAN","A yellow circle eating dots."],
+      ["Sonic the ___","HEDGEHOG","A fast blue mascot."],
+      ["Pikachu is an ___-type Pokémon","ELECTRIC","It shocks its foes."],
+      ["Minecraft: Don't dig straight ___","DOWN","Good advice to avoid lava."],
+      ["Grand Theft ___","AUTO","Open-world crime series."],
+      ["Call of ___","DUTY","A big war shooter series."],
+      ["Super Smash ___","BROS","Nintendo characters brawl."],
+      ["Fortnite: Victory ___","ROYALE","What you win at the end."],
+      ["Among ___","US","Find the impostor."],
+      ["Animal ___","CROSSING","A cozy island life game."],
+      ["Red Dead ___","REDEMPTION","Cowboys in the Old West."],
+      ["God of ___","WAR","Kratos fights Greek and Norse gods."],
+      ["Mortal ___","KOMBAT","'Finish him!'"],
+      ["Street ___","FIGHTER","Ryu throws a Hadouken."],
+      ["Halo: Master ___","CHIEF","A green-armored Spartan."],
+      ["Skyrim: I took an arrow in the ___","KNEE","A guard's famous excuse."],
+      ["Overwatch: Heroes never ___","DIE","A hero team's motto."]
+    ]
+  },
+  oldmovies: {
+    title: "Old School Movies",
+    distractors: ["FIRE","MOON","HEART","GHOST","NIGHT","STORM","KING","SHADOW","ROAD","CITY"],
+    q: [
+      ["Here's looking at you, ___","KID","A line from Casablanca."],
+      ["Frankly, my dear, I don't give a ___","DAMN","Rhett Butler's parting line."],
+      ["I'll be ___","BACK","The Terminator's promise."],
+      ["You're gonna need a bigger ___","BOAT","Jaws."],
+      ["Go ahead, make my ___","DAY","Dirty Harry."],
+      ["Here's ___!","JOHNNY","The Shining."],
+      ["Nobody puts Baby in a ___","CORNER","Dirty Dancing."],
+      ["Say hello to my little ___!","FRIEND","Scarface."],
+      ["I am your ___","FATHER","The Empire Strikes Back."],
+      ["There's no place like ___","HOME","The Wizard of Oz."],
+      ["Gentlemen, you can't fight in here! This is the War ___","ROOM","Dr. Strangelove."],
+      ["Wax on, wax ___","OFF","The Karate Kid."],
+      ["Back to the ___","FUTURE","A DeLorean time-travel classic."],
+      ["Raiders of the Lost ___","ARK","Indiana Jones."],
+      ["I'll make him an offer he can't ___","REFUSE","The Godfather."],
+      ["Who you gonna ___?","CALL","Ghostbusters."],
+      ["The Wizard of ___","OZ","Follow the yellow brick road."],
+      ["Gone with the ___","WIND","A Civil War epic."],
+      ["Singin' in the ___","RAIN","A musical with a famous puddle dance."],
+      ["It's a Wonderful ___","LIFE","George Bailey and Christmas."]
+    ]
+  },
+  newmovies: {
+    title: "New School Movies",
+    distractors: ["FIRE","MOON","HEART","GHOST","NIGHT","STORM","KING","SHADOW","CITY"],
+    q: [
+      ["Just keep ___","SWIMMING","Dory in Finding Nemo."],
+      ["Ogres are like ___","ONIONS","Shrek explains his layers."],
+      ["Are you not ___?","ENTERTAINED","Gladiator."],
+      ["The Fellowship of the ___","RING","Frodo's quest."],
+      ["Harry Potter and the Sorcerer's ___","STONE","The first book and movie."],
+      ["On Wednesdays we wear ___","PINK","Mean Girls."],
+      ["We need to go ___","DEEPER","Inception."],
+      ["Kung Fu ___","PANDA","Po, the Dragon Warrior."],
+      ["The Incredibles: No ___!","CAPES","Edna Mode's rule."],
+      ["Pirates of the Caribbean: Dead Man's ___","CHEST","Captain Jack Sparrow's second film."],
+      ["Jurassic ___","WORLD|PARK","A theme park of dinosaurs."],
+      ["Fast & ___","FURIOUS","Street racing and family."],
+      ["Top Gun: ___","MAVERICK","Tom Cruise returns to fly."],
+      ["Now I am become ___","DEATH","Oppenheimer."],
+      ["Fear is the mind-___","KILLER","Dune."],
+      ["May the odds be ever in your ___","FAVOR","The Hunger Games."],
+      ["Ratatouille: Anyone can ___","COOK","A rat chef's motto."],
+      ["Everything Everywhere All at ___","ONCE","A multiverse Oscar winner."],
+      ["John ___","WICK","A retired hitman and a puppy."],
+      ["Mad Max: Fury ___","ROAD","A desert chase."]
+    ]
+  }
+};
+
+const EXTRA = {
+marvel: [
+["Tony Stark's company is ___ Industries","STARK","He builds the suits."],
+["Captain America's shield is made of ___","VIBRANIUM","A rare Wakandan metal."],
+["Thor's father is ___","ODIN","The All-Father of Asgard."],
+["Black Panther is the king of ___","WAKANDA","A hidden, high-tech nation."],
+["Nick Fury leads ___","SHIELD","A secret spy agency."],
+["Thanos snaps his ___","FINGERS","He wipes out half of all life."],
+["Wolverine's claws are made of ___","ADAMANTIUM","An unbreakable metal."],
+["Spider-Man's aunt is ___","MAY","She raised Peter Parker."],
+["Star-Lord's real name is Peter ___","QUILL","Leader of the Guardians."],
+["Rocket is a talking ___","RACCOON","A Guardians weapons expert."],
+["Scarlet ___","WITCH","Wanda Maximoff's hero name."],
+["Winter ___","SOLDIER","Bucky Barnes' alter ego."],
+["War ___","MACHINE","Colonel Rhodes' armored suit."],
+["Ms. ___","MARVEL","Kamala Khan's hero name."],
+["Doctor Strange wears the Cloak of ___","LEVITATION","It lets him fly."],
+["The Avengers' base is Avengers ___","TOWER","A skyscraper in New York."],
+["Gamora is Thanos's adopted ___","DAUGHTER","A Guardians assassin."],
+["Hawkeye is a master ___","ARCHER","He never misses."],
+["Captain Marvel's name is Carol ___","DANVERS","A pilot with cosmic powers."],
+["Ant-Man can talk to ___","ANTS","He shrinks to their size."]
+],
+dc: [
+["Superman's real name is Clark ___","KENT","A reporter in Metropolis."],
+["Batman's real name is Bruce ___","WAYNE","A billionaire by day."],
+["Wonder Woman's real name is Diana ___","PRINCE","An Amazon princess."],
+["Superman's enemy is Lex ___","LUTHOR","A genius billionaire villain."],
+["Barry Allen is The ___","FLASH","A speedster."],
+["Aquaman's real name is Arthur ___","CURRY","King of the seven seas."],
+["Cyborg's real name is Victor ___","STONE","Half man, half machine."],
+["Catwoman is Selina ___","KYLE","A thief and Batman's love interest."],
+["Commissioner ___","GORDON","Gotham's police chief."],
+["Superman comes from the planet ___","KRYPTON","It exploded."],
+["Batman's car is the ___","BATMOBILE","Armored and fast."],
+["Poison ___","IVY","A plant-powered villain."],
+["Two-___","FACE","A split-personality villain."],
+["Mr. ___","FREEZE","A villain with an ice gun."],
+["Oswald Cobblepot is the ___","PENGUIN","A Gotham crime boss."],
+["Billy Batson shouts ___!","SHAZAM","The magic word."],
+["Supergirl is Superman's ___","COUSIN","Kara Zor-El."],
+["Bane broke Batman's ___","BACK","A famous comic storyline."],
+["Dick Grayson became ___","NIGHTWING","The first Robin grows up."],
+["Black ___","ADAM","Egypt's powerful antihero."]
+],
+oldanime: [
+["Goku transforms into a Super ___","SAIYAN","Golden hair and big power."],
+["Ash's partner Pokémon is ___","PIKACHU","An electric mouse."],
+["Doraemon is a robot ___","CAT","From the 22nd century."],
+["Mazinger ___","Z","A classic super robot."],
+["Evangelion pilot Shinji ___","IKARI","Pilot of Unit-01."],
+["See you, space ___","COWBOY","Cowboy Bebop's farewell."],
+["Moon ___ Power, Make Up!","PRISM","Sailor Moon's transformation."],
+["Laputa: Castle in the ___","SKY","A floating island."],
+["Nausicaä of the Valley of the ___","WIND","A Studio Ghibli heroine."],
+["Akira takes place in Neo-___","TOKYO","A cyberpunk city."],
+["Detective ___","CONAN","A kid with a genius mind."],
+["Initial ___","D","Drift racing on a mountain pass."],
+["Captain ___","TSUBASA","A famous soccer anime."],
+["Digimon: Digital ___","MONSTERS","What the name stands for."],
+["Yu-Gi-___!","OH","A card-dueling hit."],
+["Goku's eldest son is ___","GOHAN","A student-turned-fighter."],
+["In Pokémon, the villains are Team ___","ROCKET","Jessie and James."],
+["Char Aznable is the ___ Comet","RED","A famous Gundam rival."],
+["Sailor Moon's talking cat is ___","LUNA","A black cat with a crescent."],
+["Battle of the ___","PLANETS","The US version of Gatchaman."]
+],
+newanime: [
+["Naruto dreams of becoming ___","HOKAGE","The leader of his village."],
+["Luffy wants to be King of the ___","PIRATES","One Piece's goal."],
+["Eren ___","YEAGER","Attack on Titan's lead."],
+["Deku's mentor is All ___","MIGHT","The number one hero."],
+["Tanjiro's sister is ___","NEZUKO","A demon in a bamboo muzzle."],
+["Light ___","YAGAMI","The Death Note holder."],
+["Edward ___","ELRIC","The Fullmetal Alchemist."],
+["Satoru ___","GOJO","Jujutsu Kaisen's strongest sorcerer."],
+["One Punch ___","MAN","A hero who wins in one hit."],
+["Ichigo ___","KUROSAKI","Bleach's soul reaper."],
+["Haikyu!! is about ___","VOLLEYBALL","Crows fly high."],
+["Your Lie in ___","APRIL","A piano and violin romance."],
+["Ouran High School ___ Club","HOST","Pretty boys entertain guests."],
+["Code ___","GEASS","Lelouch rebels."],
+["Steins;___","GATE","A time-travel microwave."],
+["Bocchi the ___!","ROCK","A shy guitarist."],
+["Vinland ___","SAGA","Vikings and revenge."],
+["Re:___","ZERO","Starting life in another world."],
+["Oshi no ___","KO","An idol-reincarnation story."],
+["Frieren: Beyond Journey's ___","END","A mage after the hero's party."]
+],
+games: [
+["Mario's brother is ___","LUIGI","The taller one in green."],
+["Mario's enemy is King ___","BOWSER","A fire-breathing turtle."],
+["Donkey ___","KONG","A barrel-throwing ape."],
+["Pikachu evolves into ___","RAICHU","Needs a Thunder Stone."],
+["Minecraft's exploding green monsters are ___","CREEPERS","Hsss!"],
+["Fortnite: Jump off the Battle ___","BUS","Where every match starts."],
+["Sonic collects golden ___","RINGS","He loses them when hit."],
+["Portal: The cake is a ___","LIE","A famous meme."],
+["Mega ___","MAN","A blue robot hero."],
+["Metal Gear ___","SOLID","A stealth series."],
+["Final ___","FANTASY","A long-running RPG series."],
+["Resident ___","EVIL","Zombie survival horror."],
+["Clash of ___","CLANS","A mobile base-building game."],
+["Angry ___","BIRDS","Fling them at pigs."],
+["Candy ___","CRUSH","Match sweets on your phone."],
+["Rocket ___","LEAGUE","Soccer with cars."],
+["League of ___","LEGENDS","A top MOBA."],
+["Elden ___","RING","A fantasy action RPG."],
+["Kingdom ___","HEARTS","Disney meets Final Fantasy."],
+["The Last of ___","US","Joel and Ellie."]
+],
+oldmovies: [
+["I'm the king of the ___!","WORLD","Titanic's bow scene."],
+["Jurassic Park: Life finds a ___","WAY","Dr. Malcolm's line."],
+["The Lion King: The Circle of ___","LIFE","Mufasa explains it."],
+["Forrest Gump: Run, Forrest, ___!","RUN","Jenny's famous shout."],
+["Luke ___","SKYWALKER","Star Wars farm boy."],
+["Indiana ___","JONES","A whip-cracking archaeologist."],
+["The Matrix: Red pill or blue ___","PILL","Neo's choice."],
+["Beauty and the ___","BEAST","A tale as old as time."],
+["The Little ___","MERMAID","Ariel wants legs."],
+["Toy Story's cowboy is ___","WOODY","Andy's favorite toy."],
+["Ferris Bueller's Day ___","OFF","A teen skips school."],
+["The Breakfast ___","CLUB","Five students in Saturday detention."],
+["Ghostbusters: Don't cross the ___","STREAMS","Egon's warning."],
+["Rocky: Yo, ___!","ADRIAN","Rocky's famous shout."],
+["Back to the Future: Great ___!","SCOTT","Doc Brown's exclamation."],
+["The Sound of ___","MUSIC","Julie Andrews on a hilltop."],
+["Mary ___","POPPINS","A magical nanny with an umbrella."],
+["Top ___","GUN","Maverick and Goose."],
+["Home ___","ALONE","Kevin defends the house."],
+["Buzz Lightyear is a Space ___","RANGER","To infinity and beyond."]
+],
+newmovies: [
+["Frozen's snowman is ___","OLAF","He loves warm hugs."],
+["In Despicable Me, the Minions love ___","BANANAS","Yellow and goofy."],
+["Harry Potter: Platform nine and three ___","QUARTERS","Where the Hogwarts Express leaves."],
+["Spider-Man: No Way ___","HOME","Three Spider-Men team up."],
+["Avatar: The Way of ___","WATER","The sequel to the blue-people epic."],
+["Barbie's boyfriend is ___","KEN","He's just Ken."],
+["Moana's demigod friend is ___","MAUI","He has a giant fishhook."],
+["Coco: Day of the ___","DEAD","A Mexican holiday."],
+["Inside ___","OUT","Joy, Sadness and friends."],
+["Avengers: ___game","END","Heroes undo the snap."],
+["The Lord of the Rings: The Return of the ___","KING","The final chapter."],
+["Captain Jack ___","SPARROW","Savvy?"],
+["Twilight: Edward and ___","BELLA","A vampire romance."],
+["Hunger Games: Katniss ___","EVERDEEN","The girl on fire."],
+["Star Wars: The Force ___","AWAKENS","Episode VII."],
+["Encanto: We don't talk about ___","BRUNO","The family's hit song title."],
+["Up: Carl's house floats with ___","BALLOONS","Thousands of them."],
+["Wall-___","E","A trash-collecting robot."],
+["Cars: Lightning ___","MCQUEEN","Ka-chow!"],
+["Jumanji: Welcome to the ___","JUNGLE","Dwayne Johnson's adventure."]
+]
+};
+Object.keys(EXTRA).forEach(k => DATA[k].q.push(...EXTRA[k]));
+const MORE = {
+marvel: [
+["Thor's home realm is ___","ASGARD","A golden city in the sky."],
+["Black Widow's real name is Natasha ___","ROMANOFF","A master spy."],
+["Iron Man's AI butler is ___","JARVIS","Always at Tony's service."],
+["Captain America's best friend is Bucky ___","BARNES","The Winter Soldier."],
+["Doctor Strange studies the ___ Arts","MYSTIC","Magic of all kinds."],
+["Hela is the goddess of ___","DEATH","Thor's evil sister."],
+["Magneto controls ___","METAL","A master of magnetism."],
+["Professor X runs a school for Gifted ___","YOUNGSTERS","Home of the X-Men."],
+["Daredevil is the Man Without ___","FEAR","A blind lawyer hero."],
+["Falcon's real name is Sam ___","WILSON","He flies with wings."]
+],
+dc: [
+["Superman has X-ray and heat ___","VISION","His eyes do the work."],
+["The Riddler leaves ___","CLUES|RIDDLES","He loves puzzles."],
+["Hawkgirl swings a ___","MACE","A winged warrior."],
+["Martian Manhunter is from ___","MARS","A green alien hero."],
+["Lois ___","LANE","Superman's reporter love."],
+["Green Lantern's rings are weak against ___","YELLOW","A color weakness."],
+["Wonder Woman's home island is ___","THEMYSCIRA","Home of the Amazons."],
+["The third Robin is Tim ___","DRAKE","A detective-minded sidekick."],
+["Darkseid rules the planet ___","APOKOLIPS","A fiery world of villains."],
+["Superman's dog is named ___","KRYPTO","A caped canine."]
+],
+oldanime: [
+["Vegeta is Prince of all ___","SAIYANS","Goku's rival."],
+["Sailor Moon's real name is Usagi ___","TSUKINO","A clumsy middle schooler."],
+["Gundam's hero is Amuro ___","RAY","Pilot of the first Gundam."],
+["Totoro: Satsuki and ___","MEI","Two sisters."],
+["Kiki's talking cat is ___","JIJI","A black cat."],
+["Cowboy Bebop's data dog is named ___","EIN","A Pembroke Welsh corgi."],
+["Evangelion's quiet pilot is Rei ___","AYANAMI","Pilot of Unit-00."],
+["Trigun's hero is Vash the ___","STAMPEDE","A gunslinger who hates violence."],
+["Speed Racer drives the Mach ___","FIVE","A fast car."],
+["Doraemon's best friend is ___","NOBITA","A clumsy schoolboy."]
+],
+newanime: [
+["Naruto's rival is Sasuke ___","UCHIHA","A famous ninja clan."],
+["Zoro fights with ___ swords","THREE","One in his mouth."],
+["Zenitsu uses ___ Breathing","THUNDER","He's fast as lightning."],
+["Bakugo's quirk is ___","EXPLOSION","Boom!"],
+["Jujutsu Kaisen's hero is Yuji ___","ITADORI","He swallowed a cursed finger."],
+["Spy x Family: Anya loves ___","PEANUTS","The telepath's favorite snack."],
+["Alphonse Elric is trapped in a suit of ___","ARMOR","He lost his body."],
+["Ryuk the shinigami loves ___","APPLES","He's always munching."],
+["Dr. Stone: Senku says ten billion ___","PERCENT","His favorite phrase."],
+["Gon's best friend is ___","KILLUA","A Hunter x Hunter assassin kid."]
+],
+games: [
+["Zelda's hero is ___","LINK","He wears green."],
+["Charmander is a ___-type Pokémon","FIRE","It has a flame on its tail."],
+["Tetris is all about falling ___","BLOCKS","Fit the pieces."],
+["Pac-Man avoids ___","GHOSTS","Blinky, Pinky, Inky and Clyde."],
+["Minecraft: Craft items at a crafting ___","TABLE","Four squares or nine."],
+["Among Us: Call an emergency ___","MEETING","Time to vote."],
+["Sonic's two-tailed sidekick is ___","TAILS","A flying fox."],
+["Animal Crossing's raccoon shopkeeper is Tom ___","NOOK","He holds your mortgage."],
+["Mario's hat has the letter ___","M","Right on the front."],
+["Crash ___","BANDICOOT","A spinning orange marsupial."]
+],
+oldmovies: [
+["Han Solo's ship is the Millennium ___","FALCON","It made the Kessel Run."],
+["The Wizard of Oz: Follow the yellow brick ___","ROAD","It leads to the Emerald City."],
+["Peter Pan lives in ___","NEVERLAND","Second star to the right."],
+["Sleeping Beauty pricks her finger on a spinning ___","WHEEL","A curse by Maleficent."],
+["Cinderella's carriage was a ___","PUMPKIN","A fairy godmother's magic."],
+["Snow White and the Seven ___","DWARFS","They whistle while they work."],
+["The Karate Kid: Daniel-___","SAN","Mr. Miyagi's name for him."],
+["Pinocchio's nose grows when he tells ___","LIES","A wooden puppet."],
+["The Goonies never say ___","DIE","Treasure hunters."],
+["The DeLorean hits 88 ___","MPH","Time travel speed."]
+],
+newmovies: [
+["Shrek's best friend is ___","DONKEY","A talkative sidekick."],
+["Nemo's dad is ___","MARLIN","A nervous clownfish."],
+["Moana's pet pig is ___","PUA","Cute and sleepy."],
+["Elsa's sister is ___","ANNA","They live in Arendelle."],
+["Kung Fu Panda's master is ___","SHIFU","A tiny red panda."],
+["Harry Potter's owl is ___","HEDWIG","A snowy white bird."],
+["Mean Girls: Stop trying to make ___ happen","FETCH","Gretchen's slang."],
+["Inception's spinning ___","TOTEM|TOP","It tells you if it's a dream."],
+["Spider-Verse hero Miles ___","MORALES","Brooklyn's Spider-Man."],
+["Ratatouille's chef rat is ___","REMY","He loves to cook."]
+]
+};
+
+const NEWCATS = {
+idioms: {"title":"Classic Idioms","distractors":["FIRE","DOG","LIGHT","TIME","HAND","GOLD","STONE","WIND","RAIN","PAPER","TREE","MOON"],"q":[["Piece of ___","CAKE|MIND","Something very easy, or stern feedback."],["Break a ___","LEG|HABIT","Good luck to a performer, or ending a routine."],["Bite the ___","BULLET|DUST","Facing a hard task bravely, or failing."],["Spill the ___","BEANS|TEA","Reveal a secret or share the gossip."],["Under the ___","WEATHER|RADAR","Feeling slightly ill, or staying unnoticed."],["Hit the ___","ROAD|BOOKS|SACK","Leave on a trip, study hard, or go to bed."],["Cold ___","FEET|SHOULDER","Last-minute nerves, or ignoring someone."],["Silver ___","LINING|SPOON","A hopeful side to bad news, or born wealthy."],["Burn the midnight ___","OIL","Staying up late to work or study."],["Barking up the wrong ___","TREE","Pursuing the wrong idea or person."],["Beat around the ___","BUSH","Avoiding the main point."],["Blessing in ___","DISGUISE","A bad event with a good outcome."],["Curiosity killed the ___","CAT","A warning against prying."],["Don't count your ___","CHICKENS","Don't rely on plans that haven't happened yet."],["Every cloud has a silver ___","LINING","Finding good in bad moments."],["Head in the ___","CLOUDS","Daydreamy or unaware of reality."],["In the heat of the ___","MOMENT","Acting on impulse while emotional."],["Kill two birds with one ___","STONE","Finishing two tasks with one action."],["Let the cat out of the ___","BAG","Accidentally revealing a secret."],["Once in a blue ___","MOON","Something that happens very rarely."],["A picture is worth a thousand ___","WORDS","Images can say more than text."],["Steal someone's ___","THUNDER","Take attention or credit from someone."],["Through thick and ___","THIN","Loyal in good times and bad."],["Throw in the ___","TOWEL","Give up."],["Walking on thin ___","ICE","Taking a risk."],["Raining cats and ___","DOGS","Pouring rain."],["Actions speak louder than ___","WORDS","What you do matters more than what you say."],["Better late than ___","NEVER","Arriving late beats not arriving."],["Easy as ___","PIE","Very simple."],["Don't cry over spilled ___","MILK","Don't dwell on past mistakes."],["Don't judge a book by its ___","COVER","Looks can be misleading."],["An apple a day keeps the ___ away","DOCTOR","A healthy-eating proverb."],["Back to the drawing ___","BOARD","Time to start the plan over."],["Hit the nail on the ___","HEAD","Get something exactly right."],["Cost an arm and a ___","LEG","Very expensive."],["The elephant in the ___","ROOM","An obvious problem nobody mentions."],["Like a fish out of ___","WATER","Uncomfortable in unfamiliar surroundings."],["Let sleeping dogs ___","LIE","Leave a touchy situation alone."],["The last ___","STRAW","The final thing that makes it too much."],["Tip of the ___","ICEBERG","Only a small visible part of a bigger problem."],["The ball is in your ___","COURT","It's your turn to act."],["Bite off more than you can ___","CHEW","Take on too much."],["Go the extra ___","MILE","Do more than expected."],["Rise and ___","SHINE","A cheerful wake-up call."],["Time flies when you're having ___","FUN","Enjoyable moments pass quickly."]]},
+pop: {"title":"Pop Culture & Cinema","distractors":["SHIP","CITY","RING","MASK","CROWN","BLADE","KEY","STAR","DOOR","KING","WALL","HERO"],"q":[["May the ___ be with you","FORCE","A sci-fi blessing."],["Houston, we have a ___","PROBLEM","Said when an emergency arises."],["Winter is ___","COMING","A fantasy warning to prepare."],["To infinity and ___","BEYOND","A space ranger toy's catchphrase."],["There's no place like ___","HOME","Said while clicking ruby slippers."],["I am your ___","FATHER","A shocking space-saga reveal."],["Keep your friends close, but enemies ___","CLOSER","Mob-movie advice."],["You shall not ___","PASS","A wizard slams down his staff."],["I'm the king of the ___","WORLD","Shouted from the bow of a ship."],["Here's looking at you, ___","KID","A classic black-and-white farewell."],["I'll be ___","BACK","A cyborg's promise."],["Elementary, my dear ___","WATSON","A famous detective's catchphrase."],["Why so ___?","SERIOUS","A comic-book villain's question."],["To be, or not to ___","BE","Hamlet's famous line."],["Show me the ___!","MONEY","A sports agent's shout."],["Say hello to my little ___!","FRIEND","Yelled in a crime drama."],["You can't handle the ___!","TRUTH","A courtroom outburst."],["Life is like a box of ___","CHOCOLATES","You never know what you're gonna get."],["I see ___ people","DEAD","A young boy's eerie secret."],["Just keep ___","SWIMMING","An optimistic blue fish's motto."],["Part of your ___","WORLD","A curious mermaid's wish."],["Hakuna ___","MATATA","Swahili for 'no worries'."],["Avengers, ___!","ASSEMBLE","A rallying cry before battle."],["Fasten your seat ___","BELTS","A warning before a bumpy ride."],["In space, no one can hear you ___","SCREAM","Tagline of a sci-fi horror classic."],["Just do ___","IT","A famous sneaker slogan."],["Let it ___","GO","An ice queen's big song."],["Shaken, not ___","STIRRED","A secret agent's martini order."],["E.T. phone ___","HOME","An alien wants to call someone."],["Yabba dabba ___","DOO","A Stone Age cartoon cry."],["Beam me up, ___","SCOTTY","A starship captain's request."],["Live long and ___","PROSPER","A pointy-eared alien's greeting."],["Open ___","SESAME","Magic words in a cave tale."],["Mirror, mirror on the ___","WALL","A wicked queen's question."],["Snap, crackle, ___","POP","A breakfast cereal trio."],["Is it a bird? Is it a ___?","PLANE","Looking up at a caped hero."],["Who you gonna ___?","CALL","A ghost-hunting theme song."],["Hasta la vista, ___","BABY","A cyborg's farewell."],["Toto, I've a feeling we're not in ___ anymore","KANSAS","A girl lands in a magical land."],["Wax on, wax ___","OFF","Karate lesson chores."],["Do or do ___","NOT","A green master says there is no try."],["I'll make him an offer he can't ___","REFUSE","A famous crime-family line."],["Big Brother is ___ you","WATCHING","A dystopian warning."],["Look, up in the ___","SKY","Spotting a flying hero."],["I'm lovin' ___","IT","A fast-food jingle."]]},
+adventure: {"title":"Action & Fantasy","distractors":["BOOK","TOWER","GATE","MAP","KEY","SHIELD","SPELL","MAGIC","DUNGEON","HELM","RUNE","CLAN"],"q":[["Enter the ___","DUNGEON|DRAGON","Stepping into danger."],["Point of no ___","RETURN","A line where retreat is impossible."],["Double-edged ___","SWORD","A choice with equal risk and reward."],["Roll for ___","INITIATIVE","Tabletop RPG turn order."],["Critical ___","HIT|FAIL","A max-effect or disastrous d20 roll."],["Cloak and ___","DAGGER","Stealthy spy work."],["Trial by ___","COMBAT|FIRE","Proving worth through a hard test."],["Fog of ___","WAR","Uncertainty on the battlefield."],["Call to ___","ARMS","Summoning warriors to fight."],["Eye of the ___","TIGER|STORM","Focused drive, or a calm center."],["Blade of ___","GLORY|GRACE","A legendary hero's weapon."],["Guardians of the ___","REALM|GALAXY","Protectors of a kingdom or cosmos."],["Heart of ___","STONE|GOLD","Cold-hearted or kind-hearted."],["Path of the ___","WARRIOR","A martial journey."],["Shadow of the ___","COLOSSUS|TOWER","Standing before great power."],["Shield of ___","FAITH|TRUTH","Defense against dark sorcery."],["Sword in the ___","STONE","Waiting for the rightful king."],["Tales of ___","YORE|OLD","Ancient legends."],["Treasure ___","CHEST|MAP","A prize at the end of a quest."],["Valley of ___","SHADOWS|DEATH","Perilous, enemy-infested terrain."],["Wheel of ___","TIME|FORTUNE","A force that spins destinies."],["Wings of ___","FIRE|STEEL","A mythical flying mount."],["Wrath of the ___","KING|GODS","Royal or divine revenge."],["Loot the ___","BODY|CHEST","Searching for gold and items."],["Quest for the ___","GRAIL","A search for a sacred relic."],["Dungeons and ___","DRAGONS","A classic tabletop role-playing game."],["Knight in shining ___","ARMOR","A romantic rescuer."],["Lord of the ___","RINGS","A famous fantasy trilogy."],["The hero's ___","JOURNEY","A story of leaving home and returning changed."],["Holy ___","GRAIL","A legendary cup knights seek."],["Bow and ___","ARROW","An archer's weapon."],["Wave your magic ___","WAND","What a wizard holds."],["Damsel in ___","DISTRESS","Someone who needs rescuing."],["Walk the ___","PLANK","A pirate's punishment."],["X marks the ___","SPOT","Where the treasure is buried."],["Sword and ___","SORCERY|SHIELD","A fantasy genre, or a warrior's gear."],["Wicked ___ of the West","WITCH","A green-skinned villain."],["Dragon's ___","LAIR|HOARD","Where the beast keeps its gold."],["Happily ever ___","AFTER","How fairy tales end."],["Once upon a ___","TIME","How fairy tales begin."],["Cast a ___","SPELL","What a wizard does."],["Battle ___","CRY","A shout before a charge."],["Knights of the Round ___","TABLE","King Arthur's crew."],["Ring of ___","FIRE|POWER","A blazing circle, or a magic item."],["Buried ___","TREASURE","What pirates hide."]]},
+musicold: { title: "Music (Before 2000)", distractors: ["BEAT","STAGE","BAND","SONG","DRUM","MIC","CHORD","ALBUM","TOUR","NOTE"], q: [["Elvis ___", "PRESLEY", "The King of Rock and Roll."], ["The Beatles' drummer is Ringo ___", "STARR", "One of the Fab Four."], ["Queen's lead singer is Freddie ___", "MERCURY", "A legendary showman."], ["Michael Jackson is the King of ___", "POP", "The moonwalk master."], ["Led ___", "ZEPPELIN", "A hard-rock band."], ["Pink ___", "FLOYD", "The Dark Side of the Moon band."], ["The Rolling ___", "STONES", "Mick Jagger's band."], ["Snoop ___", "DOGG", "A West Coast rapper."], ["Elton ___", "JOHN", "The Rocket Man."], ["Madonna is the Queen of ___", "POP", "Material girl."], ["AC/___", "DC", "Back in Black band."], ["Guns N' ___", "ROSES", "Axl Rose's band."], ["Bon ___", "JOVI", "New Jersey rockers."], ["Red Hot Chili ___", "PEPPERS", "California funk rockers."], ["Foo ___", "FIGHTERS", "Dave Grohl's band."], ["Kurt ___", "COBAIN", "Nirvana's frontman."], ["Jimi ___", "HENDRIX", "A legendary guitarist."], ["Fleetwood ___", "MAC", "Rumours band."], ["The Beach ___", "BOYS", "Surf rock harmonies."], ["Spice ___", "GIRLS", "Posh, Scary, Baby, Ginger and Sporty."], ["A piano has 88 ___", "KEYS", "Black and white."], ["A guitar usually has six ___", "STRINGS", "You strum them."]] },
+musicnew: { title: "Music (2000 and After)", distractors: ["BEAT","STAGE","BAND","SONG","DRUM","MIC","CHORD","ALBUM","TOUR","NOTE"], q: [["Taylor ___", "SWIFT", "The Eras Tour star."], ["Bruno ___", "MARS", "Uptown Funk singer."], ["Lady ___", "GAGA", "Born This Way singer."], ["Ed ___", "SHEERAN", "A guitar and loop pedal."], ["Eminem's alter ego is Slim ___", "SHADY", "A Detroit rapper."], ["Daft ___", "PUNK", "Robot helmets."], ["Billie ___", "EILISH", "Famous for green hair and low notes."], ["One ___", "DIRECTION", "Harry Styles' boy band."]] },
+memes: { title: "Meme Culture", distractors: ["DOG","FROG","TREND","VIDEO","CLICK","VIRAL","POST","TWEET","EMOJI","GIF"], q: [
+["Distracted ___","BOYFRIEND","Looking at another."],
+["Grumpy ___","CAT","Famous frown."],
+["Rick ___","ASTLEY","The rickroll singer."],
+["Success ___","KID","Fist full of sand."],
+["Bad Luck ___","BRIAN","Awkward yearbook photo."],
+["Good Guy ___","GREG","Always helpful."],
+["Scumbag ___","STEVE","A hat-wearing jerk."],
+["This is ___","FINE","A dog in a burning room."],
+["Woman yelling at a ___","CAT","A white cat at a dinner table."],
+["Nyan ___","CAT","A rainbow trail."],
+["Such ___, very Doge","WOW","Shiba Inu speak."],
+["Keyboard ___","CAT","It plays the piano."],
+["Ice Bucket ___","CHALLENGE","A charity dunk."],
+["Harlem ___","SHAKE","A viral dance."],
+["Gangnam ___","STYLE","Psy's horse dance."],
+["Is this a ___?","PIGEON","A butterfly confusion."],
+["Mocking ___","SPONGEBOB","Tilted chicken text."],
+["Ancient ___ guy","ALIENS","The wild-haired history channel man."],
+["Hide the Pain ___","HAROLD","A forced smile."],
+["Keep Calm and Carry ___","ON","A famous poster."],
+["OK ___","BOOMER","A generational comeback."],
+["Dat ___","BOI","A unicycle frog."],
+["Press F to pay ___","RESPECTS","A gaming tribute."],
+["I Can Has ___?","CHEEZBURGER","A lolcat classic."],
+["Charlie bit my ___","FINGER","A viral brother video."],
+["Dancing ___","BABY","A 90s 3D animation."],
+["Disaster ___","GIRL","Smiling at a fire."],
+["Overly Attached ___","GIRLFRIEND","A creepy stare."],
+["Surprised ___ face","PIKACHU","A shocked Pokémon."],
+["Me and the ___","BOYS","A group of friends."]
+]},
+history: { title: "History", distractors: ["EMPIRE","CROWN","TREATY","SHIP","CASTLE","KNIGHT","TEMPLE","SCROLL","THRONE","ARMY","MAP","KINGDOM"], q: [
+["The ___ Wall fell in 1989","BERLIN","Germany reunited."],
+["The Great Wall of ___","CHINA","Built to stop invaders."],
+["The Titanic hit an ___","ICEBERG","A 1912 disaster."],
+["Christopher ___ sailed in 1492","COLUMBUS","He reached the Americas."],
+["Cleopatra ruled ___","EGYPT","The last pharaoh."],
+["The Pyramids of ___","GIZA","Near Cairo."],
+["Leonardo da ___","VINCI","He painted the Mona Lisa."],
+["Napoleon was exiled to the island of ___","ELBA","His first exile."],
+["The French ___","REVOLUTION","The 1789 uprising."],
+["Abraham ___","LINCOLN","The 16th US president."],
+["The Wright brothers invented the ___","AIRPLANE","First flight in 1903."],
+["Neil ___ walked on the Moon","ARMSTRONG","Apollo 11."],
+["Queen ___ ruled Britain for 63 years","VICTORIA","An entire era is named for her."],
+["Gutenberg invented the printing ___","PRESS","Books for everyone."],
+["Rosa ___","PARKS","She kept her bus seat."],
+["Martin Luther ___ Jr.","KING","He had a dream."],
+["Alexander the ___","GREAT","He conquered much of the known world."],
+["Genghis ___","KHAN","Founder of the Mongol Empire."],
+["The Boston ___ Party","TEA","Colonists dumped it in the harbor."],
+["Magna ___","CARTA","It limited a king's power."],
+["The Colosseum is in ___","ROME","Gladiators fought there."],
+["Henry VIII had six ___","WIVES","A famously married king."],
+["The California Gold ___","RUSH","1849 fortune seekers."],
+["Pearl ___","HARBOR","The 1941 attack."],
+["D-___","DAY","The 1944 Normandy landings."],
+["The Cold ___","WAR","The US versus the Soviet Union."],
+["Lewis and ___","CLARK","They explored the American West."],
+["Marie ___","CURIE","She discovered radium."],
+["Thomas ___ made the practical light bulb","EDISON","Menlo Park inventor."],
+["Alexander Graham ___","BELL","He invented the telephone."]
+]},
+myth: { title: "Mythology", distractors: ["SWORD","SHIELD","CROWN","SERPENT","MOUNTAIN","RIVER","STAR","SPEAR","TEMPLE","WINGS"], q: [
+["Zeus is king of the ___","GODS","He wields lightning bolts."],
+["Thor wields the hammer ___","MJOLNIR","The Norse god of thunder."],
+["Poseidon rules the ___","SEA","He carries a trident."],
+["Hades rules the ___","UNDERWORLD","The land of the dead."],
+["Medusa has snakes for ___","HAIR","Her gaze turns men to stone."],
+["Pegasus is a winged ___","HORSE","Born from Medusa's blood."],
+["Hercules performed twelve ___","LABORS","Impossible tasks."],
+["Achilles' weak spot was his ___","HEEL","A hero of Troy."],
+["Thor's trickster brother is ___","LOKI","The god of mischief."],
+["Anubis has the head of a ___","JACKAL","Egyptian god of the dead."],
+["Ra is the Egyptian ___ god","SUN","He sails across the sky."],
+["Athena is the goddess of ___","WISDOM","Born from Zeus's head."],
+["Ares is the god of ___","WAR","Hot-tempered fighter."],
+["Aphrodite is the goddess of ___","LOVE","Born from sea foam."],
+["The Minotaur lives in a ___","LABYRINTH|MAZE","Half man, half bull."],
+["Cerberus has three ___","HEADS","Guard dog of the underworld."],
+["A phoenix rises from the ___","ASHES","A fiery bird."],
+["Valhalla is a hall for fallen ___","WARRIORS","Odin's great hall."],
+["The Trojan ___","HORSE","A wooden gift full of soldiers."],
+["King Midas turned everything to ___","GOLD","A touch he regretted."],
+["Icarus flew too close to the ___","SUN","His wax wings melted."],
+["Pandora's ___","BOX","She opened it."],
+["Narcissus fell in love with his own ___","REFLECTION","He stared into a pool."],
+["Mount ___ is home to the Greek gods","OLYMPUS","The tallest mountain in Greece."],
+["The Kraken is a giant sea ___","MONSTER","Tentacles drag ships down."],
+["Thor is the god of ___","THUNDER","His chariot is pulled by goats."],
+["Yggdrasil is the world ___","TREE","It connects the Norse realms."],
+["Ganesha has the head of an ___","ELEPHANT","A Hindu remover of obstacles."],
+["Prometheus stole ___ for humans","FIRE","Zeus punished him."],
+["A unicorn has one ___","HORN","A magical horse."]
+]},
+cartoons: { title: "Saturday Morning Cartoons", distractors: ["HERO","ROBOT","MONSTER","ROCKET","CAPE","CASTLE","MAGIC","PIZZA","SNEAKER","SPACE"], q: [
+["Scooby-___","DOO","A Great Dane."],
+["Scooby's best friend is ___","SHAGGY","Always hungry."],
+["I would have gotten away with it if it weren't for you meddling ___!","KIDS","Every Scooby villain says it."],
+["What's up, ___?","DOC","Bugs Bunny's greeting."],
+["That's all, ___!","FOLKS","Porky Pig's sign-off."],
+["Teenage Mutant Ninja ___","TURTLES","Cowabunga!"],
+["By the power of ___!","GRAYSKULL","He-Man's call."],
+["Autobots, ___ out!","ROLL","Optimus Prime's order."],
+["Thundercats, ___!","HO","Lion-O's battle cry."],
+["Care ___","BEARS","They stare to share love."],
+["Captain ___","PLANET","An eco-hero with five rings."],
+["Duck___","TALES","Uncle Scrooge's adventures."],
+["Pinky and the ___","BRAIN","Trying to take over the world."],
+["Dexter's ___","LABORATORY","A boy genius's secret lab."],
+["Powerpuff ___","GIRLS","Blossom, Bubbles and Buttercup."],
+["Hey ___!","ARNOLD","The football-headed kid."],
+["Garfield loves ___","LASAGNA","He hates Mondays."],
+["Fred ___","FLINTSTONE","Lives in Bedrock."],
+["George ___","JETSON","A space-age family man."],
+["Pink ___","PANTHER","A smooth cat."],
+["Johnny ___","BRAVO","Pompadour and sunglasses."],
+["Rugrats: Tommy ___","PICKLES","A fearless baby."],
+["Road ___","RUNNER","Beep beep."],
+["Wile E. ___","COYOTE","An ACME customer."],
+["Daffy ___","DUCK","A Looney Tunes screwball."],
+["Tom and ___","JERRY","Cat and mouse."],
+["Yogi ___","BEAR","Smarter than the average one."],
+["Inspector ___","GADGET","A cyborg detective."],
+["Bugs ___","BUNNY","He loves carrots."],
+["Papa ___","SMURF","He wears a red hat."]
+]},
+sitcomsold: { title: "Sitcoms (Before 2000)", distractors: ["DINER","COUCH","STUDIO","SCHOOL","STREET","TOWN","PARTY","SHOW","KITCHEN"], q: [
+["Friends: We were on a ___!","BREAK","Ross and Rachel's debate."],
+["Joey: How you ___?","DOIN","His famous pickup line."],
+["The Friends hang out at Central ___","PERK","A coffee shop."],
+["Seinfeld: Jerry, George, Elaine and ___","KRAMER","He slides through the door."],
+["Seinfeld: Yada, yada, ___","YADA","Skipping the details."],
+["Newman: Hello, ___","JERRY","A Seinfeld greeting."],
+["Cheers is set in a ___","BAR","Boston, 1980s."],
+["Frasier's brother is ___","NILES","A fussy psychiatrist."],
+["Happy ___","DAYS","Fonzie's show."],
+["Full ___","HOUSE","A San Francisco family."],
+["Full House: How ___!","RUDE","Stephanie's catchphrase."],
+["Home ___","IMPROVEMENT","Tim 'The Tool Man' Taylor."],
+["Saved by the ___","BELL","Zack Morris."],
+["The Golden ___","GIRLS","Four friends in Miami."],
+["Dorothy, Rose, Blanche and ___","SOPHIA","A sharp-tongued Sicilian mom."],
+["Three's ___","COMPANY","Jack, Janet and Chrissy."],
+["The Brady ___","BUNCH","A blended family."],
+["I Love ___","LUCY","Lucille Ball."],
+["Lucy and ___","RICKY","A Cuban bandleader."],
+["Family Matters: Did I do ___?","THAT","Steve Urkel."],
+["Mork & ___","MINDY","An alien played by Robin Williams."],
+["The Fresh Prince of ___","BEL-AIR","West Philadelphia born."],
+["Fresh Prince: Uncle ___","PHIL","Will's rich uncle."],
+["Saved by the Bell: Zack ___","MORRIS","Time out!"],
+["Home Improvement: Tim ___","TAYLOR","Ar ar ar!"],
+["Boy Meets ___","WORLD","Cory and Topanga."],
+["Sabrina the Teenage ___","WITCH","She has a talking cat."],
+["Married with ___","CHILDREN","The Bundys."],
+["Happy Days: Richie ___","CUNNINGHAM","Opie's older friend."],
+["Friends: Smelly ___","CAT","Phoebe's song."]
+]},
+sitcomsnew: { title: "Sitcoms (2000 and After)", distractors: ["DINER","COUCH","STUDIO","SCHOOL","STREET","TOWN","PARTY","SHOW","KITCHEN","OFFICE"], q: [
+["The Office: That's what ___ said","SHE","Michael Scott's joke."],
+["Dunder ___","MIFFLIN","A paper company in Scranton."],
+["Michael ___","SCOTT","World's Best Boss."],
+["Jim ___","HALPERT","He pranks Dwight."],
+["Pam ___","BEESLY","The receptionist."],
+["Dwight ___","SCHRUTE","A beet farmer."],
+["Bears. Beets. Battlestar ___","GALACTICA","Dwight's favorite things."],
+["Parks and ___","RECREATION","Pawnee, Indiana."],
+["Leslie ___","KNOPE","A waffle lover."],
+["Ron ___","SWANSON","He loves bacon and privacy."],
+["Treat yo ___","SELF","Donna and Tom's day."],
+["Modern ___","FAMILY","The Pritchetts and Dunphys."],
+["The Big Bang ___","THEORY","Sheldon and friends."],
+["Sheldon knocks ___ times","THREE","Penny! Penny! Penny!"],
+["How I Met Your ___","MOTHER","Ted's long story."],
+["Barney Stinson: Suit ___!","UP","Legen, wait for it, dary."],
+["Brooklyn Nine-___","NINE","A detective comedy."],
+["Jake ___","PERALTA","An immature detective."],
+["Arrested ___","DEVELOPMENT","The Bluth family."],
+["Community: Troy and ___","ABED","A study group duo."],
+["Schitt's ___","CREEK","A rich family loses everything."],
+["Ew, ___!","DAVID","Alexis's complaint."],
+["Ted ___","LASSO","The Believe sign."],
+["The Good ___","PLACE","An afterlife comedy."],
+["Scrubs: J.D. and ___","TURK","The ultimate bromance."],
+["Malcolm in the ___","MIDDLE","A genius in a chaotic family."],
+["Two and a Half ___","MEN","Charlie, Alan and Jake."],
+["Abbott ___","ELEMENTARY","Philadelphia teachers."],
+["30 ___","ROCK","Tina Fey's show."],
+["Liz ___","LEMON","A night-owl head writer."]
+]}
+};
+
+Object.keys(MORE).forEach(k => DATA[k].q.push(...MORE[k]));
+Object.assign(DATA, NEWCATS);
+const MORE2 = {
+idioms: [
+["Cat got your ___?","TONGUE","Why so quiet?"],
+["Don't put all your eggs in one ___","BASKET","Spread out your risk."],
+["Jump on the ___","BANDWAGON","Join a popular trend."],
+["Pull someone's ___","LEG","Tease them with a joke."],
+["Sleep like a ___","LOG","Sleep very deeply."]
+],
+pop: [
+["You had me at ___","HELLO","A romantic movie line."],
+["Where we're going, we don't need ___","ROADS","A time-travel line."],
+["These aren't the ___ you're looking for","DROIDS","A Jedi mind trick."],
+["I feel the need, the need for ___","SPEED","A fighter pilot's line."],
+["As you ___","WISH","A farmhand's reply."]
+],
+adventure: [
+["Dragon ___","SLAYER","A hero hunts a beast."],
+["Dark ___","LORD","The main villain."],
+["Healing ___","POTION","Restores your health."],
+["Tomb ___","RAIDER","A treasure hunter."],
+["Level ___","UP","You got stronger."]
+],
+memes: [
+["Roll ___","SAFE","You can't be broke if..."],
+["Doge and ___","CHEEMS","A chubby Shiba Inu."],
+["Sad ___ Affleck","BEN","Smoking on a bench."],
+["Crying ___ Jordan","MICHAEL","A tearful face edit."],
+["Confession ___","BEAR","Colorful advice animal."],
+["First World ___","PROBLEMS","Tiny complaints."],
+["One does not simply walk into ___","MORDOR","Boromir's warning."],
+["Condescending ___","WONKA","A smug chocolatier."],
+["Expanding ___","BRAIN","Glowing stages of genius."],
+["Always has ___","BEEN","Two astronauts and Earth."],
+["Change My ___","MIND","A man at a table with a mug."],
+["The floor is ___","LAVA","A living room game."],
+["Mannequin ___","CHALLENGE","Everyone freezes."],
+["Salt ___","BAE","A famous chef sprinkle."],
+["Baby ___","YODA","A tiny green sip of soup."],
+["Epic ___","FAIL","A spectacular mistake."],
+["Shut up and take my ___","MONEY","A Futurama classic."],
+["Left ___","SHARK","A halftime dancer."],
+["Coffin ___","DANCE","Pallbearers boogie."],
+["Chuck Norris ___","FACTS","Absurd tough-guy jokes."]
+],
+history: [
+["Julius ___","CAESAR","A Roman dictator."],
+["George ___ was the first US president","WASHINGTON","Cherry tree myth."],
+["Joan of ___","ARC","A French teen warrior."],
+["The Black ___","DEATH|PLAGUE","A medieval pandemic."],
+["The Silk ___","ROAD","An ancient trade route."],
+["The Mayflower carried the ___","PILGRIMS","A 1620 voyage."],
+["King Tut's tomb is in the Valley of the ___","KINGS","A boy pharaoh."],
+["The Great Fire of ___","LONDON","1666 blaze."],
+["The Stone ___","AGE","Early humans used tools."],
+["The Underground ___","RAILROAD","A path to freedom."],
+["The Statue of ___","LIBERTY","A gift from France."],
+["Mount ___ has four presidents carved in it","RUSHMORE","South Dakota."],
+["Ancient Greeks held the first ___ Games","OLYMPIC","In Olympia."],
+["Marco ___","POLO","He traveled to China."],
+["Nelson ___","MANDELA","South Africa's president."],
+["Mahatma ___","GANDHI","He led India's peaceful protest."],
+["Florence ___","NIGHTINGALE","The lady with the lamp."],
+["Harriet ___","TUBMAN","She guided people to freedom."],
+["Amelia ___","EARHART","Pilot who vanished in 1937."],
+["Sir Isaac ___","NEWTON","The apple and gravity."]
+],
+myth: [
+["Hermes wears winged ___","SANDALS|SHOES","He's the messenger."],
+["Artemis is the goddess of the ___","HUNT","She carries a bow."],
+["Apollo is the god of ___","MUSIC|SUN","He plays the lyre."],
+["Demeter is the goddess of the ___","HARVEST","Grain and crops."],
+["Dionysus is the god of ___","WINE","Party god."],
+["Hephaestus is the god of the ___","FORGE","Blacksmith of the gods."],
+["Odin has one ___","EYE","He traded the other for wisdom."],
+["Fenrir is a giant ___","WOLF","Chained by the Norse gods."],
+["Ragnarok is the end of the ___","WORLD","A Norse doomsday."],
+["Anubis weighs your heart against a ___","FEATHER","Egyptian afterlife test."],
+["Horus has the head of a ___","FALCON","The sky god."],
+["The Sphinx asks a ___","RIDDLE","Answer or be eaten."],
+["Theseus slays the ___","MINOTAUR","In a labyrinth."],
+["Perseus beheads ___","MEDUSA","With a mirrored shield."],
+["Odysseus sails home to ___","ITHACA","A ten-year voyage."],
+["Cut off one head of the Hydra and two grow ___","BACK","A many-headed beast."],
+["Merlin is a ___","WIZARD","King Arthur's advisor."],
+["A mermaid has the tail of a ___","FISH","A sea folk legend."],
+["Centaurs are half man, half ___","HORSE","Greek forest creatures."],
+["Excalibur is King Arthur's ___","SWORD","Pulled from a stone."]
+],
+cartoons: [
+["Mickey ___","MOUSE","Disney's mascot."],
+["Donald ___","DUCK","He has a temper."],
+["Rocky and ___","BULLWINKLE","A squirrel and a moose."],
+["Jonny ___","QUEST","A boy adventurer."],
+["Space ___","GHOST","A caped coast-to-coast hero."],
+["Top ___","CAT","Boss of an alley gang."],
+["Hong Kong ___","PHOOEY","A kung-fu dog."],
+["Chip 'n' ___","DALE","Rescue Ranger chipmunks."],
+["Rescue ___","RANGERS","A chipmunk detective team."],
+["Yakko, Wakko and ___","DOT","The Warner siblings."],
+["Looney ___","TUNES","Bugs and friends."],
+["Merrie ___","MELODIES","Another Warner cartoon series."],
+["Dennis the ___","MENACE","A mischievous kid."],
+["SpongeBob Square___","PANTS","He lives in a pineapple."],
+["Ed, Edd n ___","EDDY","Three scheming friends."],
+["Kim ___","POSSIBLE","A teen secret agent."],
+["Danny ___","PHANTOM","A ghost-powered teen."],
+["Jimmy ___","NEUTRON","A boy genius."],
+["Samurai ___","JACK","A time-lost swordsman."],
+["Muppet ___","BABIES","Little Kermit and friends."]
+],
+sitcomsold: [
+["Cheers: Sam ___","MALONE","A bartender and former pitcher."],
+["Frasier's dog is named ___","EDDIE","He stares at Frasier."],
+["Festivus for the rest of ___","US","A holiday on Seinfeld."],
+["No soup for ___!","YOU","The Soup Nazi."],
+["Ross's pet monkey is ___","MARCEL","A Friends sidekick."],
+["Fresh Prince: Carlton ___","BANKS","A dancing cousin."],
+["Full House: Uncle ___","JESSE","Rock-and-roll roommate."],
+["Home Improvement's Wilson talks over a ___","FENCE","Only his eyes show."],
+["Family Matters: Carl ___","WINSLOW","A police officer dad."],
+["Roseanne: Dan ___","CONNER","Her husband."],
+["Gilligan's ___","ISLAND","Stranded on a three-hour tour."],
+["The Beverly ___","HILLBILLIES","A family strikes oil."],
+["Leave It to ___","BEAVER","A 1950s boy."],
+["The Andy ___ Show","GRIFFITH","Mayberry's sheriff."],
+["I Dream of ___","JEANNIE","A genie in a bottle."],
+["Mister Ed is a talking ___","HORSE","Wilbur's friend."],
+["The Addams ___","FAMILY","Spooky and kooky."],
+["Will & ___","GRACE","Two best friends in New York."],
+["Everybody Loves ___","RAYMOND","A sportswriter and his family."],
+["3rd Rock from the ___","SUN","Aliens live on Earth."]
+],
+sitcomsnew: [
+["Kevin's famous ___","CHILI","He spilled it."],
+["Li'l ___","SEBASTIAN","Pawnee's miniature horse."],
+["Galentine's ___","DAY","Leslie's holiday for friends."],
+["Sheldon's spot on the ___","COUCH","Don't sit there."],
+["The Bro ___","CODE","Barney's rule book."],
+["MacLaren's ___","PUB","Where the gang hangs out."],
+["Captain Raymond ___","HOLT","A deadpan boss."],
+["Greendale Community ___","COLLEGE","A study-group school."],
+["Six seasons and a ___","MOVIE","A Community rallying cry."],
+["There's always money in the banana ___","STAND","A Bluth saying."],
+["Fold in the ___","CHEESE","Moira's cooking order."],
+["Ted Lasso: Be a ___","GOLDFISH","Forget your mistakes."],
+["Janine ___","TEAGUES","A second-grade teacher."],
+["30 Rock: Jack ___","DONAGHY","The network executive."],
+["Kenneth the ___","PAGE","A cheerful NBC employee."],
+["It's Always Sunny in ___","PHILADELPHIA","The Gang's hometown."],
+["Curb Your ___","ENTHUSIASM","Larry David's comedy."],
+["The IT ___","CROWD","Basement tech support."],
+["Sheldon's grandmother is ___","MEEMAW","Young Sheldon's family."],
+["Jake is Charlie's ___","NEPHEW","Two and a Half Men."]
+],
+musicold: [
+["Chuck ___","BERRY","Duck-walking guitarist."],
+["Johnny ___","CASH","The Man in Black."],
+["Folk legend Bob ___","DYLAN","A folk legend."],
+["Aretha ___","FRANKLIN","Queen of Soul."],
+["Stevie ___","WONDER","A blind soul legend."],
+["Marvin ___","GAYE","What's Going On singer."],
+["Diana ___","ROSS","Lead singer of the Supremes."],
+["James ___","BROWN","Godfather of Soul."],
+["Ray ___","CHARLES","Soulful piano legend."],
+["Frank ___","SINATRA","Ol' Blue Eyes."],
+["Louis ___","ARMSTRONG","A jazz trumpeter."],
+["Ella ___","FITZGERALD","First Lady of Song."],
+["Reggae king Bob ___","MARLEY","One Love."],
+["Dolly ___","PARTON","Country queen."],
+["Willie ___","NELSON","A braided outlaw."],
+["Janis ___","JOPLIN","A Woodstock-era voice."],
+["Paul ___","MCCARTNEY","A Beatle bassist."],
+["John ___","LENNON","A Beatle who sang Imagine."],
+["David ___","BOWIE","Ziggy Stardust."],
+["Mick ___","JAGGER","Rolling Stones frontman."],
+["Jim ___","MORRISON","The Doors' singer."],
+["Eric ___","CLAPTON","A blues guitar legend."],
+["Neil ___","YOUNG","Harvest and Heart of Gold."],
+["Billy ___","JOEL","The Piano Man."],
+["The Bee ___","GEES","Disco brothers."],
+["Black ___","SABBATH","Ozzy's metal band."],
+["Deep ___","PURPLE","They wrote Smoke on the Water."],
+["Iron ___","MAIDEN","Metal band with Eddie."]
+],
+musicnew: [
+["Beyoncé is married to Jay-___","Z","A hip-hop mogul."],
+["Kendrick ___","LAMAR","A Compton rapper."],
+["Harry ___","STYLES","Former One Direction star."],
+["Dua ___","LIPA","A British pop star."],
+["Olivia ___","RODRIGO","Drivers License singer."],
+["Post ___","MALONE","A tattooed pop-rap star."],
+["Travis ___","SCOTT","Astroworld rapper."],
+["Cardi ___","B","Bodak Yellow rapper."],
+["Nicki ___","MINAJ","Queen of rap's Barbz."],
+["Megan Thee ___","STALLION","A hot-girl rapper."],
+["Doja ___","CAT","Say So singer."],
+["Lil Nas ___","X","Old Town Road star."],
+["Imagine ___","DRAGONS","Believer band."],
+["Coldplay's Chris ___","MARTIN","The band's singer."],
+["Maroon ___","FIVE","Adam Levine's band."],
+["Twenty One ___","PILOTS","A duo from Ohio."],
+["Panic! At the ___","DISCO","Brendon Urie's band."],
+["Fall Out ___","BOY","Pop-punk favorites."],
+["My Chemical ___","ROMANCE","Emo band with Gerard Way."],
+["Linkin ___","PARK","Chester Bennington's band."],
+["Arctic ___","MONKEYS","Sheffield indie rockers."],
+["Kings of ___","LEON","Sex on Fire band."],
+["Lana Del ___","REY","Dreamy, cinematic pop."],
+["Justin ___","BIEBER","Discovered on YouTube."],
+["Selena ___","GOMEZ","Singer and actress."],
+["Ariana ___","GRANDE","Famous high notes."],
+["Shawn ___","MENDES","Canadian pop star."],
+["Katy ___","PERRY","Roar singer."],
+["Miley ___","CYRUS","Hannah Montana star."],
+["Demi ___","LOVATO","Disney Channel to pop."],
+["Jonas ___","BROTHERS","Three-brother pop band."],
+["BTS is from South ___","KOREA","A K-pop giant."],
+["Bad ___","BUNNY","A Puerto Rican superstar."],
+["Sabrina ___","CARPENTER","Espresso singer."],
+["Pharrell ___","WILLIAMS","Happy singer."],
+["Kanye ___","WEST","A Chicago rapper and producer."],
+["Lil ___","WAYNE","A New Orleans rapper."],
+["Alicia ___","KEYS","A piano-playing singer."],
+["Norah ___","JONES","Don't Know Why singer."],
+["Amy ___","WINEHOUSE","A retro soul voice."],
+["Mumford & ___","SONS","A folk-rock banjo band."],
+["Kelly ___","CLARKSON","The first American Idol."]
+]
+};
+
+const NEWCATS2 = {
+sports: { title: "Sports", distractors: ["BALL","TEAM","COACH","SCORE","FIELD","COURT","TROPHY","MEDAL","JERSEY","ARENA","WHISTLE","STADIUM"], q: [
+["Basketball's Michael ___","JORDAN","Six titles with the Bulls."],
+["LeBron ___","JAMES","A four-time NBA champion."],
+["Serena ___","WILLIAMS","A tennis legend."],
+["Quarterback Tom ___","BRADY","Seven Super Bowl wins."],
+["Lionel ___","MESSI","An Argentine soccer star."],
+["Cristiano ___","RONALDO","A Portuguese soccer star."],
+["Usain ___","BOLT","The world's fastest man."],
+["Muhammad ___","ALI","The Greatest."],
+["Tiger ___","WOODS","A golf superstar."],
+["Babe ___","RUTH","The Sultan of Swat."],
+["Wayne ___","GRETZKY","The Great One."],
+["Simone ___","BILES","A gymnastics champion."],
+["Swimmer Michael ___","PHELPS","23 Olympic golds."],
+["Stephen ___","CURRY","A three-point sharpshooter."],
+["Patrick ___","MAHOMES","A Chiefs quarterback."],
+["Roger ___","FEDERER","A Swiss tennis star."],
+["Kobe ___","BRYANT","Black Mamba."],
+["Shaquille O'___","NEAL","Shaq."],
+["Pelé played for ___","BRAZIL","A three-time World Cup winner."],
+["Skateboarder Tony ___","HAWK","The 900 trick."],
+["Lewis ___","HAMILTON","A Formula 1 champion."],
+["Serena and Venus play ___","TENNIS","The Williams sisters' sport."],
+["The Super ___","BOWL","The NFL's final game."],
+["The World ___","CUP","Soccer's biggest event."],
+["Slam ___","DUNK","A basketball finisher."],
+["Home ___","RUN","Over the outfield wall."],
+["Hat ___","TRICK","Three goals in one game."],
+["Grand ___","SLAM","Win all four majors."],
+["Tour de ___","FRANCE","A famous bike race."],
+["The Stanley ___","CUP","The NHL trophy."],
+["In tennis, a score of zero is ___","LOVE","Not a feeling."],
+["In golf, one under par is a ___","BIRDIE","A bird-named score."],
+["Hockey players hit a ___","PUCK","A rubber disc."],
+["Wimbledon is played on ___ courts","GRASS","Strawberries and cream."],
+["A marathon is 26.2 ___","MILES","A long run."],
+["Chicago ___","BULLS","Jordan's team."],
+["Los Angeles ___","LAKERS","Purple and gold."],
+["New York ___","YANKEES","Pinstripes."],
+["Green Bay ___","PACKERS","Cheeseheads."],
+["Dallas ___","COWBOYS","America's Team."],
+["Kansas City ___","CHIEFS","Mahomes' team."],
+["The Masters winner gets a green ___","JACKET","Augusta National tradition."],
+["A red card sends the player ___","OFF","Soccer ejection."],
+["Butterfly, backstroke, freestyle and ___","BREASTSTROKE","The four swim strokes."],
+["Knocking down all the pins in one roll is a ___","STRIKE","A bowling term."],
+["Basketball: shoot a free ___","THROW","From the foul line."],
+["A quarterback throws a ___","PASS","To a receiver."],
+["A punch that ends the fight is a ___","KNOCKOUT","Boxing."],
+["The Olympic symbol has five ___","RINGS","Interlocking circles."],
+["Penalty ___","KICK","A soccer shot from the spot."]
+]},
+eighties: { title: "The 80s", distractors: ["BOOM","BOX","TAPE","ARCADE","NEON","VIDEO","RADIO","DISCO","SYNTH","MALL","JEANS"], q: [
+["Rubik's ___","CUBE","A twisty puzzle."],
+["Teddy ___","RUXPIN","A talking bear."],
+["Cabbage Patch ___","KIDS","Dolls with birth certificates."],
+["My Little ___","PONY","Colorful toy horses."],
+["Transformers: More than meets the ___","EYE","Robots in disguise."],
+["He-Man and the Masters of the ___","UNIVERSE","I have the power!"],
+["Nintendo Game ___","BOY","A handheld with Tetris."],
+["Michael Jackson's album ___","THRILLER","Best-selling ever."],
+["Purple ___","RAIN","A Prince hit."],
+["Dirty ___","DANCING","The time of my life movie."],
+["Pretty in ___","PINK","A John Hughes film."],
+["Sixteen ___","CANDLES","A teen birthday movie."],
+["Weird ___","SCIENCE","Two nerds make a woman."],
+["The Princess ___","BRIDE","As you wish."],
+["Stand by ___","ME","Four boys on a rail trek."],
+["Beverly Hills ___","COP","Eddie Murphy."],
+["Rain ___","MAN","Dustin Hoffman's film."],
+["Die ___","HARD","John McClane."],
+["Robo___","COP","Part man, part machine."],
+["Gremlins: Never feed them after ___","MIDNIGHT","Rule number three."],
+["Miami ___","VICE","Pastel suits and cops."],
+["The A-___","TEAM","I love it when a plan comes together."],
+["Knight ___","RIDER","A talking black car."],
+["Family ___","TIES","Alex P. Keaton's sitcom."],
+["Who's the ___?","BOSS","A housekeeper sitcom."],
+["Growing ___","PAINS","The Seavers family."],
+["Punky ___","BREWSTER","A girl with colorful clothes."],
+["Mister Rogers' ___","NEIGHBORHOOD","Won't you be my neighbor."],
+["Sony ___","WALKMAN","Portable cassettes."],
+["I want my ___!","MTV","A music TV slogan."],
+["Duran ___","DURAN","New wave band."],
+["Def ___","LEPPARD","Pour Some Sugar band."],
+["Van ___","HALEN","Eruption guitarist's band."],
+["Cyndi ___","LAUPER","Girls just want fun."],
+["Whitney ___","HOUSTON","A powerhouse voice."],
+["Boy ___","GEORGE","Culture Club's singer."],
+["Run-___","DMC","Rap pioneers."],
+["Billy ___","IDOL","White Wedding rocker."],
+["Tina ___","TURNER","Simply the Best."],
+["Bruce ___","SPRINGSTEEN","The Boss."],
+["Phil ___","COLLINS","A drummer who sang."],
+["Beastie ___","BOYS","Fight for Your Right rappers."],
+["Culture ___","CLUB","Karma Chameleon band."],
+["Talking ___","HEADS","David Byrne's band."],
+["Leg ___","WARMERS","Aerobics fashion."],
+["Parachute ___","PANTS","Shiny baggy pants."],
+["Big ___","HAIR","Hair spray required."],
+["Valley ___","GIRL","A 1980s slang stereotype."],
+["Ms. Pac-___","MAN","An arcade sequel."],
+["Space ___","INVADERS","Aliens descend in rows."]
+]},
+nineties: { title: "The 90s", distractors: ["MODEM","PAGER","TAPE","MALL","GRUNGE","FLANNEL","BOX","DISC","CHAT","SCREEN","NETWORK"], q: [
+["Beanie ___","BABIES","Collectible stuffed animals."],
+["Tamagotchi is a virtual ___","PET","Keep it fed."],
+["Sega ___","GENESIS","Sonic's console."],
+["Super ___","NINTENDO","The SNES."],
+["Sony ___","PLAYSTATION","A 1994 console."],
+["Tickle Me ___","ELMO","A giggling toy craze."],
+["Slap ___","BRACELETS","Wrist wraps."],
+["Backstreet ___","BOYS","A boy band."],
+["Britney ___","SPEARS","Baby One More Time singer."],
+["Destiny's ___","CHILD","Beyoncé's first group."],
+["Mariah ___","CAREY","The five-octave voice."],
+["Celine ___","DION","The Titanic singer."],
+["Smashing ___","PUMPKINS","A Chicago rock band."],
+["Pearl ___","JAM","Eddie Vedder's band."],
+["Green ___","DAY","Dookie punk band."],
+["Tupac ___","SHAKUR","A rapper known as 2Pac."],
+["Do the ___","MACARENA","A 1996 dance craze."],
+["Toy ___","STORY","Woody and Buzz."],
+["Forrest ___","GUMP","Life is like a box of chocolates."],
+["Men in ___","BLACK","Neuralyzer-wielding agents."],
+["Independence ___","DAY","Aliens attack the White House."],
+["Austin ___","POWERS","International man of mystery."],
+["Mrs. ___","DOUBTFIRE","Robin Williams as a nanny."],
+["Ace ___","VENTURA","Pet detective."],
+["Wayne's ___","WORLD","Party on, Garth!"],
+["Dumb and ___","DUMBER","Lloyd and Harry."],
+["Space ___","JAM","Michael Jordan and Bugs Bunny."],
+["Sister ___","ACT","Whoopi Goldberg in a habit."],
+["Babe: That'll do, ___","PIG","A sheep-herding hero."],
+["Casper the Friendly ___","GHOST","A kind spirit."],
+["Hocus ___","POCUS","Three witches in Salem."],
+["Jumanji: a jungle board ___","GAME","Roll to play."],
+["The X-___","FILES","Mulder and Scully."],
+["Buffy the Vampire ___","SLAYER","The Chosen One."],
+["Homer ___","SIMPSON","D'oh!"],
+["South ___","PARK","Kenny dies again."],
+["Dawson's ___","CREEK","A teen drama."],
+["Power ___","RANGERS","Go go!"],
+["Blue's ___","CLUES","A puppy's paw prints."],
+["Barney is a purple ___","DINOSAUR","I love you, you love me."],
+["Cow and ___","CHICKEN","Odd animal siblings."],
+["Ren & ___","STIMPY","A chihuahua and a cat."],
+["Courage the Cowardly ___","DOG","A pink pup in Nowhere."],
+["Are You Afraid of the ___?","DARK","Midnight Society stories."],
+["Bill Nye the Science ___","GUY","Bill! Bill! Bill!"],
+["You've got ___!","MAIL","An AOL greeting."],
+["The Y2K ___","BUG","A millennium scare."],
+["Be kind, ___","REWIND","A video store sticker."],
+["Ask ___","JEEVES","A butler search engine."],
+["Dream ___","TEAM","The 1992 Olympic basketball squad."]
+]}
+};
+
+Object.keys(MORE2).forEach(k => DATA[k].q.push(...MORE2[k]));
+Object.assign(DATA, NEWCATS2);
+
+// Questions starting with these are hidden in Kid-friendly mode
+const ADULT = ["Death ___","Chainsaw","Tokyo ___","Jujutsu","Attack on","Solo ___","Mortal","Grand Theft","Red Dead","Call of","God of","Resident","The Last of","Elden","Skyrim","Suicide","Harley","Frankly","Here's ___","Say hello","I'll make him","Go ahead","Gentlemen","Now I am","John ___","Mad Max","Fast &","May the odds","Fear is","I'll be","Are you not","Oshi no","Eren","Light ___","Satoru","Why so","Bane broke","Mob ___","I see ___","Keep your friends","Show me","Ryuk","Hela","Die ___","Robo","Beverly Hills","Miami ___","South ___"];
+
+const $ = id => document.getElementById(id);
+const shuffle = a => a.map(v => [Math.random(), v]).sort((x, y) => x[0] - y[0]).map(p => p[1]);
+const COLORS = ["#fbbf24", "#c084fc", "#f472b6", "#34d399"];
+const GROUPS = [
+  ["Superheroes", [["marvel", "🦸"], ["dc", "🦇"]]],
+  ["Anime", [["oldanime", "📼"], ["newanime", "⚡"]]],
+  ["Games and Movies", [["games", "🎮"], ["oldmovies", "🎞️"], ["newmovies", "🎬"], ["pop", "🍿"], ["adventure", "⚔️"]]],
+  ["TV", [["cartoons", "📺"], ["sitcomsold", "🛋️"], ["sitcomsnew", "😂"]]],
+  ["Decades", [["eighties", "🕹️"], ["nineties", "💿"]]],
+  ["Culture and Knowledge", [["musicold", "🎸"], ["musicnew", "🎧"], ["sports", "🏆"], ["memes", "🐸"], ["history", "🏛️"], ["myth", "🐉"], ["idioms", "💬"]]]
+];
+const GOALS = [50, 100, 150, 200, 300, 400, 500];
+const TIMES = { easy: 90, normal: 60, hard: 30 };
+const COUNTS = { easy: 5, normal: 10, hard: 20 };
+const STREAK = { 3: 5, 5: 10, 10: 25, 15: 40, 20: 60 };
+let picks = [], asked = 0, cfg, names, order, players, cur, pool, current, selected, timeLeft, timer, state, qStart, hintUsed;
+let musicOn = true, sfxOn = true, actx, musicTimer, step = 0;
+
+/* ---------- Saved progress ---------- */
+const LS = {
+  get(k, d) { try { const v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+};
+const prof = Object.assign({ mbCorrect: 0, games: 0, correct: 0, speed: 0, bestStreak: 0, wins: 0, best: 0, cleared: 0, cat: {}, hs: {}, unlocked: [], equip: null }, LS.get("fs_prof", {}));
+const TITLES = [
+  { id: "rookie", n: "Rookie", d: "Play your first game", ok: s => s.games >= 1 },
+  { id: "quick", n: "Quick Draw", d: "Earn 10 speed bonuses", ok: s => s.speed >= 10 },
+  { id: "fire", n: "On Fire", d: "Reach a 5 answer streak", ok: s => s.bestStreak >= 5 },
+  { id: "unstop", n: "Unstoppable", d: "Reach a 10 answer streak", ok: s => s.bestStreak >= 10 },
+  { id: "hero", n: "Trivia Hero", d: "Get 100 correct answers in total", ok: s => s.correct >= 100 },
+  { id: "legend", n: "Living Legend", d: "Get 500 correct answers in total", ok: s => s.correct >= 500 },
+  { id: "champ", n: "Champion", d: "Win 3 Head to Head games", ok: s => s.wins >= 3 },
+  { id: "roller", n: "High Roller", d: "Score 200 points in one turn", ok: s => s.best >= 200 },
+  { id: "clear", n: "Completionist", d: "Clear every question in a category", ok: s => s.cleared >= 1 },
+  { id: "brain", n: "Big Brain", d: "Get 50 correct in Mind Bender mode", ok: s => s.mbCorrect >= 50 },
+  ...Object.entries(DATA).map(([k, p]) => ({ id: "c_" + k, n: p.title + " Master", d: "Get 40 correct in " + p.title, ok: s => (s.cat[k] || 0) >= 40 }))
+];
+const titleName = id => (TITLES.find(t => t.id === id) || {}).n;
+
+/* ---------- Audio (synthesized, no files) ---------- */
+function ac() {
+  if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
+  if (actx.state === "suspended") actx.resume();
+  return actx;
+}
+function tone(f, when, d, type, v) {
+  const c = ac(), o = c.createOscillator(), g = c.createGain(), t = c.currentTime + when;
+  o.type = type; o.frequency.value = f;
+  g.gain.setValueAtTime(v, t);
+  g.gain.exponentialRampToValueAtTime(0.001, t + d);
+  o.connect(g); g.connect(c.destination);
+  o.start(t); o.stop(t + d + 0.02);
+}
+const sfx = {
+  good() { [660, 880, 1320].forEach((f, i) => tone(f, i * 0.08, 0.25, "triangle", 0.2)); },
+  bad() { tone(150, 0, 0.35, "sawtooth", 0.25); tone(110, 0.12, 0.4, "sawtooth", 0.25); },
+  tick() { tone(1000, 0, 0.05, "square", 0.06); },
+  buzzer() { tone(110, 0, 1, "square", 0.25); tone(116, 0, 1, "sawtooth", 0.15); },
+  goal() { [784, 988, 1175, 1568].forEach((f, i) => tone(f, 0.25 + i * 0.09, 0.3, "triangle", 0.2)); },
+  win() { [523, 659, 784, 1047, 784, 1047, 1319].forEach((f, i) => tone(f, i * 0.13, 0.35, "triangle", 0.22)); }
+};
+const play = n => { if (sfxOn) try { sfx[n](); } catch (e) {} };
+
+// Original quiz-show style loop (not any TV theme)
+const M = n => 440 * 2 ** ((n - 69) / 12);
+const MEL = [72,0,75,0,79,0,75,0, 77,0,74,0,70,0,74,0, 72,0,75,0,79,0,84,0, 82,0,79,0,75,0,70,0];
+const BASS = [48,0,0,0,48,0,0,0, 46,0,0,0,46,0,0,0, 44,0,0,0,44,0,0,0, 43,0,0,0,43,0,0,0];
+function musicTick() {
+  const i = step++ % 32;
+  if (MEL[i]) tone(M(MEL[i]), 0, 0.16, "square", 0.035);
+  if (BASS[i]) tone(M(BASS[i]), 0, 0.5, "triangle", 0.09);
+}
+function startMusic() { stopMusic(); if (!musicOn) return; try { ac(); musicTimer = setInterval(musicTick, 170); } catch (e) {} }
+function stopMusic() { clearInterval(musicTimer); musicTimer = null; }
+
+$("musicBtn").onclick = () => {
+  musicOn = !musicOn;
+  $("musicBtn").textContent = "🎵 Music: " + (musicOn ? "On" : "Off");
+  $("musicBtn").classList.toggle("off", !musicOn);
+  $("musicBtn").setAttribute("aria-pressed", musicOn);
+  if (!musicOn) stopMusic(); else if (state === "playing" || state === "answered") startMusic();
+};
+$("sfxBtn").onclick = () => {
+  sfxOn = !sfxOn;
+  $("sfxBtn").textContent = "🔊 Sound: " + (sfxOn ? "On" : "Off");
+  $("sfxBtn").classList.toggle("off", !sfxOn);
+  $("sfxBtn").setAttribute("aria-pressed", sfxOn);
+};
+
+/* ---------- Effects ---------- */
+function shake() {
+  const w = document.querySelector(".wrap");
+  w.classList.remove("shake"); void w.offsetWidth; w.classList.add("shake");
+  if (navigator.vibrate) navigator.vibrate(200);
+}
+function toast(t) {
+  const e = $("toast"); e.textContent = t; e.classList.remove("hidden");
+  clearTimeout(toast.t); toast.t = setTimeout(() => e.classList.add("hidden"), 1800);
+}
+function confetti() {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const c = $("fx"), x = c.getContext("2d");
+  c.width = innerWidth; c.height = innerHeight;
+  const ps = Array.from({ length: 160 }, () => ({
+    x: Math.random() * c.width, y: -20 - Math.random() * c.height * 0.5,
+    vx: Math.random() * 4 - 2, vy: Math.random() * 3 + 2, s: Math.random() * 8 + 4,
+    col: ["#fbbf24", "#c084fc", "#f9a8d4", "#fde68a", "#a78bfa", "#ffffff"][Math.floor(Math.random() * 6)]
+  }));
+  let f = 0;
+  (function a() {
+    x.clearRect(0, 0, c.width, c.height);
+    ps.forEach(p => { p.x += p.vx; p.y += p.vy; x.fillStyle = p.col; x.fillRect(p.x, p.y, p.s, p.s * 0.6); });
+    if (++f < 260) requestAnimationFrame(a); else x.clearRect(0, 0, c.width, c.height);
+  })();
+}
+
+/* ---------- Setup screen ---------- */
+const ANS = {};
+function answersOf(k) {
+  return ANS[k] || (ANS[k] = [...new Set(DATA[k].q.flatMap(q => q[1].split("|")))]);
+}
+// Mind Bender: look-alike wrong answers taken from the same category, ranked by how similar they are to the right one
+function lookAlikes(q, n) {
+  const own = q.answers.map(a => a.toUpperCase()), b = own[0];
+  return answersOf(q.k).filter(a => !own.includes(a.toUpperCase())).map(a => {
+    let sc = Math.random() * 3;
+    if (a[0] === b[0]) sc += 3;
+    sc += Math.max(0, 3 - Math.abs(a.length - b.length));
+    sc += [...new Set(a)].filter(c => b.includes(c)).length / 3;
+    return [sc, a];
+  }).sort((x, y) => y[0] - x[0]).slice(0, n).map(x => x[1]);
+}
+function poolFor(keys, kid) {
+  const out = [], seen = new Set();
+  Object.entries(DATA).forEach(([k, p]) => {
+    if (keys.length && !keys.includes(k)) return;
+    p.q.forEach(q => {
+      if (kid && ADULT.some(a => q[0].startsWith(a))) return;
+      const id = q[0].toLowerCase().replace(/[^a-z_ ]/g, "") + "|" + q[1];
+      if (seen.has(id)) return; seen.add(id);
+      const x = [...q]; x.d = p.distractors; x.c = p.title; x.k = k; out.push(x);
+    });
+  });
+  return out;
+}
+function fillLevels() {
+  const sel = $("difficulty"), v = sel.value || "normal", t = $("mode").value === "timed";
+  sel.innerHTML = [
+    ["easy", t ? "Easy (90 seconds)" : "Quick (5 questions)"],
+    ["normal", t ? "Normal (60 seconds)" : "Normal (10 questions)"],
+    ["hard", t ? "Hard (30 seconds)" : "Long (20 questions)"]
+  ].map(([k, l]) => `<option value="${k}">${l}</option>`).join("");
+  sel.value = v;
+  document.querySelector('label[for="difficulty"]').textContent = t ? "DIFFICULTY" : "ROUND LENGTH";
+}
+const hsKey = (key, kid) => `${key}|${$("mode").value}-${$("difficulty").value}|${kid ? 1 : 0}` + ($("mb").checked ? "|mb" : "");
+function renderCats() {
+  const kid = $("kid").checked, box = $("cats");
+  box.innerHTML = "";
+  const tile = (key, em, label, count, cls) => {
+    const on = key === "mix" ? !picks.length : picks.includes(key);
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "tile " + (cls || "") + (on ? " sel" : "");
+    b.setAttribute("aria-pressed", on);
+    const e = document.createElement("span"); e.className = "em"; e.textContent = em;
+    const t = document.createElement("span"); t.textContent = label;
+    const c = document.createElement("small"); c.textContent = count + " questions";
+    t.appendChild(c); b.append(e, t);
+    b.onclick = () => pick(key);
+    return b;
+  };
+  box.appendChild(tile("mix", "🎲", "Mix: all categories", poolFor([], kid).length, "mix"));
+  GROUPS.forEach(([name, items]) => {
+    const g = document.createElement("div"); g.className = "cg";
+    const h = document.createElement("h4"); h.textContent = name.toUpperCase();
+    const grid = document.createElement("div"); grid.className = "tiles";
+    items.forEach(([k, em]) => grid.appendChild(tile(k, em, DATA[k].title, poolFor([k], kid).length)));
+    g.append(h, grid); box.appendChild(g);
+  });
+  $("pickInfo").textContent = picks.length
+    ? `${picks.length} of 4 chosen (${poolFor(picks, kid).length} questions): ` + picks.map(k => DATA[k].title).join(", ")
+    : "Playing all categories. Tap tiles to choose up to 4.";
+}
+function pick(key) {
+  if (key === "mix") picks = [];
+  else if (picks.includes(key)) picks = picks.filter(k => k !== key);
+  else if (picks.length >= 4) return toast("You can pick up to 4 categories");
+  else picks.push(key);
+  setupInfo();
+}
+const catKey = () => picks.length ? [...picks].sort().join("+") : "mix";
+function setupInfo() {
+  const kid = $("kid").checked, key = catKey();
+  renderCats();
+  const b = prof.hs[hsKey(key, kid)] || 0;
+  $("best").textContent = b ? `🏆 Your best turn for this setup: ${b}` : "No high score here yet. Set one!";
+  $("titlesBtn").textContent = `🏅 Titles (${prof.unlocked.length}/${TITLES.length})` + (prof.equip ? ": " + titleName(prof.equip) : "");
+}
+function renderNames() {
+  const n = +$("players").value, saved = LS.get("fs_names", []);
+  $("names").innerHTML = "";
+  for (let i = 0; i < n; i++) {
+    const e = document.createElement("input");
+    e.className = "nm"; e.maxLength = 12; e.value = saved[i] || "";
+    e.placeholder = n > 1 ? "Player " + (i + 1) : "Your name (optional)";
+    e.style.borderColor = COLORS[i];
+    $("names").appendChild(e);
+  }
+}
+["difficulty", "kid", "mb"].forEach(id => $(id).onchange = setupInfo);
+$("mode").onchange = () => { fillLevels(); setupInfo(); };
+$("players").onchange = () => { renderNames(); setupInfo(); };
+
+function renderTitles() {
+  $("titleSub").textContent = `${prof.unlocked.length} of ${TITLES.length} unlocked. Tap an unlocked title to equip it.`;
+  $("titleList").innerHTML = TITLES.map(t => {
+    const u = prof.unlocked.includes(t.id), on = prof.equip === t.id;
+    return `<button class="ti${on ? " on" : ""}" data-id="${t.id}" ${u ? "" : "disabled"}>${u ? "✅" : "🔒"} <b>${t.n}</b>${on ? " (equipped)" : ""}<br><small>${t.d}</small></button>`;
+  }).join("");
+  document.querySelectorAll(".ti").forEach(b => b.onclick = () => {
+    prof.equip = b.dataset.id; LS.set("fs_prof", prof); renderTitles(); setupInfo();
+  });
+}
+$("titlesBtn").onclick = () => { renderTitles(); $("titles").classList.remove("hidden"); };
+$("titlesClose").onclick = () => $("titles").classList.add("hidden");
+
+/* ---------- Game flow ---------- */
+$("start").onclick = () => { ac(); begin(true); };
+$("again").onclick = () => begin(false);
+$("change").onclick = () => { $("results").classList.add("hidden"); $("setup").classList.remove("hidden"); setupInfo(); };
+$("rdyBtn").onclick = () => { ac(); $("ready").classList.add("hidden"); turn(); };
+
+function begin(fresh) {
+  const key = catKey(), n = +$("players").value, kid = $("kid").checked;
+  if (fresh) {
+    const typed = [...document.querySelectorAll(".nm")].map(e => e.value.trim());
+    LS.set("fs_names", typed);
+    names = typed.map((t, i) => t || (n > 1 ? "Player " + (i + 1) : "You"));
+  }
+  const title = picks.length === 1 ? DATA[picks[0]].title : picks.length ? "Custom Mix" : "Mix";
+  cfg = { key, multi: picks.length !== 1, mb: $("mb").checked, n, kid, pack: { title, q: poolFor(picks, kid) }, mode: $("mode").value, diff: $("difficulty").value, hs: hsKey(key, kid) };
+  order = shuffle(cfg.pack.q); setupMP();
+  players = Array.from({ length: n }, () => ({ score: 0, correct: 0, streak: 0, bestStreak: 0, speed: 0, reached: 0, mbc: 0, cats: {}, cleared: false }));
+  cur = 0;
+  $("setup").classList.add("hidden");
+  $("results").classList.add("hidden");
+  $("game").classList.remove("hidden");
+  if (n > 1) ready(); else turn();
+}
+
+function ready() {
+  stopMusic();
+  $("rdyTitle").textContent = names[cur] + ", get ready!";
+  $("rdyTitle").style.color = COLORS[cur];
+  $("rdySub").textContent = (cfg.mode === "timed" ? TIMES[cfg.diff] + " seconds" : COUNTS[cfg.diff] + " questions") + ". Answer fast for bonus points!";
+  $("ready").classList.remove("hidden");
+}
+
+function turn() {
+  clearInterval(timer);
+  pool = mpPool();
+  $("pname").textContent = cfg.n > 1 ? names[cur] : "";
+  $("pname").style.color = COLORS[cur];
+  ["hintBtn", "submit", "skip", "end"].forEach(id => $(id).classList.remove("hidden"));
+  $("timerBox").classList.remove("low");
+  asked = 0;
+  $("timeLbl").textContent = cfg.mode === "timed" ? "TIME" : "QUESTION";
+  if (cfg.mode === "timed") {
+    timeLeft = TIMES[cfg.diff];
+    setTime();
+    timer = setInterval(() => {
+      timeLeft--; setTime();
+      if (timeLeft <= 5 && timeLeft > 0) play("tick");
+      if (timeLeft <= 0) endTurn("Time's up!", true, false);
+    }, 1000);
+  }
+  draw();
+  nextRound();
+  startMusic();
+}
+
+function setTime() {
+  $("timer").textContent = timeLeft + "s";
+  $("timerBox").classList.toggle("low", timeLeft <= 10);
+}
+
+function draw() {
+  const p = players[cur], e = $("score");
+  e.textContent = p.score;
+  e.classList.remove("pop"); void e.offsetWidth; e.classList.add("pop");
+  $("correct").textContent = p.correct;
+  $("streak").textContent = p.streak >= 2 ? "🔥 " + p.streak + " in a row" : "";
+  while (p.reached < GOALS.length && p.score >= GOALS[p.reached]) {
+    toast("🎯 " + GOALS[p.reached] + " points!"); play("goal"); p.reached++;
+  }
+  const nxt = GOALS.find(g => g > p.score), prv = [0, ...GOALS].filter(g => g <= p.score).pop();
+  $("goalTxt").textContent = nxt ? `Next goal: ${nxt} points` : "All goals reached! 🌟";
+  $("goalBar").style.width = nxt ? ((p.score - prv) / (nxt - prv) * 100) + "%" : "100%";
+  $("strip").classList.toggle("hidden", cfg.n < 2);
+  $("strip").innerHTML = players.map((q, i) =>
+    `<div class="chip${i === cur ? " on" : ""}" style="--c:${COLORS[i]}">${names[i]} <b>${q.score}</b></div>`).join("");
+}
+
+function nextRound() {
+  if (cfg.mode === "count" && asked >= COUNTS[cfg.diff]) return endTurn("Round complete!", false, false);
+  if (!pool.length) return endTurn("Category cleared!", false, true);
+  asked++;
+  if (cfg.mode === "count") $("timer").textContent = asked + "/" + COUNTS[cfg.diff];
+  state = "playing";
+  selected = null; hintUsed = false; qStart = Date.now();
+  current = pool.pop(); usedQ.add(current[0]);
+  const [text, valid, hint] = current;
+  current.answers = valid.split("|");
+  $("tag").textContent = (cfg.mb ? "🧠 " : "") + (cfg.qm === "diffc" ? tagC() : cfg.multi ? "Mix: " + current.c : cfg.pack.title) + (cfg.mode === "count" ? " (question " + asked + " of " + COUNTS[cfg.diff] + ")" : " (" + (pool.length + 1) + " left)");
+  $("prompt").textContent = text;
+  $("hint").textContent = hint;
+  $("hint").classList.add("hidden");
+  $("hintBtn").textContent = "💡 Show hint";
+  $("feedback").textContent = "";
+  $("feedback").className = "";
+  $("submit").textContent = "Submit Answer";
+  const correct = current.answers[Math.floor(Math.random() * current.answers.length)];
+  const plain = shuffle(current.d.filter(w => !current.answers.includes(w)));
+  const wrong = cfg.mb ? [...new Set([...lookAlikes(current, 5), ...plain])].slice(0, 5) : plain.slice(0, 3);
+  $("hand").innerHTML = "";
+  shuffle([correct, ...wrong]).forEach(word => {
+    const b = document.createElement("button");
+    b.className = "card"; b.textContent = word;
+    b.onclick = () => {
+      if (state !== "playing") return;
+      if (b.disabled) return;
+      const dbl = selected === word;
+      if (!dbl) {
+        document.querySelectorAll(".card").forEach(c => c.classList.remove("selected"));
+        b.classList.add("selected"); selected = word;
+        feedback("Tap again to lock it in", "");
+        return;
+      }
+      $("submit").onclick();
+      if (state === "playing") { b.disabled = true; b.classList.remove("selected"); b.classList.add("miss"); }
+      else b.classList.add("ok");
+    };
+    $("hand").appendChild(b);
+  });
+}
+
+function feedback(msg, type) { $("feedback").textContent = msg; $("feedback").className = type; }
+
+$("hintBtn").onclick = () => {
+  const open = $("hint").classList.toggle("hidden") === false;
+  if (open) hintUsed = true;
+  $("hintBtn").textContent = open ? "💡 Hide hint" : "💡 Show hint";
+};
+
+$("submit").onclick = () => {
+  if (state === "answered") return nextRound();
+  if (state !== "playing") return;
+  if (!selected) return feedback("Select a card first!", "incorrect");
+  const p = players[cur];
+  if (current.answers.includes(selected)) {
+    let gain = cfg.mb ? 15 : 10; const tags = [];
+    const secs = (Date.now() - qStart) / 1000;
+    if (!hintUsed) {
+      if (secs <= (cfg.mb ? 4 : 3)) { gain += 5; p.speed++; tags.push("⚡ Speed +5"); }
+      else if (secs <= (cfg.mb ? 8 : 6)) { gain += 2; tags.push("⚡ Quick +2"); }
+    }
+    p.streak++; p.bestStreak = Math.max(p.bestStreak, p.streak);
+    if (STREAK[p.streak]) { gain += STREAK[p.streak]; tags.push(`🔥 ${p.streak} streak +${STREAK[p.streak]}`); }
+    p.score += gain; p.correct++; if (cfg.mb) p.mbc++;
+    p.cats[current.k] = (p.cats[current.k] || 0) + 1;
+    draw(); play("good");
+    feedback(`Correct! "${current[0].replace("___", selected)}" +${gain} ${tags.join(" ")}`, "correct");
+    state = "answered";
+    { const q = current; setTimeout(() => { if (state === "answered" && current === q) nextRound(); }, 1000); }
+    $("submit").textContent = cfg.mode === "count" && asked >= COUNTS[cfg.diff] ? "Finish →" : "Next Phrase →";
+  } else {
+    p.streak = 0; p.score = Math.max(0, p.score - 5);
+    draw(); play("bad"); shake();
+    feedback("Wrong card! -5 (streak lost)", "incorrect");
+  }
+};
+
+$("skip").onclick = () => {
+  if (state === "playing") { const p = players[cur]; p.streak = 0; p.score = Math.max(0, p.score - 2); draw(); }
+  if (state === "playing" || state === "answered") nextRound();
+};
+
+{ let armed = false, tm; $("end").onclick = () => {
+  if (state !== "playing" && state !== "answered") return;
+  if (!armed) { armed = true; $("end").textContent = "Tap to confirm"; clearTimeout(tm); tm = setTimeout(() => { armed = false; $("end").textContent = "End turn"; }, 3000); return; }
+  clearTimeout(tm); armed = false; $("end").textContent = "End turn"; endTurn("Turn over!", false, false);
+}; }
+
+function endTurn(reason, timeUp, cleared) {
+  clearInterval(timer); stopMusic();
+  state = "over";
+  players[cur].cleared = cleared;
+  $("hand").innerHTML = "";
+  $("prompt").textContent = reason;
+  $("hint").classList.add("hidden");
+  ["hintBtn", "submit", "skip", "end"].forEach(id => $(id).classList.add("hidden"));
+  feedback(`${names[cur]}: ${players[cur].score} points`, "correct");
+  play(timeUp ? "buzzer" : "win");
+  setTimeout(() => { if (cur < cfg.n - 1) { cur++; ready(); } else results(); }, 2200);
+}
+
+function results() {
+  $("game").classList.add("hidden");
+  $("results").classList.remove("hidden");
+  const r = players.map((p, i) => ({ ...p, i })).sort((a, b) => b.score - a.score);
+  const tie = r.length > 1 && r[0].score === r[1].score;
+
+  prof.games++;
+  players.forEach(p => {
+    prof.correct += p.correct; prof.mbCorrect += p.mbc; prof.speed += p.speed;
+    prof.bestStreak = Math.max(prof.bestStreak, p.bestStreak);
+    prof.best = Math.max(prof.best, p.score);
+    if (p.cleared) prof.cleared++;
+    Object.entries(p.cats).forEach(([k, v]) => prof.cat[k] = (prof.cat[k] || 0) + v);
+  });
+  if (cfg.n > 1 && !tie) prof.wins++;
+  const top = r[0].score, newHS = top > 0 && top > (prof.hs[cfg.hs] || 0);
+  if (newHS) prof.hs[cfg.hs] = top;
+  const fresh = TITLES.filter(t => !prof.unlocked.includes(t.id) && t.ok(prof));
+  fresh.forEach(t => prof.unlocked.push(t.id));
+  if (!prof.equip && fresh.length) prof.equip = fresh[fresh.length - 1].id;
+  LS.set("fs_prof", prof);
+
+  $("resTitle").textContent = cfg.n < 2 ? "Final Score" : tie ? "It's a tie!" : "🏆 " + names[r[0].i] + " wins!";
+  $("resList").innerHTML = r.map((p, k) =>
+    `<div class="row" style="--c:${COLORS[p.i]}"><span>${["🥇", "🥈", "🥉", "4️⃣"][k]} ${names[p.i]}<small>${cfg.qm === "diffc" ? catsOf(p.i) + ": " : ""}${p.correct} correct, best streak ${p.bestStreak}, ${p.speed} speed bonuses</small></span><b>${p.score}</b></div>`).join("");
+  const lines = [];
+  if (newHS) lines.push("🎉 New high score for this setup!");
+  lines.push("🎯 Goals reached: " + (GOALS.slice(0, r[0].reached).join(", ") || "none yet. Next up: 50!"));
+  fresh.forEach(t => lines.push("🏅 Title unlocked: " + t.n));
+  if (cfg.n < 2 && prof.equip) lines.push("Your title: " + titleName(prof.equip));
+  $("resExtra").innerHTML = "";
+  lines.forEach(t => { const d = document.createElement("div"); d.textContent = t; $("resExtra").appendChild(d); });
+  if (top > 0) { play("win"); confetti(); }
+  if (fresh.length) setTimeout(() => toast("🏅 New title: " + fresh[0].n), 600);
+}
+
+/* ---------- Multiplayer question modes ---------- */
+let allPicks = [[], [], [], []], tab = 0, usedQ = new Set(), hv = null, sizz = null;
+const qm = () => +$("players").value > 1 ? $("qmode").value : "same";
+const QN = { diffq: "Each player gets their own questions from the same categories.", same: "Everyone answers the same questions in the same order.", diffc: "Each player picks their own categories. Use the player tabs under Category." };
+function mpUI() { $("qmodeG").classList.toggle("hidden", +$("players").value < 2); $("qnote").textContent = QN[$("qmode").value]; }
+{ const pc = $("players").onchange; $("players").onchange = () => { pc(); mpUI(); }; }
+$("qmode").onchange = () => { if (qm() !== "diffc") { allPicks = [[], [], [], []]; tab = 0; } mpUI(); setupInfo(); };
+function renderTabs() {
+  let t = $("ptabs");
+  if (!t) { t = document.createElement("div"); t.id = "ptabs"; $("cats").parentNode.insertBefore(t, $("cats")); }
+  const on = qm() === "diffc", n = +$("players").value;
+  t.classList.toggle("hidden", !on);
+  if (!on) return;
+  if (tab >= n) tab = 0;
+  const nm = [...document.querySelectorAll(".nm")].map(e => e.value.trim());
+  t.innerHTML = Array.from({ length: n }, (_, i) => { const pk = i === tab ? picks : allPicks[i]; return `<button type="button" class="ptab${i === tab ? " on" : ""}" style="--c:${COLORS[i]}" data-i="${i}">${nm[i] || "Player " + (i + 1)}<small>${pk.length ? pk.map(k => DATA[k].title).join(", ") : "All categories"}</small></button>`; }).join("");
+  t.querySelectorAll(".ptab").forEach(b => b.onclick = () => { allPicks[tab] = [...picks]; tab = +b.dataset.i; picks = [...allPicks[tab]]; setupInfo(); });
+  $("pickInfo").textContent = `Choosing categories for ${nm[tab] || "Player " + (tab + 1)}: ` + (picks.length ? picks.map(k => DATA[k].title).join(", ") : "all categories") + ". Tap a tab to switch players.";
+}
+{ const rc = renderCats; renderCats = function () { rc(); renderTabs(); }; }
+function setupMP() {
+  cfg.qm = qm(); usedQ = new Set(); hv = null; clearInterval(sizz);
+  if (cfg.qm === "diffc") {
+    allPicks[tab] = [...picks];
+    cfg.pp = allPicks.slice(0, cfg.n).map(a => [...a]);
+    cfg.orders = cfg.pp.map(a => shuffle(poolFor(a, cfg.kid)));
+    cfg.key = "vs"; cfg.hs = hsKey("vs", cfg.kid);
+  }
+}
+function mpPool() {
+  if (cfg.qm === "diffc") return [...cfg.orders[cur]];
+  if (cfg.qm === "diffq") { const u = order.filter(q => !usedQ.has(q[0])), o = order.filter(q => usedQ.has(q[0])); return [...shuffle(o), ...shuffle(u)]; }
+  return [...order];
+}
+const catsOf = i => { const pk = cfg.pp[i]; return pk.length ? pk.map(k => DATA[k].title).join("/") : "All"; };
+const tagC = () => cfg.pp[cur].length === 1 ? DATA[cfg.pp[cur][0]].title : "Mix: " + current.c;
+{ const rd = ready; ready = function () { rd(); if (cfg.qm === "diffc") $("rdySub").textContent += " Your categories: " + catsOf(cur) + "."; }; }
+
+/* ---------- Heat meter, coins and sparks ---------- */
+const rm = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+sfx.coin = n => { const b = 988 * (1 + Math.min(n, 12) * 0.04); tone(b, 0, 0.09, "square", 0.08); tone(b * 1.5, 0.07, 0.2, "square", 0.08); };
+sfx.jackpot = n => { const base = n >= 10 ? 523 : 392; [0, 4, 7, 12, 16, 19, 24].forEach((s, i) => tone(base * 2 ** (s / 12), i * 0.07, 0.3, "triangle", 0.2)); [1318, 1568, 2093].forEach((f, i) => tone(f, 0.5 + i * 0.06, 0.4, "square", 0.05)); };
+sfx.fizzle = () => { const c = ac(), t = c.currentTime, o = c.createOscillator(), g = c.createGain(); o.type = "sawtooth"; o.frequency.setValueAtTime(700, t); o.frequency.exponentialRampToValueAtTime(70, t + 0.6); g.gain.setValueAtTime(0.12, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.65); o.connect(g); g.connect(c.destination); o.start(t); o.stop(t + 0.7); };
+const playN = (n, a) => { if (sfxOn) try { sfx[n](a); } catch (e) {} };
+document.head.insertAdjacentHTML("beforeend", `<style>
+.ptab{display:block;width:100%;text-align:left;margin:0 0 8px;padding:10px 12px;border-radius:12px;border:2px solid var(--c);background:rgba(255,255,255,.04);color:var(--ink,#fff);font-weight:800;cursor:pointer}.ptab small{display:block;font-weight:400;opacity:.8}.ptab.on{background:var(--c);color:#1a1405}#ptabs{margin-bottom:10px}
+#heat{margin:6px 0 8px;position:relative}#heat .hrow{display:flex;justify-content:space-between;font-size:.72rem;font-weight:800;letter-spacing:1px;margin-bottom:3px;color:#fde68a}#heatX{font-size:.95rem;color:#fff}#heatNext{opacity:.7;font-weight:600;letter-spacing:0}
+.htrack{height:14px;border-radius:999px;background:#120a24;border:1px solid var(--border,#4c1d95);position:relative}
+#heatFill{display:block;height:100%;width:0;border-radius:999px;transition:width .45s cubic-bezier(.2,1.4,.4,1);box-shadow:0 0 var(--g,4px) #fbbf24;background:linear-gradient(90deg,#3b82f6,#60a5fa)}
+#heatFill.lv1{background:linear-gradient(90deg,#a78bfa,#fbbf24)}#heatFill.lv2{background:linear-gradient(90deg,#fbbf24,#f97316)}#heatFill.lv3{background:linear-gradient(90deg,#f97316,#ef4444)}#heatFill.lv4{background:linear-gradient(90deg,#ef4444,#fff1a8)}
+#heat[data-lv="2"] #heatFill,#heat[data-lv="3"] #heatFill,#heat[data-lv="4"] #heatFill{animation:sizzle .22s steps(2) infinite}
+@keyframes sizzle{0%{filter:brightness(1)}50%{filter:brightness(1.5) saturate(1.3)}100%{filter:brightness(1.15)}}
+.htrack.fz{animation:fzk .5s}.htrack.fz #heatFill{transition:width .9s ease-in;filter:grayscale(1)}@keyframes fzk{0%,100%{transform:translateX(0)}20%{transform:translateX(-5px)}40%{transform:translateX(5px)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}
+.sp{position:absolute;top:50%;width:5px;height:5px;margin:-2px 0 0 -2px;border-radius:50%;background:var(--c);box-shadow:0 0 6px var(--c);animation:spk .6s ease-out forwards;pointer-events:none}@keyframes spk{to{transform:translate(var(--dx),var(--dy)) scale(.2);opacity:0}}
+.pf{position:absolute;top:0;width:12px;height:12px;border-radius:50%;background:#9ca3af;opacity:.7;animation:pfk 1s ease-out forwards;pointer-events:none}@keyframes pfk{to{transform:translate(var(--dx),-34px) scale(2.2);opacity:0}}
+.fzt{position:absolute;right:0;top:-26px;font-weight:900;color:#9ca3af;animation:fzp 1.1s forwards;pointer-events:none}@keyframes fzp{0%{opacity:0;transform:scale(.6)}20%{opacity:1;transform:scale(1.15)}100%{opacity:0;transform:translateY(-14px)}}
+.cpop{position:fixed;z-index:30;font:900 1.4rem system-ui;color:#fde68a;text-shadow:0 0 10px #f59e0b,0 2px 0 #7c2d12;animation:cp .95s ease-out forwards;pointer-events:none;transform:translateX(-50%)}@keyframes cp{0%{opacity:0;transform:translate(-50%,10px) scale(.6)}20%{opacity:1;transform:translate(-50%,-6px) scale(1.2)}100%{opacity:0;transform:translate(-50%,-60px) scale(1)}}
+.jp{position:fixed;left:50%;top:26%;z-index:40;transform:translate(-50%,-50%);text-align:center;font:900 2rem/1.1 system-ui;color:#fde68a;text-shadow:0 0 18px #f59e0b,0 0 40px #ef4444,0 3px 0 #7c2d12;animation:jp 1.5s ease-out forwards;pointer-events:none;white-space:nowrap}.jp small{display:block;font-size:1.1rem;color:#fff}@keyframes jp{0%{opacity:0;transform:translate(-50%,-50%) scale(.3) rotate(-6deg)}15%{opacity:1;transform:translate(-50%,-50%) scale(1.25) rotate(2deg)}30%{transform:translate(-50%,-50%) scale(1)}80%{opacity:1}100%{opacity:0;transform:translate(-50%,-70%) scale(1.05)}}
+@media(prefers-reduced-motion:reduce){#heat[data-lv] #heatFill,.htrack.fz,.cpop,.jp{animation:none}.jp{opacity:1}}</style>`);
+$("goal").insertAdjacentHTML("afterend", `<div id="heat" data-lv="0" aria-hidden="true"><div class="hrow"><span id="heatLbl">HEAT</span><span id="heatX"></span><span id="heatNext"></span></div><div class="htrack"><i id="heatFill"></i></div></div>`);
+function sparks(w, n) {
+  if (rm()) return;
+  const tr = document.querySelector("#heat .htrack"), tw = tr.offsetWidth;
+  for (let i = 0; i < n; i++) {
+    const s = document.createElement("span"), a = -Math.PI * Math.random(), d = 14 + Math.random() * 34;
+    s.className = "sp";
+    s.style.cssText = `left:${w / 100 * tw}px;--dx:${Math.cos(a) * d}px;--dy:${Math.sin(a) * d - 6}px;--c:${["#fff7d6", "#fbbf24", "#f97316", "#fde68a"][i % 4]}`;
+    tr.appendChild(s); s.onanimationend = () => s.remove();
+  }
+}
+function setHeat(st, pulse) {
+  const f = $("heatFill"), w = Math.min(st / 10, 1) * 100, lv = st >= 15 ? 4 : st >= 10 ? 3 : st >= 5 ? 2 : st >= 3 ? 1 : 0;
+  f.style.width = w + "%"; f.className = "lv" + lv; f.style.setProperty("--g", (4 + lv * 7) + "px");
+  const nx = Object.keys(STREAK).map(Number).find(k => k > st);
+  $("heatX").textContent = st ? "x" + st : "";
+  $("heatLbl").textContent = st >= 10 ? "🔥 OVERHEAT" : st >= 5 ? "🔥 ON FIRE" : st >= 3 ? "🔥 HEATING UP" : "HEAT";
+  $("heatNext").textContent = nx ? "Next bonus at " + nx : "MAX HEAT";
+  $("heat").dataset.lv = lv;
+  clearInterval(sizz);
+  if (lv >= 1 && !rm()) sizz = setInterval(() => { if (!$("game").classList.contains("hidden")) sparks(w, lv + 1); }, Math.max(120, 420 - lv * 80));
+  if (pulse) sparks(w, 6 + lv * 3);
+}
+function fizzle(prev) {
+  const tr = document.querySelector("#heat .htrack");
+  tr.classList.remove("fz"); void tr.offsetWidth; tr.classList.add("fz"); setTimeout(() => tr.classList.remove("fz"), 1000);
+  if (rm() || prev < 3) return;
+  const w = Math.min(prev / 10, 1) * tr.offsetWidth;
+  for (let i = 0; i < 5; i++) { const p = document.createElement("span"); p.className = "pf"; p.style.cssText = `left:${Math.max(0, w - 20 - i * (w / 6))}px;--dx:${(Math.random() - .5) * 30}px;animation-delay:${i * 0.06}s`; tr.appendChild(p); p.onanimationend = () => p.remove(); }
+  const t = document.createElement("span"); t.className = "fzt"; t.textContent = "💨 FIZZLE"; tr.appendChild(t); t.onanimationend = () => t.remove();
+  playN("fizzle");
+}
+function coinPop(d) {
+  if (rm()) return;
+  const r = $("score").getBoundingClientRect(), e = document.createElement("div");
+  e.className = "cpop"; e.textContent = "+" + d + " 🪙"; e.style.left = (r.left + r.width / 2) + "px"; e.style.top = r.top + "px";
+  document.body.appendChild(e); e.onanimationend = () => e.remove();
+}
+function tweenScore(a, b) {
+  if (rm()) return;
+  const el = $("score"), t0 = performance.now();
+  (function s(t) { const k = Math.min(1, (t - t0) / 420); el.textContent = Math.round(a + (b - a) * k); if (k < 1) requestAnimationFrame(s); })(t0);
+}
+const JP = { 3: ["HOT STREAK!", 5], 5: ["ON FIRE!", 10], 10: ["UNSTOPPABLE!", 25], 15: ["LEGENDARY!", 40], 20: ["GODLIKE!", 60] };
+function jackpot(st) {
+  const [t, b] = JP[st], e = document.createElement("div");
+  e.className = "jp"; e.innerHTML = `🔥 ${t}<small>Streak ${st}: +${b} bonus</small>`;
+  document.body.appendChild(e); e.onanimationend = () => e.remove();
+  playN("jackpot", st); sparks(Math.min(st / 10, 1) * 100, 18 + st);
+  if (st >= 10) confetti();
+}
+{
+  const dw = draw;
+  draw = function () {
+    const p = players[cur]; dw();
+    const st = p.streak, sc = p.score;
+    if (!hv || hv.cur !== cur) { hv = { cur, st, sc }; setHeat(st, false); return; }
+    const dSc = sc - hv.sc, dSt = st - hv.st;
+    if (dSc > 0 && dSt > 0) {
+      setHeat(st, true); coinPop(dSc); tweenScore(hv.sc, sc);
+      if (JP[st]) jackpot(st); else playN("coin", st);
+    } else if (hv.st > 0 && st === 0) { const pv = hv.st; setHeat(0, false); fizzle(pv); }
+    hv.st = st; hv.sc = sc;
+  };
+  const et = endTurn; endTurn = function (...a) { clearInterval(sizz); et(...a); };
+}
+
+
+
+
+/* ---------- Endless mode: hearts by difficulty, a clock on every question that speeds up after 30 ---------- */
+const EHEARTS = { easy: 5, normal: 3, hard: 1 };
+const eOn = () => cfg && cfg.mode === "endless";
+const eTime = n => n <= 30 ? 15 : Math.max(5, 15 - Math.ceil((n - 30) / 10));
+let eHearts = 0, eQTimer = null;
+$("mode").insertAdjacentHTML("beforeend", `<option value="endless">♾️ Endless (until your hearts run out)</option>`);
+document.head.insertAdjacentHTML("beforeend", `<style>#eHearts{font-size:1.1rem;letter-spacing:2px;min-height:1.4em}#eHearts.hit{animation:shake .45s}.card.reveal{border-color:var(--ok);box-shadow:0 0 0 2px rgba(52,211,153,.6)}</style>`);
+$("pname").insertAdjacentHTML("afterend", `<div id="eHearts" class="hidden" aria-live="polite"></div>`);
+
+/* setup screen: Endless picks its hearts by difficulty and is solo only */
+{ const fl = fillLevels; fillLevels = function () {
+  if ($("mode").value !== "endless") { $("players").disabled = false; return fl(); }
+  const sel = $("difficulty"), v = sel.value || "normal";
+  sel.innerHTML = [["easy", "Easy (5 hearts)"], ["normal", "Normal (3 hearts)"], ["hard", "Hard (1 heart)"]].map(([k, l]) => `<option value="${k}">${l}</option>`).join("");
+  sel.value = v; document.querySelector('label[for="difficulty"]').textContent = "HEARTS";
+  if ($("players").value !== "1") { $("players").value = "1"; $("players").onchange(); }
+  $("players").disabled = true;
+}; }
+{ const mc = $("mode").onchange; $("mode").onchange = () => { mc(); const n = $("eNote"); if ($("mode").value === "endless") { if (!n) $("mode").parentNode.insertAdjacentHTML("beforeend", `<p class="note" id="eNote">Solo only. 15 seconds per question, then less time every 10 questions after question 30. A wrong answer, a time-out or a skip costs a heart.</p>`); } else if (n) n.remove(); }; }
+
+function eDrawHearts(hit) { const e = $("eHearts"); e.textContent = "❤️".repeat(Math.max(0, eHearts)) + "🖤".repeat(Math.max(0, EHEARTS[cfg.diff] - eHearts)); if (hit) { e.classList.remove("hit"); void e.offsetWidth; e.classList.add("hit"); } }
+function eStartClock() {
+  clearInterval(eQTimer); timeLeft = eTime(asked); eTick();
+  eQTimer = setInterval(() => { if (state !== "playing") return clearInterval(eQTimer); timeLeft--; eTick(); if (timeLeft <= 3 && timeLeft > 0) play("tick"); if (timeLeft <= 0) { clearInterval(eQTimer); eMiss("⏱️ Time's up!"); } }, 1000);
+}
+function eTick() { $("timer").textContent = timeLeft + "s"; $("timerBox").classList.toggle("low", timeLeft <= 5); }
+/* a miss: lose a heart, show the right answer, then move on (or end the run) */
+function eMiss(why) {
+  clearInterval(eQTimer); if (state !== "playing") return;
+  state = "answered"; const p = players[cur]; p.streak = 0; draw();
+  eHearts--; eDrawHearts(true); play("bad"); shake();
+  document.querySelectorAll("#hand .card").forEach(c => { if (current.answers.includes(c.textContent)) c.classList.add("reveal"); c.disabled = true; });
+  feedback(`${why} The answer was ${current.answers[0]}. ${eHearts > 0 ? "-1 heart" : "No hearts left!"}`, "incorrect");
+  const q = current;
+  setTimeout(() => { if (state !== "answered" || current !== q) return; if (eHearts <= 0) endTurn("Out of hearts!", false, false); else nextRound(); }, 1600);
+}
+
+{ const tn = turn; turn = function () {
+  if (eOn()) { eHearts = EHEARTS[cfg.diff]; $("eHearts").classList.remove("hidden"); eDrawHearts(false); $("skip").textContent = "Skip (-1 ❤️)"; }
+  else { $("eHearts").classList.add("hidden"); $("skip").textContent = "Skip (-2)"; }
+  tn();
+  if (eOn()) $("timeLbl").textContent = "TIME";
+}; }
+{ const nr = nextRound; nextRound = function () {
+  if (!eOn()) return nr();
+  if (!pool.length) pool = shuffle(order.filter(q => q !== current));  /* ran out of questions: deal them again */
+  nr();
+  if (state !== "playing") return;
+  $("tag").textContent = (cfg.mb ? "🧠 " : "") + (cfg.multi ? "Mix: " + current.c : cfg.pack.title) + " · Question " + asked + (asked > 30 ? " · ⚡ " + eTime(asked) + "s" : "");
+  eStartClock();
+}; }
+{ const sb = $("submit").onclick; $("submit").onclick = () => {
+  if (!eOn()) return sb();
+  const wrong = state === "playing" && selected && !current.answers.includes(selected);
+  if (wrong) { feedback("", ""); setTimeout(() => eMiss("❌ Wrong!"), 0); return; }  /* the card handler marks the wrong card first */
+  sb(); if (state === "answered") clearInterval(eQTimer);
+}; }
+{ const sk = $("skip").onclick; $("skip").onclick = () => { if (!eOn()) return sk(); if (state === "playing") eMiss("⏭️ Skipped."); }; }
+{ const et = endTurn; endTurn = function (...a) { clearInterval(eQTimer); $("eHearts").classList.add("hidden"); et(...a); }; }
+{ const rs = results; results = function () { rs(); if (eOn()) { const p = players[0], d = document.createElement("div"); d.textContent = `♾️ Endless (${({ easy: "Easy", normal: "Normal", hard: "Hard" })[cfg.diff]}): ${p.correct} right answers across ${asked} questions. Best streak ${p.bestStreak}.`; $("resExtra").prepend(d); } }; }
+$("change").addEventListener("click", () => fillLevels());
+
+
+/* ---------- Leaderboard (this website's /api/scores) ---------- */
+const LBU = "/api/scores";
+const LB = { rows: null, err: "", note: "", tab: "tp", busy: 0, adm: "", admOk: false, taps: 0 };
+const LBK = [["t-easy", "Timed Easy"], ["t-normal", "Timed Normal"], ["t-hard", "Timed Hard"], ["c-easy", "Quick 5"], ["c-normal", "10 Questions"], ["c-hard", "20 Questions"], ["e-easy", "Endless Easy"], ["e-normal", "Endless Normal"], ["e-hard", "Endless Hard"]];
+const LBT = [["tp", "Most correct"], ["bp", "Best turn"], ["ec", "Best streak"], ...LBK];
+const lbMode = m => ({ timed: "t", count: "c", endless: "e" })[m] || "c";
+const lbN = v => Math.max(0, Math.floor(+v || 0));
+const lbNick = () => { const v = LS.get("iw_lb_nick", ""); return typeof v === "string" ? v.slice(0, 16) : ""; };
+function lbId() { let o = LS.get("iw_lb_id", null); if (!o || !o.pid) { const r = n => { const a = new Uint8Array(n); crypto.getRandomValues(a); return [...a].map(x => "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"[x % 62]).join(""); }; o = { pid: r(20), sec: r(32) }; LS.set("iw_lb_id", o); } return o; }
+async function lbFetch(q, opt) { const c = new AbortController(), tm = setTimeout(() => c.abort(), 10000); try { const r = await fetch(LBU + (q || ""), { ...(opt || {}), signal: c.signal }); let j = {}; try { j = await r.json(); } catch (e) {} return { ok: r.ok, status: r.status, j }; } catch (e) { return { ok: false, status: 0, j: {} }; } finally { clearTimeout(tm); } }
+/* your bests so far, per mode and length, from the game's saved high scores */
+function lbMine() {
+  const bs = {}; LBK.forEach(([k]) => bs[k] = 0);
+  Object.entries(prof.hs || {}).forEach(([key, v]) => { const m = key.split("|")[1] || "", [md, df] = m.split("-"), k = lbMode(md) + "-" + df; if (k in bs) bs[k] = Math.max(bs[k], lbN(v)); });
+  return { bs, tp: lbN(prof.correct), ec: lbN(prof.bestStreak) };
+}
+async function lbPost() {
+  const nm = lbNick(); if (!nm || LB.busy) return; LB.busy = 1; const id = lbId(), q = LS.get("iw_lb_q", []);
+  const r = await lbFetch("", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ pid: id.pid, sec: id.sec, nm, ...lbMine(), last: q }) }); LB.busy = 0;
+  if (r.ok) { LS.set("iw_lb_q", []); LS.set("iw_lb_ok", nm); LB.note = ""; if (r.j && r.j.me && LB.rows) { LB.rows = LB.rows.filter(x => x.id !== id.pid).concat([r.j.me]); lbDraw(); } }
+  else if (r.status && r.status !== 429) { LS.set("iw_lb_q", []); LB.note = (r.j && r.j.error) || "Your score could not be posted."; lbDraw(); }
+  else if (r.status === 429) { LB.note = (r.j && r.j.error) || "Too fast. Try again in a moment."; lbDraw(); }
+}
+/* after each solo game, queue the turn and post it */
+{ const rs = results; results = function () { rs(); try { if (cfg.n === 1 && players[0].score > 0) { const p = players[0], q = LS.get("iw_lb_q", []); q.push({ k: lbMode(cfg.mode) + "-" + cfg.diff, p: p.score, c: p.correct, s: p.bestStreak }); LS.set("iw_lb_q", q.slice(-10)); setTimeout(lbPost, 50); } } catch (e) {} }; }
+
+document.head.insertAdjacentHTML("beforeend", `<style>
+#lbo{justify-content:flex-start;overflow:auto}#lbo .lbw{width:100%;max-width:520px;display:flex;flex-direction:column;gap:12px;text-align:left}
+#lbo h2{text-align:center;background:linear-gradient(90deg,#fde68a,#fbbf24,#f59e0b);-webkit-background-clip:text;background-clip:text;color:transparent;cursor:default}
+.lb-tabs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}.lb-tabs button{padding:7px 11px;border-radius:20px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:.82rem;font-weight:700;cursor:pointer}.lb-tabs button.on{background:linear-gradient(180deg,#fcd34d,#f59e0b);color:var(--ink);border-color:transparent}
+.lb-box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:6px 10px}
+.lb-row{display:grid;grid-template-columns:40px 1fr auto;gap:8px;align-items:center;padding:9px 2px;border-bottom:1px solid var(--border)}.lb-row:last-child{border-bottom:0}
+.lb-row .n{font-weight:900;color:var(--gold);text-align:center}.lb-row.top1 .n{font-size:1.2rem}.lb-row .who{min-width:0}.lb-row .who b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.lb-row .who small{color:var(--muted);font-size:.75rem}
+.lb-row .v{font-weight:900;font-size:1.15rem;color:var(--gold)}.lb-row.me{background:rgba(251,191,36,.12);border-radius:10px}
+.lb-rm{font-size:.7rem;padding:1px 8px;margin-left:6px;border-radius:10px;border:1px solid var(--border);background:var(--ink);color:var(--text);cursor:pointer}
+.lb-pane{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px}.lb-pane h3{margin:0 0 4px;color:var(--gold);font-size:.8rem;letter-spacing:2px}
+.lb-nick{display:flex;gap:8px;margin-top:8px}.lb-nick input{flex:1;min-width:0;padding:10px;background:var(--ink);color:var(--text);border:1px solid var(--border);border-radius:10px;font-size:1rem}.lb-nick .btn{flex:none;padding:10px 18px;min-width:0}
+#lbNote{text-align:center;color:var(--muted);font-size:.85rem;margin:0}
+</style>`);
+document.body.insertAdjacentHTML("beforeend", `<div id="lbo" class="overlay hidden" role="dialog" aria-label="Leaderboard"><div class="lbw">
+<h2 id="lbH">Leaderboard</h2><div class="lb-tabs" id="lbTabs"></div><div class="lb-box" id="lbList"></div><p id="lbNote"></p>
+<div class="lb-pane"><h3>YOUR NAME ON THE BOARD</h3><p class="note">Other players see this name next to your scores. Only solo games are posted.</p><div class="lb-nick"><input id="lbNm" maxlength="16" placeholder="Your name"><button class="btn primary" id="lbSv">Save</button></div></div>
+<div class="lb-pane hidden" id="lbAdm"><h3>ADMIN</h3><p class="note">Enter the admin password from your Netlify settings. This device will remember it.</p><div class="lb-nick"><input id="lbAi" type="password" autocomplete="off" placeholder="Admin password"><button class="btn primary" id="lbAk">Unlock</button></div><p class="note" id="lbAm" style="margin-top:6px"></p></div>
+<button class="btn secondary" id="lbClose">Close</button></div></div>`);
+
+const lbBp = d => Math.max(0, ...LBK.map(([k]) => lbN((d.bs || {})[k])));
+const lbVal = (d, t) => t === "tp" ? lbN(d.tp) : t === "ec" ? lbN(d.ec) : t === "bp" ? lbBp(d) : lbN((d.bs || {})[t]);
+function lbTabs() { $("lbTabs").innerHTML = LBT.map(([k, l]) => `<button type="button" data-t="${k}" class="${LB.tab === k ? "on" : ""}">${l}</button>`).join(""); $("lbTabs").querySelectorAll("button").forEach(b => b.onclick = () => { LB.tab = b.dataset.t; lbTabs(); lbDraw(); }); }
+async function lbLoad() { LB.err = ""; lbDraw(); const r = await lbFetch(""); if (r.ok && r.j && Array.isArray(r.j.rows)) LB.rows = r.j.rows; else LB.err = r.status ? "The leaderboard could not load. Try again later." : "The leaderboard can't be reached. It works when you play on the game's website."; lbDraw(); }
+function lbDraw() {
+  const L = $("lbList"); $("lbNote").textContent = LB.note || (lbNick() ? "Your best scores post here after every solo game." : "Pick a name below to put your scores on the board.");
+  if (!LB.rows) { L.innerHTML = `<p class="note" style="text-align:center;padding:14px 0">${LB.err || "Loading the leaderboard..."}</p>`; return; }
+  const t = LB.tab, me = (LS.get("iw_lb_id", {}) || {}).pid, rows = LB.rows.map(d => ({ d, v: lbVal(d, t) })).filter(r => r.v > 0).sort((a, b) => b.v - a.v).slice(0, 50); L.innerHTML = "";
+  if (!rows.length) { L.innerHTML = `<p class="note" style="text-align:center;padding:14px 0">No scores here yet. Be the first.</p>`; return; }
+  let pos = 0, prev = null; rows.forEach((r, i) => { if (r.v !== prev) { pos = i + 1; prev = r.v; } const d = r.d, mine = d.id === me, e = document.createElement("div"); e.className = "lb-row" + (mine ? " me" : "") + (pos === 1 ? " top1" : "");
+    const n = document.createElement("span"); n.className = "n"; n.textContent = pos === 1 ? "🥇" : pos === 2 ? "🥈" : pos === 3 ? "🥉" : "#" + pos;
+    const w = document.createElement("div"); w.className = "who"; const b = document.createElement("b"); b.textContent = (typeof d.nm === "string" && d.nm.trim() ? d.nm.trim().slice(0, 16) : "Player") + (mine ? " (you)" : "");
+    const sm = document.createElement("small"); sm.textContent = t === "tp" ? `Best turn ${lbBp(d)} · streak ${lbN(d.ec)}` : `${lbN(d.tp)} correct · streak ${lbN(d.ec)}`; w.append(b, sm);
+    if (LB.admOk && !mine) { const x = document.createElement("button"); x.className = "lb-rm"; x.textContent = "Remove"; x.onclick = async () => { if (!x.dataset.ok) { x.dataset.ok = 1; x.textContent = "Sure?"; return; } x.disabled = true; const q = await lbFetch("?pid=" + encodeURIComponent(d.id), { method: "DELETE", headers: { "x-admin-key": LB.adm } }); if (q.ok) { LB.rows = LB.rows.filter(y => y.id !== d.id); lbDraw(); } else { x.textContent = "Failed"; x.disabled = false; } }; w.append(x); }
+    const v = document.createElement("span"); v.className = "v"; v.textContent = r.v; e.append(n, w, v); L.append(e); });
+}
+async function lbAdmin(k) { if (!k) return false; const r = await lbFetch("", { method: "POST", headers: { "content-type": "application/json", "x-admin-key": k }, body: JSON.stringify({ adminCheck: 1 }) }); return !!(r.ok && r.j && r.j.ok); }
+function lbOpen() {
+  LB.note = ""; LB.taps = 0; $("lbAdm").classList.add("hidden"); lbTabs();
+  const nm = $("lbNm"); nm.value = lbNick() || ((LS.get("fs_names", [])[0]) || "").slice(0, 16);
+  $("lbo").classList.remove("hidden"); $("lbo").scrollTop = 0; lbDraw();
+  lbLoad().then(() => { if (lbNick() && (LS.get("iw_lb_ok", "") !== lbNick() || LS.get("iw_lb_q", []).length)) lbPost(); });
+  const ak = LS.get("iw_lb_adm", ""); if (ak && !LB.admOk) lbAdmin(ak).then(ok => { if (ok) { LB.adm = ak; LB.admOk = true; lbDraw(); } });
+}
+$("lbClose").onclick = () => $("lbo").classList.add("hidden");
+$("lbH").onclick = () => { if (++LB.taps >= 5) $("lbAdm").classList.remove("hidden"); };
+$("lbSv").onclick = () => { const v = $("lbNm").value.replace(/[\u0000-\u001f<>]/g, "").replace(/\s+/g, " ").trim().slice(0, 16); if (!v) { LB.note = "Type a name first."; lbDraw(); return; } LS.set("iw_lb_nick", v); $("lbSv").textContent = "Saved"; setTimeout(() => $("lbSv").textContent = "Save", 1500); LB.note = ""; lbPost(); };
+$("lbAk").onclick = async () => { const k = $("lbAi").value; $("lbAm").textContent = "Checking..."; if (await lbAdmin(k)) { LB.adm = k; LB.admOk = true; LS.set("iw_lb_adm", k); $("lbAm").textContent = "Unlocked. Remove buttons are on."; lbDraw(); } else $("lbAm").textContent = "That password did not work."; };
+/* buttons on the setup and results screens */
+$("titlesBtn").insertAdjacentHTML("afterend", `<button class="btn secondary" id="lbBtn">🌍 Leaderboard</button>`); $("lbBtn").onclick = lbOpen;
+$("change").parentNode.insertAdjacentHTML("afterend", `<button class="btn secondary" id="lbBtn2">🌍 Leaderboard</button>`); $("lbBtn2").onclick = lbOpen;
+
+
+/* ---------- Start screen redesign: sections, tap buttons, folding categories, per-player picking ---------- */
+document.head.insertAdjacentHTML("beforeend", `<style>
+.sec{background:rgba(26,11,46,.55);border:1px solid var(--border);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:14px}
+.sec>.sh{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:2px;font-size:.78rem;color:var(--text)}
+.sec>.sh i{font-style:normal;width:24px;height:24px;border-radius:50%;background:linear-gradient(180deg,#fcd34d,#f59e0b);color:var(--ink);display:flex;align-items:center;justify-content:center;font-size:.8rem}
+.sel-hide{position:absolute!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important}
+.seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:6px;background:var(--ink);border:1px solid var(--border);border-radius:12px;padding:4px}
+.seg button{border:0;border-radius:9px;padding:10px 6px;background:none;color:var(--muted);font-weight:800;font-size:.95rem;cursor:pointer;line-height:1.15}
+.seg button small{display:block;font-weight:500;font-size:.72rem;opacity:.85;margin-top:2px}
+.seg button.on{background:linear-gradient(135deg,#7a45d1,#4c2a8f);color:#fff;box-shadow:0 0 0 2px rgba(251,191,36,.55)}
+.seg button:disabled{opacity:.35;cursor:not-allowed}
+.seg.big button{padding:12px 6px}.seg.big button .ic{display:block;font-size:1.35rem;margin-bottom:3px}
+.seg.col{grid-auto-flow:row}
+.segnote{margin:-6px 0 0;font-size:.8rem;color:var(--muted);text-align:center}
+.chk{justify-content:space-between;background:var(--ink);border:1px solid var(--border);border-radius:12px;padding:10px 12px;cursor:pointer}
+.chk span small{display:block;color:var(--muted);font-size:.75rem;margin-top:2px}
+.chk input{appearance:none;-webkit-appearance:none;width:44px;height:26px;border-radius:13px;background:#3b2a5c;position:relative;flex:none;cursor:pointer;transition:background .2s;margin:0}
+.chk input::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .2s}
+.chk input:checked{background:linear-gradient(90deg,#f59e0b,#fbbf24)}.chk input:checked::after{transform:translateX(18px)}
+.cg h4{cursor:pointer;margin:0;padding:10px 4px;user-select:none;-webkit-user-select:none;border-radius:8px}
+.cg h4:hover{color:var(--text)}.cg h4 .cv{transition:transform .2s;display:inline-block;width:14px}.cg.shut h4 .cv{transform:rotate(-90deg)}
+.cg h4 .pk{letter-spacing:0;font-weight:700;color:var(--gold);text-transform:none;font-size:.75rem}
+.cg.shut .tiles{display:none}.cg h4::after{order:2}.cg h4 .pk{order:3}
+#cats{gap:4px}.catctl{display:flex;justify-content:flex-end;gap:12px;margin-top:-4px}.catctl button{background:none;border:0;color:var(--accent);font-size:.78rem;font-weight:700;cursor:pointer;padding:2px}
+#ptabs{display:grid;grid-template-columns:1fr 1fr;gap:8px}.ptab{margin:0!important;position:relative}.ptab .st{position:absolute;top:8px;right:10px;font-size:.7rem;font-weight:900}
+.ptab.done .st{color:#34d399}.ptab.on.done .st{color:#065f46}.ptab:not(.done) .st{color:#fda4af}.ptab.on:not(.done) .st{color:#7f1d1d}
+#pdone{width:100%}
+.startbar{position:sticky;bottom:calc(8px + env(safe-area-inset-bottom,0px));z-index:4;background:rgba(22,10,43,.94);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid var(--border);border-radius:16px;padding:10px;display:flex;flex-direction:column;gap:8px;box-shadow:0 -6px 24px rgba(0,0,0,.45)}
+.startbar .sum{font-size:.82rem;color:var(--muted);text-align:center;line-height:1.35}.startbar .sum b{color:var(--text)}
+.startbar #start.wait{background:linear-gradient(180deg,#c4b5fd,#8b5cf6);color:#fff}
+.btnrow{display:grid;grid-template-columns:1fr 1fr;gap:10px}.btnrow .btn{padding:12px 8px;font-size:.92rem}
+#setup{gap:16px}#best{font-size:.9rem}
+</style>`);
+
+/* move the existing controls into three sections */
+(() => {
+  const S = $("setup"), grp = id => $(id).closest(".group"), mk = (n, t) => { const d = document.createElement("div"); d.className = "sec"; d.innerHTML = `<div class="sh"><i>${n}</i>${t}</div>`; return d; };
+  const s1 = mk(1, "WHO'S PLAYING"), s2 = mk(2, "HOW TO PLAY"), s3 = mk(3, "CATEGORIES");
+  const mbNote = $("mb").closest("label").nextElementSibling;
+  $("kid").closest("label").innerHTML = `<span>🧸 Kid-friendly<small>Only questions suitable for kids</small></span><input type="checkbox" id="kid">`;
+  $("mb").closest("label").innerHTML = `<span>🧠 Mind Bender<small>Six cards, look-alike wrong answers, 15 points a right answer</small></span><input type="checkbox" id="mb">`;
+  mbNote.remove();
+  s1.append(grp("players"), $("names").closest(".group"), $("qmodeG"));
+  s2.append(grp("mode"), grp("difficulty"), $("kid").closest("label"), $("mb").closest("label"));
+  s3.append($("cats").closest(".group"));
+  $("best").before(s1, s2, s3);
+  const bar = document.createElement("div"); bar.className = "startbar"; bar.innerHTML = `<div class="sum" id="sum"></div>`; bar.append($("start"));
+  $("best").after(bar);
+  const row = document.createElement("div"); row.className = "btnrow"; bar.after(row); row.append($("titlesBtn"), $("lbBtn"));
+  ["players", "mode", "difficulty", "qmode"].forEach(id => $(id).classList.add("sel-hide"));
+  ["kid", "mb"].forEach(id => $(id).onchange = () => setupInfo());
+  $("cats").closest(".group").querySelector("label").remove();
+  $("cats").insertAdjacentHTML("beforebegin", `<div class="catctl"><button type="button" id="catOpen">Open all</button><button type="button" id="catShut">Close all</button></div>`);
+})();
+
+/* tap-button versions of the dropdowns (the dropdowns stay hidden and still drive the game) */
+const SEGS = {
+  players: { box: null, cls: "seg", lab: o => o.value === "1" ? `1<small>Solo</small>` : `${o.value}<small>Players</small>` },
+  mode: { box: null, cls: "seg big", lab: o => ({ timed: `<span class="ic">⏱️</span>Timed<small>Beat the clock</small>`, count: `<span class="ic">🔢</span>Questions<small>No timer</small>`, endless: `<span class="ic">♾️</span>Endless<small>Until hearts run out</small>` })[o.value] },
+  difficulty: { box: null, cls: "seg", lab: o => { const m = o.text.match(/^(.*?) \((.*)\)$/); return m ? `${m[1]}<small>${m[2]}</small>` : o.text; } },
+  qmode: { box: null, cls: "seg col", lab: o => ({ diffq: `Different questions<small>Same categories, everyone gets their own questions</small>`, same: `Same questions<small>Everyone answers the same ones, in the same order</small>`, diffc: `Pick your own categories<small>Each player chooses their fandoms</small>` })[o.value] }
+};
+Object.keys(SEGS).forEach(id => { const d = document.createElement("div"); d.className = SEGS[id].cls; d.setAttribute("role", "radiogroup"); $(id).after(d); SEGS[id].box = d; });
+$("qnote").classList.add("hidden");
+function segs() {
+  Object.entries(SEGS).forEach(([id, s]) => {
+    const sel = $(id);
+    s.box.innerHTML = [...sel.options].map(o => `<button type="button" role="radio" aria-checked="${o.value === sel.value}" class="${o.value === sel.value ? "on" : ""}" data-v="${o.value}" ${sel.disabled && o.value !== sel.value ? "disabled" : ""}>${s.lab(o)}</button>`).join("");
+    s.box.querySelectorAll("button").forEach(b => b.onclick = () => { if (sel.value === b.dataset.v) return; sel.value = b.dataset.v; sel.onchange && sel.onchange(); setupInfo(); });
+  });
+}
+
+/* categories fold up; the open/closed state is remembered */
+let SHUT = LS.get("iw_shut", null);
+if (!SHUT) SHUT = Object.fromEntries(GROUPS.map(([n]) => [n, true]));
+{ const rc = renderCats; renderCats = function () {
+  rc();
+  const pk = qm() === "diffc" ? picks : picks;
+  document.querySelectorAll("#cats .cg").forEach((g, i) => {
+    const [name, items] = GROUPS[i], h = g.querySelector("h4"), mine = items.filter(([k]) => pk.includes(k)).map(([k]) => DATA[k].title);
+    h.innerHTML = `<span class="cv">▾</span>${name.toUpperCase()} <small style="opacity:.7;letter-spacing:0">(${items.length})</small>${mine.length ? `<span class="pk">✓ ${mine.join(", ")}</span>` : ""}`;
+    h.setAttribute("role", "button"); h.tabIndex = 0; h.setAttribute("aria-expanded", !SHUT[name]);
+    g.classList.toggle("shut", !!SHUT[name]);
+    const tog = () => { SHUT[name] = !SHUT[name]; LS.set("iw_shut", SHUT); g.classList.toggle("shut", !!SHUT[name]); h.setAttribute("aria-expanded", !SHUT[name]); };
+    h.onclick = tog; h.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); tog(); } };
+  });
+}; }
+$("catOpen").onclick = () => { GROUPS.forEach(([n]) => SHUT[n] = false); LS.set("iw_shut", SHUT); renderCats(); };
+$("catShut").onclick = () => { GROUPS.forEach(([n]) => SHUT[n] = true); LS.set("iw_shut", SHUT); renderCats(); };
+
+/* "pick your own categories": each player locks in their picks before the game can start */
+let pDone = [];
+const pName = i => ([...document.querySelectorAll(".nm")][i] || {}).value?.trim() || "Player " + (i + 1);
+const allDone = () => qm() !== "diffc" || Array.from({ length: +$("players").value }, (_, i) => pDone[i]).every(Boolean);
+const firstTodo = () => Array.from({ length: +$("players").value }, (_, i) => i).find(i => !pDone[i]);
+function goTab(j) { allPicks[tab] = [...picks]; tab = j; picks = [...allPicks[j]]; setupInfo(); }
+{ const rt = renderTabs; renderTabs = function () {
+  rt();
+  let d = $("pdone");
+  if (qm() !== "diffc") { if (d) d.remove(); return; }
+  document.querySelectorAll("#ptabs .ptab").forEach((b, i) => { b.classList.toggle("done", !!pDone[i]); b.insertAdjacentHTML("beforeend", `<span class="st">${pDone[i] ? "✓ READY" : "PICKING"}</span>`); });
+  if (!d) { $("cats").insertAdjacentHTML("afterend", `<button type="button" class="btn primary" id="pdone"></button>`); d = $("pdone"); }
+  const n = +$("players").value, nx = Array.from({ length: n }, (_, k) => (tab + 1 + k) % n).find(k => k !== tab && !pDone[k]);
+  d.textContent = `✓ Lock in ${pName(tab)}'s categories` + (nx != null ? ` → ${pName(nx)}` : "");
+  d.onclick = () => { pDone[tab] = true; if (nx != null) { goTab(nx); $("ptabs").scrollIntoView({ behavior: "smooth", block: "start" }); } else { setupInfo(); $("start").scrollIntoView({ behavior: "smooth", block: "center" }); toast("Everyone's ready!"); } };
+  $("pickInfo").textContent = `${pName(tab)}, tap up to 4 categories (or none for all of them), then lock them in.`;
+}; }
+{ const pc = $("players").onchange; $("players").onchange = () => { pDone = []; pc(); }; }
+{ const qc = $("qmode").onchange; $("qmode").onchange = () => { pDone = []; qc(); }; }
+$("names").addEventListener("input", () => { if (qm() === "diffc") renderTabs(); updSum(); });
+
+/* summary bar + start button */
+function updSum() {
+  const n = +$("players").value, mode = { timed: "⏱️ Timed", count: "🔢 Questions", endless: "♾️ Endless" }[$("mode").value], df = $("difficulty").selectedOptions[0]?.text || "";
+  const cats = qm() === "diffc" ? "each player's own categories" : picks.length ? picks.map(k => DATA[k].title).join(", ") : "all categories";
+  const extras = [$("kid").checked && "kid-friendly", $("mb").checked && "Mind Bender"].filter(Boolean).join(", ");
+  $("sum").innerHTML = `<b>${n === 1 ? "Solo" : n + " players"}</b> · <b>${mode}</b> ${df} · ${cats}${extras ? " · " + extras : ""}`;
+  const todo = firstTodo(), wait = qm() === "diffc" && todo != null;
+  $("start").textContent = wait ? `${pName(todo)} still needs to pick categories` : "Start Game";
+  $("start").classList.toggle("wait", wait);
+}
+{ const si = setupInfo; setupInfo = function () { si(); segs(); updSum(); }; }
+{ const st = $("start").onclick; $("start").onclick = () => {
+  if (!allDone()) { const j = firstTodo(); goTab(j); SHUT = Object.fromEntries(GROUPS.map(([n]) => [n, false])); renderCats(); $("ptabs").scrollIntoView({ behavior: "smooth", block: "start" }); toast(`${pName(j)}: pick your categories, then lock them in`); return; }
+  st();
+}; }
+
+/* ---------- Endless is Mind Bender + Mix (all categories) only ---------- */
+const eOnly = () => $("mode").value === "endless";
+{ const rc = renderCats; renderCats = function () {
+  if (eOnly() && picks.length) picks = [];
+  rc();
+  if (eOnly()) {
+    document.querySelectorAll("#cats .tile").forEach(t => { if (!t.classList.contains("mix")) { t.disabled = true; t.style.opacity = ".35"; t.style.pointerEvents = "none"; } });
+    const pi = $("pickInfo"); if (pi) pi.textContent = "Endless always plays Mind Bender with every category mixed.";
+  }
+}; }
+{ const si2 = setupInfo; setupInfo = function () {
+  const m = $("mb");
+  if (m) { if (eOnly()) { m.checked = true; m.disabled = true; } else m.disabled = false; }
+  const lab = m && m.closest("label"); if (lab) lab.style.opacity = eOnly() ? ".6" : "";
+  si2();
+}; }
+
+/* ---------- Anonymous play stats (no names, no emails): batches events to /api/stats ---------- */
+const ESTAT={g:'idiotwarz',q:[],sec:0,inp:Date.now(),sid:'',mem:{}};
+ESTAT.ls=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){if(v===undefined)return ESTAT.mem[k]||null;ESTAT.mem[k]=v}};
+ESTAT.off=()=>{try{return ESTAT.ls('eshu_nostat')=='1'||/claude|file:|^$/.test(location.hostname+location.protocol)&&!/localhost|127\.0\.0\.1/.test(location.hostname)||(ESTAT.skip&&ESTAT.skip())}catch(e){return true}};
+ESTAT.id=()=>{let s=ESTAT.ls('eshu_sid');if(!s||!/^[A-Za-z0-9]{8,32}$/.test(s)){const a=new Uint8Array(16);try{crypto.getRandomValues(a)}catch(e){for(let i=0;i<16;i++)a[i]=Math.random()*256}s=[...a].map(x=>'abcdefghijklmnopqrstuvwxyz0123456789'[x%36]).join('');ESTAT.ls('eshu_sid',s)}return s};
+ESTAT.ret=ESTAT.ls('eshu_seen')=='1';ESTAT.ls('eshu_seen','1');
+function estat(t,o){try{if(ESTAT.off())return;ESTAT.q.push(Object.assign({t},o||{}));if(ESTAT.q.length>=30||t=='ge')estatFlush()}catch(e){}}
+function estatFlush(beacon){try{if(ESTAT.off())return;if(ESTAT.sec>0){ESTAT.q.push({t:'h',sec:ESTAT.sec});ESTAT.sec=0}
+ if(!ESTAT.q.length)return;const e=ESTAT.q.splice(0,40),body=JSON.stringify({id:ESTAT.id(),g:ESTAT.g,dev:(matchMedia('(pointer:coarse)').matches||innerWidth<700)?'m':'d',ret:ESTAT.ret?1:0,e});
+ if(beacon&&navigator.sendBeacon){navigator.sendBeacon('/api/stats',new Blob([body],{type:'text/plain'}));return}
+ fetch('/api/stats',{method:'POST',headers:{'content-type':'text/plain'},body,keepalive:true}).then(r=>{if(!r.ok&&r.status>=500)ESTAT.q.unshift(...e.slice(0,20))}).catch(()=>{ESTAT.q.unshift(...e.slice(0,20))})}catch(x){}}
+['pointerdown','keydown','touchstart','wheel'].forEach(n=>addEventListener(n,()=>{ESTAT.inp=Date.now()},{passive:true,capture:true}));
+setInterval(()=>{if(document.visibilityState=='visible'&&Date.now()-ESTAT.inp<60000)ESTAT.sec++},1000);
+setInterval(()=>estatFlush(),60000);
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState=='hidden')estatFlush(true)});addEventListener('pagehide',()=>estatFlush(true));
+estat('s');setTimeout(estatFlush,4000);
+/* one-time notice with an opt-out */
+setTimeout(()=>{try{if(ESTAT.off()||ESTAT.ls('eshu_stn')=='1'||document.getElementById('stNote'))return;
+ const d=document.createElement('div');d.id='stNote';d.setAttribute('style','position:fixed;left:8px;right:8px;bottom:8px;z-index:9998;background:#10131cf2;color:#e8e8ee;border:1px solid #444;border-radius:12px;padding:10px 12px;font:13px/1.35 system-ui,sans-serif;display:flex;gap:8px;align-items:center;flex-wrap:wrap;max-width:560px;margin:0 auto');
+ d.innerHTML=`<span style='flex:1 1 220px'>We count anonymous plays (no names or emails) to improve the games.</span><button id='stOk' style='padding:6px 12px;border-radius:8px;border:0;background:#f4d35e;color:#111;font-weight:700'>OK</button><button id='stNo' style='padding:6px 12px;border-radius:8px;border:1px solid #666;background:none;color:#ddd'>Turn off</button>`;
+ document.body.appendChild(d);const x=()=>d.remove();document.getElementById('stOk').onclick=()=>{ESTAT.ls('eshu_stn','1');x()};document.getElementById('stNo').onclick=()=>{ESTAT.ls('eshu_stn','1');ESTAT.ls('eshu_nostat','1');ESTAT.q=[];x()}}catch(e){}},2500);
+
+
+{const _bES=begin;begin=function(f){const r=_bES(f);try{estat('gs',{m:(cfg.mode||'')+'/'+(cfg.diff||''),c:cfg.pack&&cfg.pack.title||'',np:cfg.n||1,on:0})}catch(e){}return r}}
+{const _rES=results;results=function(){const r=_rES.apply(this,arguments);try{estat('ge',{m:(cfg.mode||'')+'/'+(cfg.diff||''),c:cfg.pack&&cfg.pack.title||'',np:cfg.n||1,on:0,sc:Math.max(0,...players.map(p=>p.score||0))})}catch(e){}return r}}
+
+mpUI();
+fillLevels();
+renderNames();
+setupInfo();
+</script>
+</body>
+</html>
+
+</body></html>
